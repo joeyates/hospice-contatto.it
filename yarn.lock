@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@babel/runtime@npm:^7.20.7":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.20.7":
   version: 7.20.7
   resolution: "@babel/runtime@npm:7.20.7"
   dependencies:
@@ -367,6 +367,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"array-flatten@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "array-flatten@npm:3.0.0"
+  checksum: ad00c51ca70cf837501fb6da823ba39bc6a86b43d0b76d840daa02fe0f8e68e94ad5bc2d0d038053118b879aaca8ea6168c32c7387a2fa5b118ad28db4f1f863
+  languageName: node
+  linkType: hard
+
 "array-includes@npm:^3.1.5, array-includes@npm:^3.1.6":
   version: 3.1.6
   resolution: "array-includes@npm:3.1.6"
@@ -587,6 +594,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"datocms-listen@npm:^0.1.9":
+  version: 0.1.14
+  resolution: "datocms-listen@npm:0.1.14"
+  checksum: 220309b8c35179160c2992b4f266cba10093984c51c16f459cc404962c8f5d859d596da42d70e3193190c227e31ac7406f2e2944830a35673be2757f895bfa93
+  languageName: node
+  linkType: hard
+
+"datocms-structured-text-generic-html-renderer@npm:^2.0.1":
+  version: 2.0.4
+  resolution: "datocms-structured-text-generic-html-renderer@npm:2.0.4"
+  dependencies:
+    datocms-structured-text-utils: ^2.0.4
+  checksum: 58831e7bbcf8b8a18eb79af482898ba59b22ca18a52fafd9e855dce91933c26d0ae5ba53f002b1f34f4ebc106eb679232f3d00c560a4921b648a1787546f32b2
+  languageName: node
+  linkType: hard
+
+"datocms-structured-text-utils@npm:^2.0.1, datocms-structured-text-utils@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "datocms-structured-text-utils@npm:2.0.4"
+  dependencies:
+    array-flatten: ^3.0.0
+  checksum: 9e10d4faae0c47eebeee028cb0e8c459ecea6fb3dc4950ed0ab310d9b7f18d8ee014071142a42098b20c77264b60a2dd928e9a6462ae4ffea50a70d867f82f34
+  languageName: node
+  linkType: hard
+
 "debug@npm:^3.2.7":
   version: 3.2.7
   resolution: "debug@npm:3.2.7"
@@ -661,6 +693,13 @@ __metadata:
   version: 1.0.0
   resolution: "delayed-stream@npm:1.0.0"
   checksum: 46fe6e83e2cb1d85ba50bd52803c68be9bd953282fa7096f51fc29edd5d67ff84ff753c51966061e5ba7cb5e47ef6d36a91924eddb7f3f3483b1c560f77a0020
+  languageName: node
+  linkType: hard
+
+"dequal@npm:^2.0.2":
+  version: 2.0.3
+  resolution: "dequal@npm:2.0.3"
+  checksum: 8679b850e1a3d0ebbc46ee780d5df7b478c23f335887464023a631d1b9af051ad4a6595a44220f9ff8ff95a8ddccf019b5ad778a976fd7bbf77383d36f412f90
   languageName: node
   linkType: hard
 
@@ -1471,6 +1510,7 @@ __metadata:
     graphql-request: ^5.1.0
     next: 13.1.2
     react: 18.2.0
+    react-datocms: ^4.0.7
     react-dom: 18.2.0
   languageName: unknown
   linkType: soft
@@ -2282,6 +2322,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-datocms@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "react-datocms@npm:4.0.7"
+  dependencies:
+    datocms-listen: ^0.1.9
+    datocms-structured-text-generic-html-renderer: ^2.0.1
+    datocms-structured-text-utils: ^2.0.1
+    react-intersection-observer: ^8.33.1
+    react-string-replace: ^1.1.0
+    universal-base64: ^2.1.0
+    use-deep-compare-effect: ^1.6.1
+  peerDependencies:
+    react: ">= 16.12.0"
+  checksum: 292e10c351201efd46cdba14a4caa9a125883193b8fd9c18a29645cb00e26a7cfdea8ce2c00389ed10ea8f93f5f8365e4d51a28774a7037b6f345db4de32e986
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -2294,10 +2351,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-intersection-observer@npm:^8.33.1":
+  version: 8.34.0
+  resolution: "react-intersection-observer@npm:8.34.0"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+  checksum: 7713fecfd1512c7f5a60f9f0bf15403b8f8bbd4110bcafaeaea6de36a0e0eb60368c3638f99e9c97b75ad8fc787ea48c241dcb5c694f821d7f2976f709082cc5
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-string-replace@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "react-string-replace@npm:1.1.0"
+  checksum: 5df67fbdb49cacdc9f4488d4bc3dedef1f85d6156b3626d9b4b6c317ec8cc534494def078ab0b2df7aea8fa3cbcecd8d3f76a161f04bf8b29869daccf33785ec
   languageName: node
   linkType: hard
 
@@ -2737,12 +2810,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"universal-base64@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "universal-base64@npm:2.1.0"
+  checksum: 03bc6f7de04aee83038c26038cd2639f470fd9665f99b3613934c4ccde5d59047d45e34ea4c843ac582da83ea1b050bf8defba8eb390e566f0be314646ddbc9b
+  languageName: node
+  linkType: hard
+
 "uri-js@npm:^4.2.2":
   version: 4.4.1
   resolution: "uri-js@npm:4.4.1"
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-deep-compare-effect@npm:^1.6.1":
+  version: 1.8.1
+  resolution: "use-deep-compare-effect@npm:1.8.1"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    dequal: ^2.0.2
+  peerDependencies:
+    react: ">=16.13"
+  checksum: 2b9b6291df3f772f44d259b352e5d998963ccee0db2efeb76bb05525d928064aeeb69bb0dee5a5e428fea7cf3db67c097a770ebd30caa080662b565f6ef02b2e
   languageName: node
   linkType: hard
 

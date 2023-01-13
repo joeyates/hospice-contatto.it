@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql-request", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:5.1.0"],\
             ["next", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:13.1.2"],\
             ["react", "npm:18.2.0"],\
+            ["react-datocms", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:4.0.7"],\
             ["react-dom", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:18.2.0"]\
           ],\
           "linkType": "SOFT"\
@@ -516,6 +517,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["array-flatten", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/array-flatten-npm-3.0.0-bd1cc8ecc1-ad00c51ca7.zip/node_modules/array-flatten/",\
+          "packageDependencies": [\
+            ["array-flatten", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["array-includes", [\
         ["npm:3.1.6", {\
           "packageLocation": "./.yarn/cache/array-includes-npm-3.1.6-d0ff9d248b-f22f8cd8ba.zip/node_modules/array-includes/",\
@@ -773,6 +783,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["datocms-listen", [\
+        ["npm:0.1.14", {\
+          "packageLocation": "./.yarn/cache/datocms-listen-npm-0.1.14-55079750fa-220309b8c3.zip/node_modules/datocms-listen/",\
+          "packageDependencies": [\
+            ["datocms-listen", "npm:0.1.14"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["datocms-structured-text-generic-html-renderer", [\
+        ["npm:2.0.4", {\
+          "packageLocation": "./.yarn/cache/datocms-structured-text-generic-html-renderer-npm-2.0.4-24fb39833e-58831e7bbc.zip/node_modules/datocms-structured-text-generic-html-renderer/",\
+          "packageDependencies": [\
+            ["datocms-structured-text-generic-html-renderer", "npm:2.0.4"],\
+            ["datocms-structured-text-utils", "npm:2.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["datocms-structured-text-utils", [\
+        ["npm:2.0.4", {\
+          "packageLocation": "./.yarn/cache/datocms-structured-text-utils-npm-2.0.4-431c2ab222-9e10d4faae.zip/node_modules/datocms-structured-text-utils/",\
+          "packageDependencies": [\
+            ["datocms-structured-text-utils", "npm:2.0.4"],\
+            ["array-flatten", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["debug", [\
         ["npm:3.2.7", {\
           "packageLocation": "./.yarn/cache/debug-npm-3.2.7-754e818c7a-b3d8c59407.zip/node_modules/debug/",\
@@ -877,6 +916,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-46fe6e83e2.zip/node_modules/delayed-stream/",\
           "packageDependencies": [\
             ["delayed-stream", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dequal", [\
+        ["npm:2.0.3", {\
+          "packageLocation": "./.yarn/cache/dequal-npm-2.0.3-53a630c60e-8679b850e1.zip/node_modules/dequal/",\
+          "packageDependencies": [\
+            ["dequal", "npm:2.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1894,6 +1942,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql-request", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:5.1.0"],\
             ["next", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:13.1.2"],\
             ["react", "npm:18.2.0"],\
+            ["react-datocms", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:4.0.7"],\
             ["react-dom", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:18.2.0"]\
           ],\
           "linkType": "SOFT"\
@@ -2825,6 +2874,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-datocms", [\
+        ["npm:4.0.7", {\
+          "packageLocation": "./.yarn/cache/react-datocms-npm-4.0.7-7c89eeac8d-292e10c351.zip/node_modules/react-datocms/",\
+          "packageDependencies": [\
+            ["react-datocms", "npm:4.0.7"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:4.0.7", {\
+          "packageLocation": "./.yarn/__virtual__/react-datocms-virtual-b7663c3866/0/cache/react-datocms-npm-4.0.7-7c89eeac8d-292e10c351.zip/node_modules/react-datocms/",\
+          "packageDependencies": [\
+            ["react-datocms", "virtual:69b2b5f7a9e9266196b569525f58325c4ae3be82ea5c66ede1cfd9c28ddfcdb6d94d8a8eb4f740209312db2d78bbb845a4bf820f5966fd2fe2917ca22e5913ff#npm:4.0.7"],\
+            ["@types/react", null],\
+            ["datocms-listen", "npm:0.1.14"],\
+            ["datocms-structured-text-generic-html-renderer", "npm:2.0.4"],\
+            ["datocms-structured-text-utils", "npm:2.0.4"],\
+            ["react", "npm:18.2.0"],\
+            ["react-intersection-observer", "virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:8.34.0"],\
+            ["react-string-replace", "npm:1.1.0"],\
+            ["universal-base64", "npm:2.1.0"],\
+            ["use-deep-compare-effect", "virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:1.8.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-dom", [\
         ["npm:18.2.0", {\
           "packageLocation": "./.yarn/cache/react-dom-npm-18.2.0-dd675bca1c-7d323310be.zip/node_modules/react-dom/",\
@@ -2849,11 +2927,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-intersection-observer", [\
+        ["npm:8.34.0", {\
+          "packageLocation": "./.yarn/cache/react-intersection-observer-npm-8.34.0-3972ad1cd7-7713fecfd1.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "npm:8.34.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:8.34.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-intersection-observer-virtual-26a3c006b8/0/cache/react-intersection-observer-npm-8.34.0-3972ad1cd7-7713fecfd1.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:8.34.0"],\
+            ["@types/react", null],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-is", [\
         ["npm:16.13.1", {\
           "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-f7a19ac349.zip/node_modules/react-is/",\
           "packageDependencies": [\
             ["react-is", "npm:16.13.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-string-replace", [\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/react-string-replace-npm-1.1.0-9af2371852-5df67fbdb4.zip/node_modules/react-string-replace/",\
+          "packageDependencies": [\
+            ["react-string-replace", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3327,12 +3436,45 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["universal-base64", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/universal-base64-npm-2.1.0-ab4190297b-03bc6f7de0.zip/node_modules/universal-base64/",\
+          "packageDependencies": [\
+            ["universal-base64", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["uri-js", [\
         ["npm:4.4.1", {\
           "packageLocation": "./.yarn/cache/uri-js-npm-4.4.1-66d11cbcaf-7167432de6.zip/node_modules/uri-js/",\
           "packageDependencies": [\
             ["uri-js", "npm:4.4.1"],\
             ["punycode", "npm:2.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["use-deep-compare-effect", [\
+        ["npm:1.8.1", {\
+          "packageLocation": "./.yarn/cache/use-deep-compare-effect-npm-1.8.1-a4da1ab3fa-2b9b6291df.zip/node_modules/use-deep-compare-effect/",\
+          "packageDependencies": [\
+            ["use-deep-compare-effect", "npm:1.8.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:1.8.1", {\
+          "packageLocation": "./.yarn/__virtual__/use-deep-compare-effect-virtual-030eee20f1/0/cache/use-deep-compare-effect-npm-1.8.1-a4da1ab3fa-2b9b6291df.zip/node_modules/use-deep-compare-effect/",\
+          "packageDependencies": [\
+            ["use-deep-compare-effect", "virtual:b7663c3866d23e3a90841d4898a4524272913b7df832ba2491a95ec9b8fc1bfa3ec2717908bd81b70f453bef4c4c387575177ac47b9634f8ee63ad9c20d77f5c#npm:1.8.1"],\
+            ["@babel/runtime", "npm:7.20.7"],\
+            ["@types/react", null],\
+            ["dequal", "npm:2.0.3"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
