@@ -14,7 +14,11 @@ query HomePage {
       links
       value
     }
-    footer
+    footer {
+      blocks
+      links
+      value
+    }
   }
 }
 `
@@ -29,9 +33,11 @@ const HomePage = ({page}) => {
         <h1 className={styles.title}>{page.home.title}</h1>
         <h2 className={styles.title}>{page.home.subtitle}</h2>
         <div className={styles.body}>
-          <StructuredText data={ page.home.body } />
+          <StructuredText data={page.home.body}/>
         </div>
-        <h2 className={styles.footer}>{page.home.footer}</h2>
+        <div className={styles.footer}>
+          <StructuredText data={page.home.footer}/>
+        </div>
       </main>
     </>
   )
