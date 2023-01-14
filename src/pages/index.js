@@ -1,6 +1,8 @@
-import { request } from '../../lib/datocms'
 import Head from 'next/head'
 import { StructuredText } from 'react-datocms'
+
+import { request } from '../../lib/datocms'
+import styles from '@/styles/Home.module.css'
 
 const HOMEPAGE_QUERY = `
 query HomePage {
@@ -23,13 +25,11 @@ const HomePage = ({page}) => {
       <Head>
         <title>Progetto Con≈tatto</title>
       </Head>
-      <main>
-        <div>
-          <h1>{page.home.title}</h1>
-          <h2>{page.home.subtitle}</h2>
-          <StructuredText data={ page.home.body } />
-          <h2>{page.home.footer}</h2>
-        </div>
+      <main className={styles.main}>
+        <h1 className={styles.title}>{page.home.title}</h1>
+        <h2 className={styles.title}>{page.home.subtitle}</h2>
+        <StructuredText className={styles.body} data={ page.home.body } />
+        <h2 className={styles.footer}>{page.home.footer}</h2>
       </main>
     </>
   )
