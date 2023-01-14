@@ -28,7 +28,9 @@ const HomePage = ({page}) => {
       <main className={styles.main}>
         <h1 className={styles.title}>{page.home.title}</h1>
         <h2 className={styles.title}>{page.home.subtitle}</h2>
-        <StructuredText className={styles.body} data={ page.home.body } />
+        <div className={styles.body}>
+          <StructuredText data={ page.home.body } />
+        </div>
         <h2 className={styles.footer}>{page.home.footer}</h2>
       </main>
     </>

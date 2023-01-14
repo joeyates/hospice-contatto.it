@@ -2,15 +2,39 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4rem;
+  padding: 1rem;
   min-height: 100vh;
 }
 
 .title {
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 .subtitle {
+  text-align: center;
+}
+
+.body {
+}
+
+.body h1 {
+  padding-bottom: 1rem;
+}
+
+.body p {
+  padding-bottom: 0.6rem;
+}
+
+.body ul {
+  margin-left: 20px;
+}
+
+.body li {
+  line-height: 1.1;
+}
+
+.footer {
   text-align: center;
 }
 
@@ -25,6 +49,6 @@
 /* Desktop */
 @media (min-width: 1121px) {
   .main {
-    padding: 6rem;
+    padding: 2rem;
   }
 }
