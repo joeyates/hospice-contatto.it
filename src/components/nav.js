@@ -1,4 +1,4 @@
-export default () => {
+const Nav = () => {
   return (
     <nav className="svizzerina">
       <input className="svizzerina__trigger" type="checkbox"/>
@@ -15,3 +15,5 @@ export default () => {
     </nav>
   )
 }
+
+export default Nav
