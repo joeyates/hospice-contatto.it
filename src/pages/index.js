@@ -31,7 +31,7 @@ const HomePage = ({page}) => {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>{page.home.title}</h1>
-        <h2 className={styles.title}>{page.home.subtitle}</h2>
+        <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
         <div className={styles.body}>
           <StructuredText data={page.home.body}/>
         </div>
