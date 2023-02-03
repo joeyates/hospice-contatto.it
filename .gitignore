@@ -3,7 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+/.pnp.cjs
+/.pnp.js
 
 # testing
 /coverage
@@ -30,3 +31,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+/.yarn/
