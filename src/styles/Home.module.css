@@ -8,6 +8,7 @@
 
 .title {
   text-align: center;
+  padding-top: 20px;
   padding-bottom: 1rem;
 }
 
@@ -38,12 +39,16 @@
   text-align: center;
 }
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+/* size >= Tablet */
+@media (min-width: 700px) {
 }
 
-/* Desktop */
-@media (min-width: 1121px) {
+/* size >= Tablet and size < Desktop */
+@media (min-width: 700px) and (max-width: 1119px) {
+}
+
+/* size >= Desktop */
+@media (min-width: 1120px) {
   .main {
     padding: 2rem;
   }
