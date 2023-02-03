@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styles from '@/styles/Nav.module.css'
 
 const Nav = () => {
@@ -7,7 +9,7 @@ const Nav = () => {
         <nav className="horizontal-menu">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
           </ul>
         </nav>
@@ -22,7 +24,7 @@ const Nav = () => {
 
           <ul className="svizzerina__menu">
             <li className="svizzerina__menu-item">
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
           </ul>
         </nav>
