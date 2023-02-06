@@ -30,7 +30,7 @@ const HomePage = ({page}) => {
   return (
     <>
       <Head>
-        <title>Progetto Con≈tatto</title>
+        <title>{page.home.title}</title>
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>{page.home.title}</h1>
