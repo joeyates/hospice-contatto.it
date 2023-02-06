@@ -117,18 +117,18 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
     @media (min-width: 700px)
       top: 5px
       left: 5px
-      width: auto
+      width: max-content
+      display: flex
+      list-style: none
       transform: none
       transition: none
-      border: 0
+      margin: 0
       padding: 0
+      border: 0
       background-color: inherit
 
-  .trigger:checked ~ .menu
-    transform: translate(0, $showing-menu-translation-y)
-
-    li
-      padding: 5px 0
+    .item
+      padding: 5px
 
       a
         text-decoration: none
@@ -141,3 +141,6 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
 
       a:hover
         color: $svizzerina-link-hover-color
+
+  .trigger:checked ~ .menu
+    transform: translate(0, $showing-menu-translation-y)

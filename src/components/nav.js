@@ -12,10 +12,10 @@ const Nav = () => {
       <span className={styles.glyph3}></span>
 
       <ul className={styles.menu}>
-        <li>
+        <li className={styles.item}>
           <Link href="/">Home</Link>
         </li>
-        <li>
+        <li className={styles.item}>
           <Link href="/chi-siamo">Chi siamo</Link>
         </li>
       </ul>
