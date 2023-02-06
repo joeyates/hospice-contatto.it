@@ -2,7 +2,6 @@ import localFont from '@next/font/local'
 
 import Nav from '@/components/nav'
 import '@/styles/globals.css'
-import '@/styles/svizzerina.sass'
 
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 

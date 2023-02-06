@@ -37,7 +37,7 @@ $glyph-inclined-width: $svizzerina-height
 $glyph-width-difference: calc($svizzerina-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
 
-.svizzerina
+.container
   position: absolute
   top: 0
   left: 0
@@ -45,7 +45,7 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
   width: $svizzerina-width
   z-index: $svizzerina-z-index
 
-  .svizzerina__trigger
+  .trigger
     opacity: 0
     position: absolute
     top: $glyph1-top
@@ -57,7 +57,10 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
     cursor: pointer
     z-index: 3
 
-  .svizzerina__glyph
+    @media (min-width: 700px)
+      display: none
+
+  .glyph
     position: absolute
     left: $glyph-left
     width: $svizzerina-width
@@ -67,28 +70,34 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
     background: #333
     z-index: 2
 
-  .svizzerina__glyph1
+    @media (min-width: 700px)
+      display: none
+
+  .glyph1
+    @extend .glyph
     top: $glyph1-top
     transform-origin: 0 0
 
-  .svizzerina__trigger:checked ~ .svizzerina__glyph1
+  .trigger:checked ~ .glyph1
     transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
 
-  .svizzerina__glyph2
+  .glyph2
+    @extend .glyph
     opacity: 1
     top: $glyph2-top
 
-  .svizzerina__trigger:checked ~ .svizzerina__glyph2
+  .trigger:checked ~ .glyph2
     opacity: 0
 
-  .svizzerina__glyph3
+  .glyph3
+    @extend .glyph
     top: $glyph3-top
     transform-origin: 0 $glyph-height
 
-  .svizzerina__trigger:checked ~ .svizzerina__glyph3
+  .trigger:checked ~ .glyph3
     transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
 
-  .svizzerina__menu
+  .menu
     position: absolute
     top: $showing-menu-x
     left: 0
@@ -105,15 +114,28 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
     background-color: $svizzerina-menu-color
     z-index: 1
 
-  .svizzerina__trigger:checked ~ .svizzerina__menu
+    @media (min-width: 700px)
+      top: 5px
+      left: 5px
+      width: auto
+      transform: none
+      transition: none
+      border: 0
+      padding: 0
+      background-color: inherit
+
+  .trigger:checked ~ .menu
     transform: translate(0, $showing-menu-translation-y)
 
-  .svizzerina__menu a
+  .menu a
     text-decoration: none
     color: $svizzerina-link-color
     transition: color 0.3s ease
     font-size: $svizzerina-menu-font-size
     padding: 5px 0
 
-  .svizzerina__menu a:hover
+    @media (min-width: 700px)
+      color: inherit
+
+  .menu a:hover
     color: $svizzerina-link-hover-color
