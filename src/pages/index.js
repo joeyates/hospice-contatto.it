@@ -3,7 +3,7 @@ import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
 import Footer from '@/components/footer'
-import styles from '@/styles/Home.module.css'
+import styles from './Home.module.sass'
 
 const HOMEPAGE_QUERY = `
 query HomePage {
