@@ -3,11 +3,11 @@ import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
 import Footer from '@/components/footer'
-import styles from './about-us.module.sass'
+import styles from './come-sostenerci.module.sass'
 
-const ABOUT_US_QUERY = `
+const QUERY = `
 query {
-  about {
+  giveSupport {
     id
     title
     body {
@@ -24,16 +24,16 @@ query {
 }
 `
 
-const AboutUs = ({ page }) => {
+const GiveSupport = ({ page }) => {
   return (
     <>
       <Head>
-        <title>{page.about.title}</title>
+        <title>{page.giveSupport.title}</title>
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>{page.about.title}</h1>
+        <h1 className={styles.title}>{page.giveSupport.title}</h1>
         <div className={styles.body}>
-          <StructuredText data={page.about.body}/>
+          <StructuredText data={page.giveSupport.body}/>
         </div>
         <Footer layout={page.layout}/>
       </main>
@@ -41,16 +41,9 @@ const AboutUs = ({ page }) => {
   )
 }
 
-const getStaticPaths = async () => {
-  return {
-    paths: [{ params: { 'about-us': 'chi-siamo' } }],
-    fallback: false
-  }
-}
-
 const getStaticProps = async () => {
   const page = await request({
-    query: ABOUT_US_QUERY
+    query: QUERY
   })
 
   return {
@@ -58,5 +51,5 @@ const getStaticProps = async () => {
   }
 }
 
-export { getStaticPaths, getStaticProps }
-export default AboutUs
+export { getStaticProps }
+export default GiveSupport

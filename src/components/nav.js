@@ -24,8 +24,14 @@ const Nav = ({ router }) => {
         <li className={linkClass('/', router.pathname)}>
           <Link href="/">Home</Link>
         </li>
-        <li className={linkClass('/[about-us]', router.pathname)}>
+        <li className={linkClass('/chi-siamo', router.pathname)}>
           <Link href="/chi-siamo">Chi siamo</Link>
+        </li>
+        <li className={linkClass('/come-sostenerci', router.pathname)}>
+          <Link href="/come-sostenerci">Come sostenerci</Link>
+        </li>
+        <li className={linkClass('/contatti', router.pathname)}>
+          <Link href="/contatti">Contatti</Link>
         </li>
       </ul>
     </nav>
