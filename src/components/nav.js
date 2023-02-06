@@ -1,8 +1,17 @@
 import Link from 'next/link'
+import { withRouter } from 'next/router'
 
 import styles from './nav.module.sass'
 
-const Nav = () => {
+const linkClass = (name, current) => {
+  if (name == current) {
+    return styles['current-item']
+  } else {
+    return styles.item
+  }
+}
+
+const Nav = ({ router }) => {
   return (
     <nav className={styles.container}>
       <input className={styles.trigger} type="checkbox"/>
@@ -12,10 +21,10 @@ const Nav = () => {
       <span className={styles.glyph3}></span>
 
       <ul className={styles.menu}>
-        <li className={styles.item}>
+        <li className={linkClass('/', router.pathname)}>
           <Link href="/">Home</Link>
         </li>
-        <li className={styles.item}>
+        <li className={linkClass('/[about-us]', router.pathname)}>
           <Link href="/chi-siamo">Chi siamo</Link>
         </li>
       </ul>
@@ -23,4 +32,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default withRouter(Nav)

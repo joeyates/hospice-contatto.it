@@ -10,6 +10,8 @@
   --text-colour: #060400;
   --strong-colour: #063d71;
   --background-colour: #e4e4e4;
+  --link-color: #063d71;
+  --link-hover-color: blue;
 }
 
 * {

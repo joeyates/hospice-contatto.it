@@ -137,10 +137,19 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
         font-size: $svizzerina-menu-font-size
 
         @media (min-width: 700px)
-          color: inherit
+          color: var(--link-color, blue)
 
       a:hover
         color: $svizzerina-link-hover-color
+
+        @media (min-width: 700px)
+          color: var(--link-hover-color, black)
+
+    .current-item
+      @extend .item
+
+      a
+        font-weight: bold
 
   .trigger:checked ~ .menu
     transform: translate(0, $showing-menu-translation-y)
