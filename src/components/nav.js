@@ -4,15 +4,15 @@ import styles from './nav.module.sass'
 
 const Nav = () => {
   return (
-    <nav className="svizzerina">
-      <input className="svizzerina__trigger" type="checkbox"/>
+    <nav className={styles.container}>
+      <input className={styles.trigger} type="checkbox"/>
 
-      <span className="svizzerina__glyph svizzerina__glyph1"></span>
-      <span className="svizzerina__glyph svizzerina__glyph2"></span>
-      <span className="svizzerina__glyph svizzerina__glyph3"></span>
+      <span className={styles.glyph1}></span>
+      <span className={styles.glyph2}></span>
+      <span className={styles.glyph3}></span>
 
-      <ul className="svizzerina__menu">
-        <li className="svizzerina__menu-item">
+      <ul className={styles.menu}>
+        <li>
           <Link href="/">Home</Link>
         </li>
       </ul>
