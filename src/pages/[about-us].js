@@ -23,7 +23,10 @@ const AboutUs = ({ page }) => {
         <title>{page.about.title}</title>
       </Head>
       <main className={styles.main}>
-        <h1>{page.about.title}</h1>
+        <h1 className={styles.title}>{page.about.title}</h1>
+        <div className={styles.body}>
+          <StructuredText data={page.about.body}/>
+        </div>
       </main>
     </>
   )
