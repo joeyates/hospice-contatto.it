@@ -1,5 +1,5 @@
 $svizzerina-glyph-left: var(--svizzerina-glyph-left, 4px)
-$svizzerina-glyph-top: var(--svizzerina-glyph-top, 4px)
+$svizzerina-glyph-top: var(--svizzerina-glyph-top, 16px)
 $svizzerina-link-color: var(--svizzerina-link-color, #555)
 $svizzerina-link-hover-color: var(--svizzerina-link-hover-color, black)
 $svizzerina-menu-color: var(--svizzerina-menu-color, white)
@@ -127,15 +127,17 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
   .trigger:checked ~ .menu
     transform: translate(0, $showing-menu-translation-y)
 
-  .menu a
-    text-decoration: none
-    color: $svizzerina-link-color
-    transition: color 0.3s ease
-    font-size: $svizzerina-menu-font-size
-    padding: 5px 0
+    li
+      padding: 5px 0
 
-    @media (min-width: 700px)
-      color: inherit
+      a
+        text-decoration: none
+        color: $svizzerina-link-color
+        transition: color 0.3s ease
+        font-size: $svizzerina-menu-font-size
 
-  .menu a:hover
-    color: $svizzerina-link-hover-color
+        @media (min-width: 700px)
+          color: inherit
+
+      a:hover
+        color: $svizzerina-link-hover-color
