@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
+import Footer from '@/components/footer'
 import styles from './about-us.module.sass'
 
 const ABOUT_US_QUERY = `
@@ -10,6 +11,13 @@ query {
     id
     title
     body {
+      value
+    }
+  }
+  layout {
+    footer {
+      blocks
+      links
       value
     }
   }
@@ -27,6 +35,7 @@ const AboutUs = ({ page }) => {
         <div className={styles.body}>
           <StructuredText data={page.about.body}/>
         </div>
+        <Footer layout={page.layout}/>
       </main>
     </>
   )

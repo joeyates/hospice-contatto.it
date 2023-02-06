@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
+import Footer from '@/components/footer'
 import styles from '@/styles/Home.module.css'
 
 const HOMEPAGE_QUERY = `
@@ -14,6 +15,8 @@ query HomePage {
       links
       value
     }
+  }
+  layout {
     footer {
       blocks
       links
@@ -35,9 +38,7 @@ const HomePage = ({page}) => {
         <div className={styles.body}>
           <StructuredText data={page.home.body}/>
         </div>
-        <div className={styles.footer}>
-          <StructuredText data={page.home.footer}/>
-        </div>
+        <Footer layout={page.layout}/>
       </main>
     </>
   )
