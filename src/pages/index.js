@@ -3,10 +3,10 @@ import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
 import Footer from '@/components/footer'
-import styles from './Home.module.sass'
+import styles from './index.module.sass'
 
-const HOMEPAGE_QUERY = `
-query HomePage {
+const HOME_QUERY = `
+query {
   home {
     title
     subtitle
@@ -26,7 +26,7 @@ query HomePage {
 }
 `
 
-const HomePage = ({page}) => {
+const Home = ({page}) => {
   return (
     <>
       <Head>
@@ -46,7 +46,7 @@ const HomePage = ({page}) => {
 
 const getStaticProps = async () => {
   const page = await request({
-    query: HOMEPAGE_QUERY
+    query: HOME_QUERY
   })
 
   return {
@@ -55,4 +55,4 @@ const getStaticProps = async () => {
 }
 
 export {getStaticProps}
-export default HomePage
+export default Home
