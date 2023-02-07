@@ -32,7 +32,7 @@ const Events = ({ pages }) => {
       </Head>
       <Main>
         <Title title="Eventi"/>
-        <ul>
+        <ul className={styles.events}>
           {pages.allEvents.map(p => (
             <li key={`event-${p.id}`}>
               <Link href={`/eventi/${p.slug}`}>{p.title}</Link>
