@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
-import { request } from '../../../lib/datocms'
 import Body from '@/components/body'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
+import { request } from '@/lib/datocms'
 import styles from './event.module.sass'
 
 const EVENTS_QUERY = `
