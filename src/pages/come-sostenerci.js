@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
+import Body from '@/components/body'
 import Footer from '@/components/footer'
+import Main from '@/components/main'
+import Title from '@/components/title'
 import styles from './come-sostenerci.module.sass'
 
 const QUERY = `
@@ -30,13 +32,11 @@ const GiveSupport = ({ page }) => {
       <Head>
         <title>{page.giveSupport.title}</title>
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{page.giveSupport.title}</h1>
-        <div className={styles.body}>
-          <StructuredText data={page.giveSupport.body}/>
-        </div>
+      <Main>
+        <Title title={page.giveSupport.title}/>
+        <Body data={page.giveSupport.body}/>
         <Footer layout={page.layout}/>
-      </main>
+      </Main>
     </>
   )
 }

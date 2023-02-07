@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
+import Body from '@/components/body'
 import Footer from '@/components/footer'
+import Main from '@/components/main'
+import Title from '@/components/title'
 import styles from './contatti.module.sass'
 
 const QUERY = `
@@ -30,13 +32,11 @@ const Contact = ({ page }) => {
       <Head>
         <title>{page.contact.title}</title>
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{page.contact.title}</h1>
-        <div className={styles.body}>
-          <StructuredText data={page.contact.body}/>
-        </div>
+      <Main>
+        <Title title={page.contact.title}/>
+        <Body data={page.contact.body}/>
         <Footer layout={page.layout}/>
-      </main>
+      </Main>
     </>
   )
 }

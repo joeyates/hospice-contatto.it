@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import { StructuredText } from 'react-datocms'
 
 import { request } from '../../lib/datocms'
+import Body from '@/components/body'
 import Footer from '@/components/footer'
+import Main from '@/components/main'
+import Title from '@/components/title'
 import styles from './index.module.sass'
 
 const HOME_QUERY = `
@@ -32,14 +34,12 @@ const Home = ({page}) => {
       <Head>
         <title>{page.home.title}</title>
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{page.home.title}</h1>
+      <Main>
+        <Title title={page.home.title}/>
         <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
-        <div className={styles.body}>
-          <StructuredText data={page.home.body}/>
-        </div>
+        <Body data={page.home.body}/>
         <Footer layout={page.layout}/>
-      </main>
+      </Main>
     </>
   )
 }
