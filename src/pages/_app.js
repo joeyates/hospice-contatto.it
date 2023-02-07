@@ -7,9 +7,9 @@ const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={ubuntuFont.className}>
+    <div className={ubuntuFont.className}>
       <Nav/>
       <Component {...pageProps} />
-    </main>
+    </div>
   )
 }
