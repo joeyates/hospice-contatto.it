@@ -5,12 +5,14 @@ import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import { request } from '@/lib/datocms'
+import { datedSlug, datedSlugToSlug } from '@/lib/event'
 import styles from './event.module.sass'
 
 const EVENTS_QUERY = `
 query {
   allEvents {
     id
+    date
     slug
   }
 }
@@ -56,7 +58,10 @@ const getStaticPaths = async () => {
     query: EVENTS_QUERY
   })
 
-  const paths = events.allEvents.map(e => ({ params: e }))
+  const paths = events.allEvents.map(e => {
+    const path = datedSlug(e)
+    return { params: { event: path } }
+  })
 
   return {
     paths, fallback: false
@@ -64,9 +69,10 @@ const getStaticPaths = async () => {
 }
 
 const getStaticProps = async (context) => {
+  const slug = datedSlugToSlug(context.params.event)
   const page = await request({
     query: EVENT_QUERY,
-    variables: { event: context.params.event }
+    variables: { slug }
   })
 
   return {

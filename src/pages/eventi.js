@@ -6,11 +6,13 @@ import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import { request } from '@/lib/datocms'
+import { path as eventPath } from '@/lib/event'
 
 const EVENTS_QUERY = `
 query {
   allEvents {
     id
+    date
     slug
     title
   }
@@ -33,9 +35,9 @@ const Events = ({ pages }) => {
       <Main>
         <Title title="Eventi"/>
         <ul className={styles.events}>
-          {pages.allEvents.map(p => (
-            <li key={`event-${p.id}`}>
-              <Link href={`/eventi/${p.slug}`}>{p.title}</Link>
+          {pages.allEvents.map(e => (
+            <li key={`event-${e.id}`}>
+              <Link href={eventPath(e)}>{e.title}</Link>
             </li>
           ))}
         </ul>
