@@ -33,7 +33,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--link-color);
   text-decoration: none;
 }
 
