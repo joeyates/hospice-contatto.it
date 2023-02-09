@@ -1,12 +1,14 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './eventi.module.sass'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import { parseDate, request } from '@/lib/datocms'
 import { path as eventPath } from '@/lib/event'
+import { date as formatDate } from '@/lib/format'
 
 const EVENTS_QUERY = `
 query {
@@ -36,8 +38,13 @@ const Events = ({ pages }) => {
         <Title title="Eventi"/>
         <ul className={styles.events}>
           {pages.allEvents.map(e => (
-            <li key={`event-${e.id}`}>
-              <Link href={eventPath(e)}>{e.title}</Link>
+            <li className={styles.event} key={`event-${e.id}`}>
+              <Link href={eventPath(e)}>
+                <p className={styles.text}>
+                  <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
+                  <div className={styles.title}>{e.title}</div>
+                </p>
+              </Link>
             </li>
           ))}
         </ul>

@@ -4,8 +4,9 @@ import Body from '@/components/body'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import { parseDate, request } from '@/lib/datocms'
 import { datedSlug, datedSlugToSlug } from '@/lib/event'
+import { date as formatDate } from '@/lib/format'
 import styles from './event.module.sass'
 
 const EVENTS_QUERY = `
@@ -38,6 +39,7 @@ query Event($slug: String!) {
 `
 
 const Event = ({ page }) => {
+  const date = parseDate(page.event.date)
   return (
     <>
       <Head>
@@ -45,7 +47,7 @@ const Event = ({ page }) => {
       </Head>
       <Main>
         <Title title={page.event.title}/>
-        <p>{page.event.date}</p>
+        <p className={styles.date}>{formatDate(date)}</p>
         <Body data={page.event.body}/>
         <Footer layout={page.layout}/>
       </Main>
