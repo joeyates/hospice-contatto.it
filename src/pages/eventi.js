@@ -44,10 +44,10 @@ const Events = ({ pages }) => {
           {pages.allEvents.map(e => (
             <li className={styles.event} key={`event-${e.id}`}>
               <Link href={eventPath(e)}>
-                <p className={styles.text}>
+                <div className={styles.text}>
                   <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
                   <div className={styles.title}>{e.title}</div>
-                </p>
+                </div>
                 <Image {...e.image.responsiveImage}/>
               </Link>
             </li>
