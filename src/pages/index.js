@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
-import Body from '@/components/body'
+import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
@@ -12,11 +13,7 @@ query {
   home {
     title
     subtitle
-    body {
-      blocks
-      links
-      value
-    }
+    ${bodyQueryFragment}
   }
   layout {
     footer {

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import Body from '@/components/body'
+import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
@@ -30,19 +30,7 @@ query Event($slug: String!) {
     image {
       ${responsiveImage({width: 600, height: 600})}
     }
-    body {
-      value
-      blocks {
-        ... on ImageWithCaptionRecord {
-          __typename
-          id
-          image {
-            ${responsiveImage({width: 300, height: 300})}
-          }
-          caption
-        }
-      }
-    }
+    ${bodyQueryFragment}
   }
   layout {
     footer {

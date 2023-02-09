@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Body from '@/components/body'
+import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
@@ -12,9 +12,7 @@ query {
   contact {
     id
     title
-    body {
-      value
-    }
+    ${bodyQueryFragment}
   }
   layout {
     footer {
