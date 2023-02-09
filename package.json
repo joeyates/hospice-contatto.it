@@ -5,16 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "yarn run sitemap",
+    "sitemap": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/env": "^13.1.6",
     "@next/font": "13.1.2",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.2",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
     "next": "13.1.2",
+    "next-sitemap": "^3.1.52",
     "react": "18.2.0",
     "react-datocms": "^4.0.7",
     "react-dom": "18.2.0",
