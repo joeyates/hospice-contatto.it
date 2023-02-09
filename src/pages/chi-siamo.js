@@ -13,6 +13,11 @@ query {
     id
     title
     ${bodyQueryFragment}
+    attachments {
+      id
+      title
+      url
+    }
   }
   ${footerQueryFragment}
 }
@@ -27,6 +32,13 @@ const AboutUs = ({ page }) => {
       <Main>
         <Title title={page.about.title}/>
         <Body data={page.about.body}/>
+        {
+          page.about.attachments.map(a => (
+            <a href={a.url} key={a.id} target="_blank">
+              {a.title}
+            </a>
+          ))
+        }
         <Footer layout={page.layout}/>
       </Main>
     </>
