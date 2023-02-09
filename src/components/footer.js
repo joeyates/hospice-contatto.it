@@ -12,8 +12,6 @@ const Footer = ({ layout }) => {
 const queryFragment = `
   layout {
     footer {
-      blocks
-      links
       value
     }
   }

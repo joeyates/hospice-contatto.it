@@ -18,24 +18,47 @@ const renderBlock = ({record}) => {
   }
 }
 
+const renderLinkToRecord = ({record, children, transformedMeta}) => {
+  switch (record.__typename) {
+  case 'DetailRecord':
+    return (
+      <a {...transformedMeta} href={`/approfondimenti/${record.slug}`}>
+        {children}
+      </a>
+    )
+  default:
+    throw `Unrecognised block type ${record.__typename}`
+  }
+}
+
 const Body = ({data}) => (
   <div className={styles.body}>
-    <StructuredText data={data} renderBlock={renderBlock}/>
+    <StructuredText
+      data={data}
+      renderBlock={renderBlock}
+      renderLinkToRecord={renderLinkToRecord}
+    />
   </div>
 )
 
 const queryFragment = `
   body {
     blocks {
+      __typename
+      id
       ... on ImageRecord {
-        __typename
-        id
         image {
           ${responsiveImage({width: 300, height: 300})}
         }
       }
     }
-    links
+    links {
+      id
+      __typename
+      ... on DetailRecord {
+        slug
+      }
+    }
     value
   }
 `
