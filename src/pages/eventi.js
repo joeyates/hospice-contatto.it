@@ -43,7 +43,7 @@ const Events = ({ pages }) => {
         <ul className={styles.events}>
           {pages.allEvents.map(e => (
             <li className={styles.event} key={`event-${e.id}`}>
-              <Link href={eventPath(e)}>
+              <Link className={styles['event-inner']} href={eventPath(e)}>
                 <div className={styles.text}>
                   <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
                   <div className={styles.title}>{e.title}</div>
