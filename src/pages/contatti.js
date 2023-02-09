@@ -18,20 +18,18 @@ query {
 }
 `
 
-const Contact = ({ page }) => {
-  return (
-    <>
-      <Head>
-        <title>{page.contact.title}</title>
-      </Head>
-      <Main>
-        <Title title={page.contact.title}/>
-        <Body data={page.contact.body}/>
-        <Footer layout={page.layout}/>
-      </Main>
-    </>
-  )
-}
+const Contact = ({ page }) => (
+  <>
+    <Head>
+      <title>{page.contact.title}</title>
+    </Head>
+    <Main>
+      <Title title={page.contact.title}/>
+      <Body data={page.contact.body}/>
+      <Footer layout={page.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticProps = async () => {
   const page = await request({

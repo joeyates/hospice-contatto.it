@@ -19,21 +19,19 @@ query {
 }
 `
 
-const Home = ({page}) => {
-  return (
-    <>
-      <Head>
-        <title>{page.home.title}</title>
-      </Head>
-      <Main>
-        <Title title={page.home.title}/>
-        <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
-        <Body data={page.home.body}/>
-        <Footer layout={page.layout}/>
-      </Main>
-    </>
-  )
-}
+const Home = ({page}) => (
+  <>
+    <Head>
+      <title>{page.home.title}</title>
+    </Head>
+    <Main>
+      <Title title={page.home.title}/>
+      <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
+      <Body data={page.home.body}/>
+      <Footer layout={page.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticProps = async () => {
   const page = await request({

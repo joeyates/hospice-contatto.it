@@ -30,20 +30,18 @@ query Detail($slug: String!) {
 }
 `
 
-const Detail = ({ page }) => {
-  return (
-    <>
-      <Head>
-        <title>{page.detail.title}</title>
-      </Head>
-      <Main>
-        <Title title={page.detail.title}/>
-        <Body data={page.detail.body}/>
-        <Footer layout={page.layout}/>
-      </Main>
-    </>
-  )
-}
+const Detail = ({ page }) => (
+  <>
+    <Head>
+      <title>{page.detail.title}</title>
+    </Head>
+    <Main>
+      <Title title={page.detail.title}/>
+      <Body data={page.detail.body}/>
+      <Footer layout={page.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticPaths = async () => {
   const details = await request({

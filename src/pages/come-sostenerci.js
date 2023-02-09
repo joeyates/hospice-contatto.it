@@ -18,20 +18,18 @@ query {
 }
 `
 
-const GiveSupport = ({ page }) => {
-  return (
-    <>
-      <Head>
-        <title>{page.giveSupport.title}</title>
-      </Head>
-      <Main>
-        <Title title={page.giveSupport.title}/>
-        <Body data={page.giveSupport.body}/>
-        <Footer layout={page.layout}/>
-      </Main>
-    </>
-  )
-}
+const GiveSupport = ({ page }) => (
+  <>
+    <Head>
+      <title>{page.giveSupport.title}</title>
+    </Head>
+    <Main>
+      <Title title={page.giveSupport.title}/>
+      <Body data={page.giveSupport.body}/>
+      <Footer layout={page.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticProps = async () => {
   const page = await request({

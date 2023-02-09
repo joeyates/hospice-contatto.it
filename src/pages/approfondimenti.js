@@ -22,30 +22,28 @@ query {
 }
 `
 
-const Details = ({ pages }) => {
-  return (
-    <>
-      <Head>
-        <title>Approfondimenti</title>
-      </Head>
-      <Main>
-        <Title title="Approfondimenti"/>
-        <ul className={styles.details}>
-          {pages.allDetails.map(d => (
-            <li className={styles.detail} key={`detail-${d.id}`}>
-              <Link className={styles['detail-inner']} href={`/approfondimenti/${d.slug}`}>
-                <div className={styles.text}>
-                  <div className={styles.title}>{d.title}</div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Footer layout={pages.layout}/>
-      </Main>
-    </>
-  )
-}
+const Details = ({ pages }) => (
+  <>
+    <Head>
+      <title>Approfondimenti</title>
+    </Head>
+    <Main>
+      <Title title="Approfondimenti"/>
+      <ul className={styles.details}>
+        {pages.allDetails.map(d => (
+          <li className={styles.detail} key={`detail-${d.id}`}>
+            <Link className={styles['detail-inner']} href={`/approfondimenti/${d.slug}`}>
+              <div className={styles.text}>
+                <div className={styles.title}>{d.title}</div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Footer layout={pages.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticProps = async (context) => {
   const pages = await request({

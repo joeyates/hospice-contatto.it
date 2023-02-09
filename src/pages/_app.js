@@ -5,11 +5,11 @@ import './_app.sass'
 
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
-export default function App({ Component, pageProps }) {
-  return (
-    <div className={ubuntuFont.className}>
-      <Nav/>
-      <Component {...pageProps} />
-    </div>
-  )
-}
+const App = ({ Component, pageProps }) => (
+  <div className={ubuntuFont.className}>
+    <Nav/>
+    <Component {...pageProps} />
+  </div>
+)
+
+export default App

@@ -26,32 +26,30 @@ query {
 }
 `
 
-const Events = ({ pages }) => {
-  return (
-    <>
-      <Head>
-        <title>Eventi</title>
-      </Head>
-      <Main>
-        <Title title="Eventi"/>
-        <ul className={styles.events}>
-          {pages.allEvents.map(e => (
-            <li className={styles.event} key={`event-${e.id}`}>
-              <Link className={styles['event-inner']} href={eventPath(e)}>
-                <div className={styles.text}>
-                  <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
-                  <div className={styles.title}>{e.title}</div>
-                </div>
-                <Image {...e.image.responsiveImage}/>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Footer layout={pages.layout}/>
-      </Main>
-    </>
-  )
-}
+const Events = ({ pages }) => (
+  <>
+    <Head>
+      <title>Eventi</title>
+    </Head>
+    <Main>
+      <Title title="Eventi"/>
+      <ul className={styles.events}>
+        {pages.allEvents.map(e => (
+          <li className={styles.event} key={`event-${e.id}`}>
+            <Link className={styles['event-inner']} href={eventPath(e)}>
+              <div className={styles.text}>
+                <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
+                <div className={styles.title}>{e.title}</div>
+              </div>
+              <Image {...e.image.responsiveImage}/>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Footer layout={pages.layout}/>
+    </Main>
+  </>
+)
 
 const getStaticProps = async (context) => {
   const pages = await request({
