@@ -32,6 +32,16 @@ query Event($slug: String!) {
     }
     body {
       value
+      blocks {
+        ... on ImageWithCaptionRecord {
+          __typename
+          id
+          image {
+            ${responsiveImage({width: 300, height: 300})}
+          }
+          caption
+        }
+      }
     }
   }
   layout {
