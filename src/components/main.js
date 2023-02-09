@@ -1,11 +1,11 @@
 import styles from './main.module.sass'
 
 const Main = ({children}) => (
-  <main className={styles.main}>
-    <>
+  <div className={styles.wrap}>
+    <main className={styles.main}>
       {...children}
-    </>
-  </main>
+    </main>
+  </div>
 )
 
 export default Main

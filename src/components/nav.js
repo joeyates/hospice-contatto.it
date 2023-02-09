@@ -27,6 +27,9 @@ const Nav = ({ router }) => {
         <li className={linkClass('/chi-siamo', router.pathname)}>
           <Link href="/chi-siamo">Chi siamo</Link>
         </li>
+        <li className={linkClass('/eventi', router.pathname)}>
+          <Link href="/eventi">Eventi</Link>
+        </li>
         <li className={linkClass('/come-sostenerci', router.pathname)}>
           <Link href="/come-sostenerci">Come sostenerci</Link>
         </li>
