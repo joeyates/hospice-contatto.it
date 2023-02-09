@@ -1,8 +1,8 @@
-import { GraphQLClient } from 'graphql-request'
+import {GraphQLClient} from 'graphql-request'
 
 const parseDate = date => new Date(date)
 
-const request = ({ query, variables, includeDrafts, excludeInvalid }) => {
+const request = ({query, variables, includeDrafts, excludeInvalid}) => {
   const headers = {
     authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
   };
@@ -12,7 +12,7 @@ const request = ({ query, variables, includeDrafts, excludeInvalid }) => {
   if (excludeInvalid) {
     headers['X-Exclude-Invalid'] = 'true';
   }
-  const client = new GraphQLClient('https://graphql.datocms.com', { headers });
+  const client = new GraphQLClient('https://graphql.datocms.com', {headers});
   return client.request(query, variables);
 }
 

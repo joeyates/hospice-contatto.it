@@ -5,7 +5,7 @@ import './_app.sass'
 
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
-const App = ({ Component, pageProps }) => (
+const App = ({Component, pageProps}) => (
   <div className={ubuntuFont.className}>
     <Nav/>
     <Component {...pageProps} />

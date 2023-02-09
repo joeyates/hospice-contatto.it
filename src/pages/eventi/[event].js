@@ -5,9 +5,9 @@ import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { parseDate, request } from '@/lib/datocms'
-import { datedSlug, datedSlugToSlug } from '@/lib/event'
-import { date as formatDate } from '@/lib/format'
+import {parseDate, request} from '@/lib/datocms'
+import {datedSlug, datedSlugToSlug} from '@/lib/event'
+import {date as formatDate} from '@/lib/format'
 import responsiveImage from '@/lib/responsiveImage'
 import styles from './event.module.sass'
 
@@ -36,7 +36,7 @@ query Event($slug: String!) {
 }
 `
 
-const Event = ({ page }) => {
+const Event = ({page}) => {
   const date = parseDate(page.event.date)
   return (
     <>
@@ -60,7 +60,7 @@ const getStaticPaths = async () => {
 
   const paths = events.allEvents.map(e => {
     const path = datedSlug(e)
-    return { params: { event: path } }
+    return {params: {event: path}}
   })
 
   return {
@@ -72,13 +72,13 @@ const getStaticProps = async (context) => {
   const slug = datedSlugToSlug(context.params.event)
   const page = await request({
     query: EVENT_QUERY,
-    variables: { slug }
+    variables: {slug}
   })
 
   return {
-    props: { page }
+    props: {page}
   }
 }
 
-export { getStaticPaths, getStaticProps }
+export {getStaticPaths, getStaticProps}
 export default Event

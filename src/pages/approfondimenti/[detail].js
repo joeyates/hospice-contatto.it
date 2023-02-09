@@ -5,7 +5,7 @@ import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import {request} from '@/lib/datocms'
 import responsiveImage from '@/lib/responsiveImage'
 import styles from './detail.module.sass'
 
@@ -30,7 +30,7 @@ query Detail($slug: String!) {
 }
 `
 
-const Detail = ({ page }) => (
+const Detail = ({page}) => (
   <>
     <Head>
       <title>{page.detail.title}</title>
@@ -48,9 +48,9 @@ const getStaticPaths = async () => {
     query: DETAILS_QUERY
   })
 
-  const paths = details.allDetails.map(e => {
-    return { params: { detail: e.slug } }
-  })
+  const paths = details.allDetails.map(e => (
+    {params: {detail: e.slug}}
+  ))
 
   return {
     paths, fallback: false
@@ -61,13 +61,13 @@ const getStaticProps = async (context) => {
   const slug = context.params.detail
   const page = await request({
     query: DETAIL_QUERY,
-    variables: { slug }
+    variables: {slug}
   })
 
   return {
-    props: { page }
+    props: {page}
   }
 }
 
-export { getStaticPaths, getStaticProps }
+export {getStaticPaths, getStaticProps}
 export default Detail

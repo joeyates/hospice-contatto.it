@@ -6,9 +6,9 @@ import styles from './eventi.module.sass'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { parseDate, request } from '@/lib/datocms'
-import { path as eventPath } from '@/lib/event'
-import { date as formatDate } from '@/lib/format'
+import {parseDate, request} from '@/lib/datocms'
+import {path as eventPath} from '@/lib/event'
+import {date as formatDate} from '@/lib/format'
 import responsiveImage from '@/lib/responsiveImage'
 
 const EVENTS_QUERY = `
@@ -26,7 +26,7 @@ query {
 }
 `
 
-const Events = ({ pages }) => (
+const Events = ({pages}) => (
   <>
     <Head>
       <title>Eventi</title>
@@ -57,9 +57,9 @@ const getStaticProps = async (context) => {
   })
 
   return {
-    props: { pages }
+    props: {pages}
   }
 }
 
-export { getStaticProps }
+export {getStaticProps}
 export default Events

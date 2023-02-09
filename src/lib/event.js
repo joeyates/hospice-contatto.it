@@ -11,4 +11,4 @@ const datedSlugToSlug = dated => {
 
 const path = event => `/eventi/${datedSlug(event)}`
 
-export { datedSlug, datedSlugToSlug, path }
+export {datedSlug, datedSlugToSlug, path}

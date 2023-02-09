@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { StructuredText } from 'react-datocms'
+import {StructuredText} from 'react-datocms'
 
 import responsiveImage from '@/lib/responsiveImage'
 import styles from './body.module.sass'

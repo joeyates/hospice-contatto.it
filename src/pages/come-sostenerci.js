@@ -4,7 +4,7 @@ import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import {request} from '@/lib/datocms'
 import styles from './come-sostenerci.module.sass'
 
 const QUERY = `
@@ -18,7 +18,7 @@ query {
 }
 `
 
-const GiveSupport = ({ page }) => (
+const GiveSupport = ({page}) => (
   <>
     <Head>
       <title>{page.giveSupport.title}</title>
@@ -37,9 +37,9 @@ const getStaticProps = async () => {
   })
 
   return {
-    props: { page }
+    props: {page}
   }
 }
 
-export { getStaticProps }
+export {getStaticProps}
 export default GiveSupport

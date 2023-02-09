@@ -6,7 +6,7 @@ import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import {request} from '@/lib/datocms'
 import responsiveImage from '@/lib/responsiveImage'
 import styles from './approfondimenti.module.sass'
 
@@ -22,7 +22,7 @@ query {
 }
 `
 
-const Details = ({ pages }) => (
+const Details = ({pages}) => (
   <>
     <Head>
       <title>Approfondimenti</title>
@@ -51,9 +51,9 @@ const getStaticProps = async (context) => {
   })
 
   return {
-    props: { pages }
+    props: {pages}
   }
 }
 
-export { getStaticProps }
+export {getStaticProps}
 export default Details

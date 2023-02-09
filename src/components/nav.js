@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { withRouter } from 'next/router'
+import {withRouter} from 'next/router'
 
 import styles from './nav.module.sass'
 
@@ -11,7 +11,7 @@ const linkClass = (name, current) => {
   }
 }
 
-const Nav = ({ router }) => (
+const Nav = ({router}) => (
   <nav className={styles.container}>
     <input className={styles.trigger} type="checkbox"/>
 

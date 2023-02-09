@@ -1,7 +1,7 @@
-import { StructuredText } from 'react-datocms'
+import {StructuredText} from 'react-datocms'
 import styles from './footer.module.sass'
 
-const Footer = ({ layout }) => (
+const Footer = ({layout}) => (
   <div className={styles.footer}>
     <StructuredText data={layout.footer}/>
   </div>

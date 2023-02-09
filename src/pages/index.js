@@ -5,7 +5,7 @@ import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
-import { request } from '@/lib/datocms'
+import {request} from '@/lib/datocms'
 import styles from './index.module.sass'
 
 const HOME_QUERY = `
@@ -39,7 +39,7 @@ const getStaticProps = async () => {
   })
 
   return {
-    props: { page }
+    props: {page}
   }
 }
 
