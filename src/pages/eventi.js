@@ -9,6 +9,7 @@ import Title from '@/components/title'
 import { parseDate, request } from '@/lib/datocms'
 import { path as eventPath } from '@/lib/event'
 import { date as formatDate } from '@/lib/format'
+import responsiveImage from '@/lib/responsiveImage'
 
 const EVENTS_QUERY = `
 query {
@@ -17,6 +18,9 @@ query {
     date
     slug
     title
+    image {
+      ${responsiveImage({width: 200, height: 200})}
+    }
   }
   layout {
     footer {
@@ -44,6 +48,7 @@ const Events = ({ pages }) => {
                   <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
                   <div className={styles.title}>{e.title}</div>
                 </p>
+                <Image {...e.image.responsiveImage}/>
               </Link>
             </li>
           ))}

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
 import Body from '@/components/body'
 import Footer from '@/components/footer'
@@ -7,6 +8,7 @@ import Title from '@/components/title'
 import { parseDate, request } from '@/lib/datocms'
 import { datedSlug, datedSlugToSlug } from '@/lib/event'
 import { date as formatDate } from '@/lib/format'
+import responsiveImage from '@/lib/responsiveImage'
 import styles from './event.module.sass'
 
 const EVENTS_QUERY = `
@@ -18,12 +20,16 @@ query {
   }
 }
 `
+
 const EVENT_QUERY = `
 query Event($slug: String!) {
   event(filter: {slug: {eq: $slug}}) {
     id
     date
     title
+    image {
+      ${responsiveImage({width: 600, height: 600})}
+    }
     body {
       value
     }
