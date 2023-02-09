@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
-import Footer from '@/components/footer'
+import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import { parseDate, request } from '@/lib/datocms'
@@ -32,13 +32,7 @@ query Event($slug: String!) {
     }
     ${bodyQueryFragment}
   }
-  layout {
-    footer {
-      blocks
-      links
-      value
-    }
-  }
+  ${footerQueryFragment}
 }
 `
 

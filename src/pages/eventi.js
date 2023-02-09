@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './eventi.module.sass'
-import Footer from '@/components/footer'
+import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import { parseDate, request } from '@/lib/datocms'
@@ -22,13 +22,7 @@ query {
       ${responsiveImage({width: 200, height: 200})}
     }
   }
-  layout {
-    footer {
-      blocks
-      links
-      value
-    }
-  }
+  ${footerQueryFragment}
 }
 `
 
