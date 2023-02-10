@@ -1,7 +1,6 @@
-import Head from 'next/head'
-
 import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
+import Head from '@/components/head'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import {request} from '@/lib/datocms'
@@ -20,9 +19,7 @@ query {
 
 const GiveSupport = ({page}) => (
   <>
-    <Head>
-      <title>{page.giveSupport.title}</title>
-    </Head>
+    <Head title={page.giveSupport.title}/>
     <Main>
       <Title title={page.giveSupport.title}/>
       <Body data={page.giveSupport.body}/>

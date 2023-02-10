@@ -1,15 +1,15 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './eventi.module.sass'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
+import Head from '@/components/head'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import {parseDate, request} from '@/lib/datocms'
 import {path as eventPath} from '@/lib/event'
 import {date as formatDate} from '@/lib/format'
 import responsiveImage from '@/lib/responsiveImage'
+import styles from './eventi.module.sass'
 
 const EVENTS_QUERY = `
 query {
@@ -28,9 +28,7 @@ query {
 
 const Events = ({pages}) => (
   <>
-    <Head>
-      <title>Eventi</title>
-    </Head>
+    <Head title="Eventi"/>
     <Main>
       <Title title="Eventi"/>
       <ul className={styles.events}>

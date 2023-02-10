@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import Image from 'next/image'
 
 import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
+import Head from '@/components/head'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import {request} from '@/lib/datocms'
@@ -21,9 +21,7 @@ query {
 
 const Home = ({page}) => (
   <>
-    <Head>
-      <title>{page.home.title}</title>
-    </Head>
+    <Head/>
     <Main>
       <Title title={page.home.title}/>
       <h2 className={styles.subtitle}>{page.home.subtitle}</h2>

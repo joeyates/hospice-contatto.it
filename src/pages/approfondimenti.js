@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
+import Head from '@/components/head'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import {request} from '@/lib/datocms'
@@ -24,9 +24,7 @@ query {
 
 const Details = ({pages}) => (
   <>
-    <Head>
-      <title>Approfondimenti</title>
-    </Head>
+    <Head title="Approfondimenti"/>
     <Main>
       <Title title="Approfondimenti"/>
       <ul className={styles.details}>

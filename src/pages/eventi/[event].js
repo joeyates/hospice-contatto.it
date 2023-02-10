@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import Image from 'next/image'
 
 import Body, {queryFragment as bodyQueryFragment} from '@/components/body'
 import Footer, {queryFragment as footerQueryFragment} from '@/components/footer'
+import Head from '@/components/head'
 import Main from '@/components/main'
 import Title from '@/components/title'
 import {parseDate, request} from '@/lib/datocms'
@@ -40,9 +40,7 @@ const Event = ({page}) => {
   const date = parseDate(page.event.date)
   return (
     <>
-      <Head>
-        <title>{page.event.title}</title>
-      </Head>
+      <Head title={page.event.title}/>
       <Main>
         <Title title={page.event.title}/>
         <p className={styles.date}>{formatDate(date)}</p>
