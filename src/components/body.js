@@ -9,7 +9,7 @@ const renderBlock = ({record}) => {
   case 'ImageRecord':
     return (
       <div className={styles.image_with_caption}>
-        <Image {...record.image.responsiveImage}/>
+        <Image alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
         <div className={styles.caption}>{record.caption}</div>
       </div>
     )

@@ -39,7 +39,7 @@ const Events = ({pages}) => (
                 <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
                 <div className={styles.title}>{e.title}</div>
               </div>
-              <Image {...e.image.responsiveImage}/>
+              <Image alt={e.image.responsiveImage.alt} {...e.image.responsiveImage}/>
             </Link>
           </li>
         ))}

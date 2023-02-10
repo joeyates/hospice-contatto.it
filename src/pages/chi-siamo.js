@@ -30,7 +30,7 @@ const AboutUs = ({page}) => (
       <Body data={page.about.body}/>
       {
         page.about.attachments.map(a => (
-          <a href={a.url} key={a.id} target="_blank">
+          <a href={a.url} key={a.id} rel="noreferrer" target="_blank">
             {a.title}
           </a>
         ))
