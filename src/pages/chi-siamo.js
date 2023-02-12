@@ -31,8 +31,8 @@ const AboutUs = ({page}) => (
       <ul className={styles.attachments}>
       {
         page.about.attachments.map(a => (
-          <li>
-            <a href={a.url} key={a.id} rel="noreferrer" target="_blank">
+          <li key={a.id}>
+            <a href={a.url} rel="noreferrer" target="_blank">
               {a.title}
             </a>
           </li>
