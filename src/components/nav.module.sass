@@ -1,48 +1,48 @@
-$svizzerina-glyph-left: var(--svizzerina-glyph-left, 4px)
-$svizzerina-glyph-top: var(--svizzerina-glyph-top, 16px)
-$svizzerina-link-color: var(--svizzerina-link-color, #555)
-$svizzerina-link-hover-color: var(--svizzerina-link-hover-color, black)
-$svizzerina-menu-color: var(--svizzerina-menu-color, white)
-$svizzerina-menu-font-size: var(--svizzerina-menu-font-size, 1rem)
-$svizzerina-menu-width: var(--svizzerina-menu-width, 190px)
-$svizzerina-z-index: var(--svizzerina-z-index, 1)
+// Container
+$svizzerina-z-index: 1
 
+// Widget
+$widget-width: 32px
+$widget-height: 20px
 $inclined-glyph-angle: 45deg
 $sin-45deg: 0.7071
-$svizzerina-margin: 0px
-$svizzerina-height: 20px
-$svizzerina-width: 32px
-
-$menu-padding-left: 30px
-$menu-padding-right: 10px
-$menu-border-left-width: 1px
-$menu-border-right-width: 1px
-
-$svizzerina-left: calc($svizzerina-width + $svizzerina-margin)
-$menu-translation-x: calc($svizzerina-left - $svizzerina-menu-width)
-$hidden-menu-translation-y: -100%
-$showing-menu-translation-y: 0
-$showing-menu-x: -$svizzerina-margin
-
+$svizzerina-glyph-top: 16px
+$svizzerina-glyph-left: 0.5rem
 $glyph-height: 4px
 $glyph-border-radius: calc($glyph-height / 2)
 $glyph1-top: $svizzerina-glyph-top
-$glyph2-top: calc($glyph1-top + ($svizzerina-height - $glyph-height) / 2)
-$glyph3-top: calc($glyph1-top + $svizzerina-height - $glyph-height)
+$glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
+$glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
 $glyph-left: $svizzerina-glyph-left
 $glyph-right: 4px
-$glyph-inclined-length: calc($svizzerina-height / $sin-45deg - $glyph-height)
-$glyph-inclined-scaling: calc($glyph-inclined-length / $svizzerina-width)
-$glyph-inclined-width: $svizzerina-height
-$glyph-width-difference: calc($svizzerina-width - $glyph-inclined-width)
+$glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
+$glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
+$glyph-inclined-width: $widget-height
+$glyph-width-difference: calc($widget-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
+
+// Menu
+$svizzerina-menu-font-size: 1.2rem
+$svizzerina-menu-width: 12rem
+$menu-padding-left: 1rem
+$menu-padding-top: 3rem
+$menu-padding-right: 10px
+$menu-border-left-width: 1px
+$menu-border-right-width: 1px
+$hidden-menu-translation-y: -100%
+$showing-menu-translation-y: 0
+
+// Menu Colours
+$svizzerina-link-color: #555
+$svizzerina-link-hover-color: black
+$svizzerina-menu-color: white
 
 .container
   position: absolute
   top: 0
   left: 0
   margin: 0
-  width: $svizzerina-width
+  width: $widget-width
   z-index: $svizzerina-z-index
 
   .trigger
@@ -50,8 +50,8 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
     position: absolute
     top: $glyph1-top
     left: $glyph-left
-    width: $svizzerina-width
-    height: $svizzerina-height
+    width: $widget-width
+    height: $widget-height
     margin: 0
     border: 0
     cursor: pointer
@@ -63,7 +63,7 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
   .glyph
     position: absolute
     left: $glyph-left
-    width: $svizzerina-width
+    width: $widget-width
     height: $glyph-height
     border-radius: $glyph-border-radius
     transition: transform 0.5s, opacity 0.4s ease
@@ -99,11 +99,11 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
 
   .menu
     position: absolute
-    top: $showing-menu-x
+    top: 0
     left: 0
     margin: 0
     width: $svizzerina-menu-width
-    padding: 50px $menu-padding-right 20px $menu-padding-left
+    padding: $menu-padding-top $menu-padding-right 20px $menu-padding-left
     border: 0 solid #888
     border-bottom-width: 1px
     border-right-width: $menu-border-right-width
@@ -128,7 +128,7 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
       background-color: inherit
 
     .item
-      padding: 5px 10px
+      padding: 5px 0
 
       a
         text-decoration: none
