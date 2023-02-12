@@ -1,19 +1,19 @@
 // Container
-$svizzerina-z-index: 1
+$z-index: 1
 
 // Widget
 $widget-width: 32px
 $widget-height: 20px
 $inclined-glyph-angle: 45deg
 $sin-45deg: 0.7071
-$svizzerina-glyph-top: 16px
-$svizzerina-glyph-left: 0.5rem
+$glyph-top: 16px
+$glyph-left: 0.5rem
 $glyph-height: 4px
 $glyph-border-radius: calc($glyph-height / 2)
-$glyph1-top: $svizzerina-glyph-top
+$glyph1-top: $glyph-top
 $glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
 $glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
-$glyph-left: $svizzerina-glyph-left
+$glyph-left: $glyph-left
 $glyph-right: 4px
 $glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
 $glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
@@ -22,8 +22,8 @@ $glyph-width-difference: calc($widget-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
 
 // Menu
-$svizzerina-menu-font-size: 1.2rem
-$svizzerina-menu-width: 12rem
+$menu-font-size: 1.2rem
+$menu-width: 12rem
 $menu-padding-left: 1rem
 $menu-padding-top: 3rem
 $menu-padding-right: 10px
@@ -33,9 +33,9 @@ $hidden-menu-translation-y: -100%
 $showing-menu-translation-y: 0
 
 // Menu Colours
-$svizzerina-link-color: #555
-$svizzerina-link-hover-color: black
-$svizzerina-menu-color: white
+$link-color: #555
+$link-hover-color: black
+$menu-color: white
 
 .container
   position: absolute
@@ -43,7 +43,7 @@ $svizzerina-menu-color: white
   left: 0
   margin: 0
   width: $widget-width
-  z-index: $svizzerina-z-index
+  z-index: $z-index
 
   .trigger
     opacity: 0
@@ -102,7 +102,7 @@ $svizzerina-menu-color: white
     top: 0
     left: 0
     margin: 0
-    width: $svizzerina-menu-width
+    width: $menu-width
     padding: $menu-padding-top $menu-padding-right 20px $menu-padding-left
     border: 0 solid #888
     border-bottom-width: 1px
@@ -111,7 +111,7 @@ $svizzerina-menu-color: white
     list-style-type: none
     transform: translate(0, $hidden-menu-translation-y)
     transition: transform 0.5s ease
-    background-color: $svizzerina-menu-color
+    background-color: $menu-color
     z-index: 1
 
     @media (min-width: 700px)
@@ -132,15 +132,15 @@ $svizzerina-menu-color: white
 
       a
         text-decoration: none
-        color: $svizzerina-link-color
+        color: $link-color
         transition: color 0.3s ease
-        font-size: $svizzerina-menu-font-size
+        font-size: $menu-font-size
 
         @media (min-width: 700px)
           color: var(--link-color, blue)
 
       a:hover
-        color: $svizzerina-link-hover-color
+        color: $link-hover-color
 
         @media (min-width: 700px)
           color: var(--link-hover-color, black)
