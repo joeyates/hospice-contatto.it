@@ -2,19 +2,19 @@
 $z-index: 1
 
 // Widget
-$widget-width: 32px
-$widget-height: 20px
+$widget-width: 2rem
+$widget-height: 1.5rem
 $inclined-glyph-angle: 45deg
 $sin-45deg: 0.7071
-$glyph-top: 16px
-$glyph-left: 0.5rem
-$glyph-height: 4px
+$glyph-top: 1rem
+$glyph-left: 1rem
+$glyph-height: 0.3rem
 $glyph-border-radius: calc($glyph-height / 2)
 $glyph1-top: $glyph-top
 $glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
 $glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
 $glyph-left: $glyph-left
-$glyph-right: 4px
+$glyph-right: 0.2rem
 $glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
 $glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
 $glyph-inclined-width: $widget-height
@@ -26,9 +26,8 @@ $menu-font-size: 1.2rem
 $menu-width: 12rem
 $menu-padding-left: 1rem
 $menu-padding-top: 3rem
-$menu-padding-right: 10px
-$menu-border-left-width: 1px
-$menu-border-right-width: 1px
+$menu-padding-right: 0
+$menu-border: 0.1rem
 $hidden-menu-translation-y: -100%
 $showing-menu-translation-y: 0
 
@@ -103,10 +102,10 @@ $menu-color: white
     left: 0
     margin: 0
     width: $menu-width
-    padding: $menu-padding-top $menu-padding-right 20px $menu-padding-left
+    padding: $menu-padding-top $menu-padding-right 0.5rem $menu-padding-left
     border: 0 solid #888
-    border-bottom-width: 1px
-    border-right-width: $menu-border-right-width
+    border-bottom-width: $menu-border
+    border-right-width: $menu-border
     border-radius: 0 0 .4rem 0
     list-style-type: none
     transform: translate(0, $hidden-menu-translation-y)
@@ -128,7 +127,10 @@ $menu-color: white
       background-color: inherit
 
     .item
-      padding: 5px 0
+      padding: 0.4rem 0
+
+      @media (min-width: 700px)
+        padding: 0 0.4rem
 
       a
         text-decoration: none
