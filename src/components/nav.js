@@ -23,6 +23,8 @@ const Nav = () => {
   const handleChange = e => {
     if (e.target.checked) {
       setChecked(true)
+    } else {
+      setChecked(false)
     }
   }
 
