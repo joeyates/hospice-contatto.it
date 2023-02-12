@@ -28,13 +28,17 @@ const AboutUs = ({page}) => (
     <Main>
       <Title title={page.about.title}/>
       <Body data={page.about.body}/>
+      <ul className={styles.attachments}>
       {
         page.about.attachments.map(a => (
-          <a href={a.url} key={a.id} rel="noreferrer" target="_blank">
-            {a.title}
-          </a>
+          <li>
+            <a href={a.url} key={a.id} rel="noreferrer" target="_blank">
+              {a.title}
+            </a>
+          </li>
         ))
       }
+      </ul>
       <Footer layout={page.layout}/>
     </Main>
   </>
