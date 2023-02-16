@@ -22,7 +22,7 @@ $glyph-width-difference: calc($widget-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
 
 // Menu
-$menu-font-size: 1.2rem
+$menu-font-size: 2rem
 $menu-width: 12rem
 $menu-padding-left: 1rem
 $menu-padding-top: 3rem
@@ -41,8 +41,13 @@ $menu-color: white
   top: 0
   left: 0
   margin: 0
-  width: $widget-width
   z-index: $z-index
+  height: 100%
+  width: 100%
+  overflow: hidden
+
+  @media (min-width: 700px)
+    overflow: inherit
 
   .trigger
     opacity: 0
@@ -100,13 +105,10 @@ $menu-color: white
     position: absolute
     top: 0
     left: 0
-    margin: 0
-    width: $menu-width
+    width: 100%
+    height: 100%
     padding: $menu-padding-top $menu-padding-right 0.5rem $menu-padding-left
-    border: 0 solid #888
-    border-bottom-width: $menu-border
-    border-right-width: $menu-border
-    border-radius: 0 0 .4rem 0
+    font-size: 8rem
     list-style-type: none
     transform: translate(0, $hidden-menu-translation-y)
     transition: transform 0.5s ease
@@ -117,7 +119,9 @@ $menu-color: white
       top: 5px
       left: 5px
       width: max-content
+      height: 100%
       display: flex
+      font-size: inherit
       list-style: none
       transform: none
       transition: none
@@ -128,24 +132,22 @@ $menu-color: white
 
     .item
       padding: 0.4rem 0
+      min-width: 100%
 
       @media (min-width: 700px)
         padding: 0 0.8rem
+        min-width: auto
 
       a
         text-decoration: none
         color: $link-color
         transition: color 0.3s ease
+        line-height: 200%
         font-size: $menu-font-size
 
         @media (min-width: 700px)
           color: var(--link-color, blue)
-
-      a:hover
-        color: $link-hover-color
-
-        @media (min-width: 700px)
-          color: var(--link-hover-color, black)
+          font-size: 1.2rem
 
     .current-item
       @extend .item
