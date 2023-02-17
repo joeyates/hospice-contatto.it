@@ -1,9 +1,9 @@
-import styles from './main.module.sass'
+import styles from './Main.module.sass'
 
 const Main = ({children}) => (
   <div className={styles.wrap}>
     <main className={styles.main}>
-      {...children}
+      {children}
     </main>
   </div>
 )

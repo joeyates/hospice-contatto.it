@@ -1816,6 +1816,7 @@ __metadata:
   dependencies:
     "@next/env": ^13.1.6
     "@next/font": 13.1.2
+    encoding: ^0.1.13
     eslint: 8.31.0
     eslint-config-next: 13.1.2
     graphql: ^16.6.0
@@ -2959,8 +2960,8 @@ __metadata:
   linkType: hard
 
 "react-datocms@npm:^4.0.7":
-  version: 4.0.7
-  resolution: "react-datocms@npm:4.0.7"
+  version: 4.0.8
+  resolution: "react-datocms@npm:4.0.8"
   dependencies:
     datocms-listen: ^0.1.9
     datocms-structured-text-generic-html-renderer: ^2.0.1
@@ -2971,7 +2972,7 @@ __metadata:
     use-deep-compare-effect: ^1.6.1
   peerDependencies:
     react: ">= 16.12.0"
-  checksum: 292e10c351201efd46cdba14a4caa9a125883193b8fd9c18a29645cb00e26a7cfdea8ce2c00389ed10ea8f93f5f8365e4d51a28774a7037b6f345db4de32e986
+  checksum: 9e45ebe35172574eca6a7cb4703e61eceaa77bbe8704d224a1769835541e05a259063432b8c9ed49da1707c9e392ebbc4a54c9dde8d987ebba53a6d1f050d7c9
   languageName: node
   linkType: hard
 

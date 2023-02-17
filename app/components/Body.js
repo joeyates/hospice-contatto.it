@@ -1,8 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import {StructuredText} from 'react-datocms'
 
-import responsiveImage from '@/lib/responsiveImage'
-import styles from './body.module.sass'
+import styles from './Body.module.sass'
 
 const renderBlock = ({record}) => {
   switch (record.__typename) {
@@ -41,27 +42,4 @@ const Body = ({data}) => (
   </div>
 )
 
-const queryFragment = `
-  body {
-    blocks {
-      __typename
-      id
-      ... on ImageRecord {
-        image {
-          ${responsiveImage({width: 300, height: 300})}
-        }
-      }
-    }
-    links {
-      id
-      __typename
-      ... on DetailRecord {
-        slug
-      }
-    }
-    value
-  }
-`
-
-export {queryFragment}
 export default Body
