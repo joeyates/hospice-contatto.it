@@ -7,6 +7,7 @@ import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {path as eventPath} from '@lib/event'
 import {date as formatDate} from '@lib/format'
 import responsiveImage from '@lib/responsiveImage'
+import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
 
 const QUERY = `
@@ -50,9 +51,7 @@ const Page = async () => {
   )
 }
 
-const metadata = {
-  title: 'Eventi'
-}
+const metadata = buildMetadata({title: 'Eventi'})
 
 export {metadata}
 export default Page

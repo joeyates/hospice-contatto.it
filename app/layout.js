@@ -1,12 +1,11 @@
-'use client'
+// 'use client'
 
 import localFont from '@next/font/local'
 
 import './globals.sass'
 import Footer from '@components/Footer'
 import Nav from '@components/Nav'
-
-const SITE_TITLE = 'Progetto CONTATTO'
+import {DEFAULTS} from '@lib/metadata'
 
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
@@ -20,10 +19,7 @@ const RootLayout = ({children}) => (
   </html>
 )
 
-const metadata = {
-  title: SITE_TITLE,
-  description: 'Per un Hospice nel Valdarno Fiorentino e nella Valdisieve'
-}
+const metadata = DEFAULTS
 
 export {metadata}
 export default RootLayout

@@ -5,6 +5,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
+import {build as buildMetadata} from '@lib/metadata'
 import responsiveImage from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
@@ -47,8 +48,8 @@ const Page = async ({params: {detail}}) => {
 }
 
 const generateMetadata = async ({params, searchParams}) => {
-  const page = await getData()
-  return {title: page.detail.title}
+  const page = await getData(params.detail)
+  return buildMetadata({title: page.detail.title})
 }
 
 const generateStaticParams = async () => {

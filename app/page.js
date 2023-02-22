@@ -3,6 +3,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
+import {defaultMetadata} from '@layout'
 import styles from './page.module.sass'
 
 const QUERY = `

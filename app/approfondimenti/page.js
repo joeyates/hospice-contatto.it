@@ -7,6 +7,7 @@ import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
 import responsiveImage from '@lib/responsiveImage'
+import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
 
 const QUERY = `
@@ -45,9 +46,7 @@ const Page = async () => {
   )
 }
 
-const metadata = {
-  title: 'Approfondimenti'
-}
+const metadata = buildMetadata({title: 'Approfondimenti'})
 
 export {metadata}
 export default Page
