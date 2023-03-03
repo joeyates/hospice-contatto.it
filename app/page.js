@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
@@ -27,6 +29,9 @@ const Page = async () => {
     <Main>
       <Title title={page.home.title}/>
       <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
+      <Link href="/come-sostenerci">
+        <div className={styles.cta}>Sostienici</div>
+      </Link>
       <Body data={page.home.body}/>
     </Main>
   )
