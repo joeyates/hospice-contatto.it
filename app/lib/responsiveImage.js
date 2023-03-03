@@ -11,7 +11,6 @@ const responsiveImage = ({width}) => (
     height
     alt
     title
-    blurDataURL: base64
   }
   `
 )
