@@ -1,3 +1,4 @@
+import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
@@ -32,17 +33,7 @@ const Page = async () => {
     <Main>
       <Title title={page.about.title}/>
       <Body data={page.about.body}/>
-      <ul className={styles.attachments}>
-      {
-        page.about.attachments.map(a => (
-          <li key={a.id}>
-            <a href={a.url} rel="noreferrer" target="_blank">
-              {a.title}
-            </a>
-          </li>
-        ))
-      }
-      </ul>
+      <Attachments attachments={page.about.attachments}/>
     </Main>
   )
 }
