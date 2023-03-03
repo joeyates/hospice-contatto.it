@@ -6,7 +6,6 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
-import responsiveImage from '@lib/responsiveImage'
 import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
 

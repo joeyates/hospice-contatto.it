@@ -18,7 +18,7 @@ query {
     slug
     title
     image {
-      ${responsiveImage({width: 200, height: 200})}
+      ${responsiveImage({width: 200})}
     }
   }
 }

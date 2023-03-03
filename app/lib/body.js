@@ -4,10 +4,16 @@ const queryFragment = `
   body {
     blocks {
       __typename
-      id
       ... on ImageRecord {
+        id
         image {
-          ${responsiveImage({width: 300, height: 300})}
+          ${responsiveImage({width: 300})}
+        }
+      }
+      ... on LargeImageRecord {
+        id
+        image {
+          ${responsiveImage({width: 800})}
         }
       }
     }

@@ -28,7 +28,7 @@ query Event($slug: String!) {
     date
     title
     image {
-      ${responsiveImage({width: 600, height: 600})}
+      ${responsiveImage({width: 600})}
     }
     ${bodyQueryFragment}
   }

@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import {StructuredText} from 'react-datocms'
 
 import styles from './Body.module.sass'
@@ -10,7 +9,14 @@ const renderBlock = ({record}) => {
   case 'ImageRecord':
     return (
       <div className={styles.image_with_caption}>
-        <Image alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
+        <img alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
+        <div className={styles.caption}>{record.caption}</div>
+      </div>
+    )
+  case 'LargeImageRecord':
+    return (
+      <div className={styles.image_with_caption}>
+        <img alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
         <div className={styles.caption}>{record.caption}</div>
       </div>
     )
