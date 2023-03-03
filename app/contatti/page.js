@@ -1,3 +1,4 @@
+import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
@@ -12,6 +13,11 @@ query {
     id
     title
     ${bodyQueryFragment}
+    attachments {
+      id
+      title
+      url
+    }
   }
 }
 `
@@ -27,6 +33,7 @@ const Page = async () => {
     <Main>
       <Title title={page.contact.title}/>
       <Body data={page.contact.body}/>
+      <Attachments attachments={page.contact.attachments}/>
     </Main>
   )
 }
