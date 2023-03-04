@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
