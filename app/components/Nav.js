@@ -48,6 +48,9 @@ const Nav = () => {
         <li className={linkClass('/eventi', pathname)}>
           <Link href="/eventi">Eventi</Link>
         </li>
+        <li className={linkClass('/diario', pathname)}>
+          <Link href="/diario">Diario</Link>
+        </li>
         <li className={linkClass('/approfondimenti', pathname)}>
           <Link href="/approfondimenti">Approfondimenti</Link>
         </li>
