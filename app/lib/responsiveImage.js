@@ -4,8 +4,6 @@ const responsiveImage = ({width}) => (
     imgixParams: {fit: max, w: ${width}},
     sizes: "(max-width: ${width}px) 100vw, ${width}px"
   ) {
-    srcSet
-    sizes
     src
     alt
     title
