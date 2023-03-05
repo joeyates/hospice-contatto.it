@@ -5,6 +5,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
+import responsiveImage from '@lib/responsiveImage'
 import {defaultMetadata} from '@layout'
 import styles from './page.module.sass'
 
@@ -14,6 +15,9 @@ query {
     title
     subtitle
     ${bodyQueryFragment}
+    associationName {
+      ${responsiveImage({width: 420})}
+    }
   }
 }
 `
@@ -27,7 +31,7 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title={page.home.title}/>
+        <img className={styles['title-image']} {...page.home.associationName.responsiveImage}/>
       <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
       <Link href="/come-sostenerci">
         <div className={styles.cta}>Sostienici</div>
