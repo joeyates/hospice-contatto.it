@@ -68,11 +68,19 @@ const Pagination = ({page, count}) => {
   return (
     <div className={styles.pagination}>
       <div>
+        <Link href="/diario">|&lt;</Link>
+        &nbsp;
+        &nbsp;
         {previous}
+        &nbsp;
         &nbsp;
         <p>{current}</p>
         &nbsp;
+        &nbsp;
         {next}
+        &nbsp;
+        &nbsp;
+        <Link href={`/diario/${count}`}>&gt;|</Link>
       </div>
     </div>
   )
