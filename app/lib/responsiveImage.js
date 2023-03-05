@@ -7,8 +7,6 @@ const responsiveImage = ({width}) => (
     srcSet
     sizes
     src
-    width
-    height
     alt
     title
   }

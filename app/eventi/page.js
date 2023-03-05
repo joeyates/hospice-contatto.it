@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Main from '@components/Main'
@@ -42,7 +41,7 @@ const Page = async () => {
                 <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
                 <div className={styles.title}>{e.title}</div>
               </div>
-              <Image alt={e.image.responsiveImage.alt} {...e.image.responsiveImage}/>
+              <img alt={e.image.responsiveImage.alt} {...e.image.responsiveImage}/>
             </Link>
           </li>
         ))}

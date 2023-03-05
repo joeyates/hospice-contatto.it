@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
