@@ -31,37 +31,39 @@ const Nav = () => {
   }
 
   return (
-    <nav className={styles.container}>
+    <>
       <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange}/>
 
       <span className={styles.glyph1}></span>
       <span className={styles.glyph2}></span>
       <span className={styles.glyph3}></span>
 
-      <ul className={styles.menu}>
-        <li className={linkClass('/', pathname)}>
-          <Link href="/">Home</Link>
-        </li>
-        <li className={linkClass('/chi-siamo', pathname)}>
-          <Link href="/chi-siamo">Chi siamo</Link>
-        </li>
-        <li className={linkClass('/eventi', pathname)}>
-          <Link href="/eventi">Eventi</Link>
-        </li>
-        <li className={linkClass('/diario', pathname)}>
-          <Link href="/diario">Diario</Link>
-        </li>
-        <li className={linkClass('/approfondimenti', pathname)}>
-          <Link href="/approfondimenti">Approfondimenti</Link>
-        </li>
-        <li className={linkClass('/come-sostenerci', pathname)}>
-          <Link href="/come-sostenerci">Come sostenerci</Link>
-        </li>
-        <li className={linkClass('/contatti', pathname)}>
-          <Link href="/contatti">Contatti</Link>
-        </li>
-      </ul>
-    </nav>
+      <nav className={styles.container}>
+        <ul className={styles.menu}>
+          <li className={linkClass('/', pathname)}>
+            <Link href="/">Home</Link>
+          </li>
+          <li className={linkClass('/chi-siamo', pathname)}>
+            <Link href="/chi-siamo">Chi siamo</Link>
+          </li>
+          <li className={linkClass('/eventi', pathname)}>
+            <Link href="/eventi">Eventi</Link>
+          </li>
+          <li className={linkClass('/diario', pathname)}>
+            <Link href="/diario">Diario</Link>
+          </li>
+          <li className={linkClass('/approfondimenti', pathname)}>
+            <Link href="/approfondimenti">Approfondimenti</Link>
+          </li>
+          <li className={linkClass('/come-sostenerci', pathname)}>
+            <Link href="/come-sostenerci">Come sostenerci</Link>
+          </li>
+          <li className={linkClass('/contatti', pathname)}>
+            <Link href="/contatti">Contatti</Link>
+          </li>
+        </ul>
+      </nav>
+    </>
   )
 }
 
