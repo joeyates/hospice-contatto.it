@@ -50,6 +50,7 @@ const Page = async ({params: {event}}) => {
       <Title title={page.event.title}/>
       <p className={styles.date}>{formatDate(date)}</p>
       <Body data={page.event.body}/>
+      <img alt={page.event.image.responsiveImage.alt} {...page.event.image.responsiveImage}/>
     </Main>
   )
 }
