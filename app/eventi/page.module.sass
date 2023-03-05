@@ -3,11 +3,12 @@
   list-style: none
 
 .event
+  background: var(--background-colour)
+
   .event-inner
     display: flex
     padding: 0.5rem
     color: var(--text-colour)
-    background: var(--background-dark-colour)
 
     .text
       padding: 0 0.5rem 0 0
@@ -16,3 +17,7 @@
       .date
         font-size: smaller
         padding-bottom: 1rem
+
+.event:nth-child(odd)
+  background: var(--background-colour)
+  filter: brightness(90%)
