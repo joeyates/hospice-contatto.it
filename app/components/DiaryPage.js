@@ -50,25 +50,31 @@ const pageCount = async () => {
 
 const Pagination = ({page, count}) => {
   const current = parseInt(page)
+  let first
   let previous
   if (current > 1) {
+    first = <Link href="/diario">|&lt;</Link>
     const href = (current === 2) ? '/diario' : `/diario/${current - 1}`
     previous = <Link href={href}>&lt;</Link>
   } else {
+    first = <div className={styles.disabled}>|&lt;</div>
     previous = <div className={styles.disabled}>&lt;</div>
   }
   const max = parseInt(count)
+  let last
   let next
   if (current < max) {
+    last = <Link href={`/diario/${count}`}>&gt;|</Link>
     const href = `/diario/${current + 1}`
     next = <Link href={href}>&gt;</Link>
   } else {
+    last = <div className={styles.disabled}>&gt;|</div>
     next = <div className={styles.disabled}>&gt;</div>
   }
   return (
     <div className={styles.pagination}>
       <div>
-        <Link href="/diario">|&lt;</Link>
+        {first}
         &nbsp;
         &nbsp;
         {previous}
@@ -80,7 +86,7 @@ const Pagination = ({page, count}) => {
         {next}
         &nbsp;
         &nbsp;
-        <Link href={`/diario/${count}`}>&gt;|</Link>
+        {last}
       </div>
     </div>
   )
