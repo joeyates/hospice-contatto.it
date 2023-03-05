@@ -1,4 +1,5 @@
 const DATE_OPTIONS = {year: 'numeric', month: 'long', day: 'numeric'}
+const TIME_OPTIONS = {hour: 'numeric', minute: 'numeric'}
 const LOCALE = 'it-IT'
 
 const date = date => date.toLocaleDateString(LOCALE, DATE_OPTIONS)
@@ -7,7 +8,7 @@ const isDateOnly = d => d.getHours() === 0 && d.getMinutes() === 0 && d.getSecon
 
 const dateTime = d => {
   const s = date(d)
-  const time = d.toLocaleTimeString(LOCALE)
+  const time = d.toLocaleTimeString(LOCALE, TIME_OPTIONS)
   return `${s}, ${time}`
 }
 
