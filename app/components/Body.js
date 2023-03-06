@@ -9,14 +9,14 @@ const renderBlock = ({record}) => {
   case 'ImageRecord':
     return (
       <div className={styles.image_with_caption}>
-        <img alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
+        <img {...record.image}/>
         <div className={styles.caption}>{record.caption}</div>
       </div>
     )
   case 'LargeImageRecord':
     return (
       <div className={styles.image_with_caption}>
-        <img alt={record.image.responsiveImage.alt} {...record.image.responsiveImage}/>
+        <img {...record.image}/>
         <div className={styles.caption}>{record.caption}</div>
       </div>
     )

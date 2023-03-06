@@ -1,5 +1,3 @@
-import responsiveImage from '@lib/responsiveImage'
-
 const queryFragment = `
   body {
     blocks {
@@ -7,13 +5,17 @@ const queryFragment = `
       ... on ImageRecord {
         id
         image {
-          ${responsiveImage({width: 300})}
+          alt
+          src: url
+          title
         }
       }
       ... on LargeImageRecord {
         id
         image {
-          ${responsiveImage({width: 800})}
+          alt
+          src: url
+          title
         }
       }
     }
