@@ -6,11 +6,10 @@ import Title from '@components/Title'
 import {isoDate, request as datoCMSRequest} from '@lib/datocms'
 import responsiveImage from '@lib/responsiveImage'
 import {build as buildMetadata} from '@lib/metadata'
-import styles from './page.module.sass'
 
 const QUERY = `
-query FutureEvents($now: Date!) {
-  allEvents(filter: {date: {gte: $now}}, orderBy: date_ASC) {
+query PastEvents($now: Date!) {
+  allEvents(filter: {date: {lt: $now}}, orderBy: date_ASC) {
     id
     date
     slug
@@ -36,16 +35,13 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title="Eventi"/>
+      <Title title="Eventi passati"/>
       <EventList events={page.allEvents}/>
-      <div className={styles['past-events']}>
-        <Link href="/eventi/passati">Eventi passati -&gt;</Link>
-      </div>
     </Main>
   )
 }
 
-const metadata = buildMetadata({title: 'Eventi'})
+const metadata = buildMetadata({title: 'Eventi passati'})
 
 export {metadata}
 export default Page

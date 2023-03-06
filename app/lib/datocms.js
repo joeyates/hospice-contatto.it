@@ -1,5 +1,6 @@
 import {GraphQLClient} from 'graphql-request'
 
+const isoDate = date => date.toISOString()
 const parseDate = date => new Date(date)
 
 const request = ({query, variables, includeDrafts, excludeInvalid}) => {
@@ -16,4 +17,4 @@ const request = ({query, variables, includeDrafts, excludeInvalid}) => {
   return client.request(query, variables)
 }
 
-export {parseDate, request}
+export {isoDate, parseDate, request}
