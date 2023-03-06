@@ -1,10 +1,9 @@
 import Link from 'next/link'
 
+import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {parseDate, isoDate, request as datoCMSRequest} from '@lib/datocms'
-import {path as eventPath} from '@lib/event'
-import {date as formatDate} from '@lib/format'
+import {isoDate, request as datoCMSRequest} from '@lib/datocms'
 import responsiveImage from '@lib/responsiveImage'
 import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
@@ -38,19 +37,10 @@ const Page = async () => {
   return (
     <Main>
       <Title title="Eventi"/>
-      <ul className={styles.events}>
-        {page.allEvents.map(e => (
-          <li className={styles.event} key={`event-${e.id}`}>
-            <Link className={styles['event-inner']} href={eventPath(e)}>
-              <div className={styles.text}>
-                <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
-                <div className={styles.title}>{e.title}</div>
-              </div>
-              <img alt={e.image.responsiveImage.alt} {...e.image.responsiveImage}/>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <EventList events={page.allEvents}/>
+      <div className={styles['past-events']}>
+        <Link href="/eventi/passati">Eventi passati -&gt;</Link>
+      </div>
     </Main>
   )
 }
