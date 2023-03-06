@@ -9,6 +9,6 @@ const datedSlugToSlug = dated => {
   return match[1]
 }
 
-const path = event => `/eventi/${datedSlug(event)}`
+const path = event => `/eventi/evento/${datedSlug(event)}`
 
 export {datedSlug, datedSlugToSlug, path}

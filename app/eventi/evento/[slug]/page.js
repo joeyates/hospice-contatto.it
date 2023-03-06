@@ -40,9 +40,9 @@ const getData = async (slug) => {
   })
 }
 
-const Page = async ({params: {event}}) => {
-  const slug = datedSlugToSlug(event)
-  const page = await getData(slug)
+const Page = async ({params: {slug}}) => {
+  const eventSlug = datedSlugToSlug(slug)
+  const page = await getData(eventSlug)
   const date = parseDate(page.event.date)
 
   return (
@@ -56,7 +56,7 @@ const Page = async ({params: {event}}) => {
 }
 
 const generateMetadata = async ({params, searchParams}) => {
-  const slug = datedSlugToSlug(params.event)
+  const slug = datedSlugToSlug(params.slug)
   const page = await getData(slug)
   return buildMetadata({title: page.event.title})
 }
@@ -68,7 +68,7 @@ const generateStaticParams = async () => {
 
   return events.allEvents.map(e => {
     const path = datedSlug(e)
-    return {event: path}
+    return {slug: path}
   })
 }
 
