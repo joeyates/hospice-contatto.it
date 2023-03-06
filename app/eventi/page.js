@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {parseDate, request as datoCMSRequest} from '@lib/datocms'
+import {parseDate, isoDate, request as datoCMSRequest} from '@lib/datocms'
 import {path as eventPath} from '@lib/event'
 import {date as formatDate} from '@lib/format'
 import responsiveImage from '@lib/responsiveImage'
@@ -10,8 +10,8 @@ import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
 
 const QUERY = `
-query {
-  allEvents {
+query FutureEvents($now: Date!) {
+  allEvents(filter: {date: {gte: $now}}, orderBy: date_ASC) {
     id
     date
     slug
@@ -24,7 +24,12 @@ query {
 `
 
 const getData = async () => {
-  return await datoCMSRequest({query: QUERY})
+  const date = new Date
+  const now = isoDate(date)
+  return await datoCMSRequest({
+    query: QUERY,
+    variables: {now}
+  })
 }
 
 const Page = async () => {
