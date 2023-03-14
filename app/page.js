@@ -37,7 +37,9 @@ const Page = async () => {
       <Link href="/come-sostenerci">
         <div className={styles.cta}>Sostienici</div>
       </Link>
-      <Body data={page.home.body}/>
+      <div className={styles['body-wrap']}>
+        <Body data={page.home.body}/>
+      </div>
     </Main>
   )
 }
