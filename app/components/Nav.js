@@ -41,25 +41,25 @@ const Nav = () => {
       <nav className={styles.container}>
         <ul className={styles.menu}>
           <li className={linkClass('/', pathname)}>
-            <Link href="/">Home</Link>
+            <Link href="/" alt="Pagina home">Home</Link>
           </li>
           <li className={linkClass('/chi-siamo', pathname)}>
-            <Link href="/chi-siamo">Chi siamo</Link>
+            <Link href="/chi-siamo" alt="Come nasce e cosa vuol fare l'associazione ConTatto">Chi siamo</Link>
           </li>
           <li className={linkClass('/eventi', pathname)}>
-            <Link href="/eventi">Eventi</Link>
+            <Link href="/eventi" alt="Eventi e incontri organizzati da ConTatto">Eventi</Link>
           </li>
           <li className={linkClass('/diario', pathname)}>
-            <Link href="/diario">Diario</Link>
+            <Link href="/diario" alt="La storia dell'associazione, giorno per giorno">Diario</Link>
           </li>
           <li className={linkClass('/approfondimenti', pathname)}>
-            <Link href="/approfondimenti">Approfondimenti</Link>
+            <Link href="/approfondimenti" alt="Aprrofondimenti su alcumi termini inerenti agli hospice">Approfondimenti</Link>
           </li>
           <li className={linkClass('/come-sostenerci', pathname)}>
-            <Link href="/come-sostenerci">Come sostenerci</Link>
+            <Link href="/come-sostenerci" alt="Come puoi aiutarci?">Come sostenerci</Link>
           </li>
           <li className={linkClass('/contatti', pathname)}>
-            <Link href="/contatti">Contatti</Link>
+            <Link href="/contatti" alt="Come contattarci">Contatti</Link>
           </li>
         </ul>
       </nav>
