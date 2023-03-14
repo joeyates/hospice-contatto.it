@@ -14,11 +14,6 @@ query {
     title
     subtitle
     ${bodyQueryFragment}
-    associationName {
-      alt
-      src: url
-      title
-    }
   }
 }
 `
@@ -32,7 +27,7 @@ const Page = async () => {
 
   return (
     <Main>
-      <img className={styles['title-image']} {...page.home.associationName}/>
+      <Title title={page.home.title}/>
       <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
       <Link href="/come-sostenerci">
         <div className={styles.cta}>Sostienici</div>
