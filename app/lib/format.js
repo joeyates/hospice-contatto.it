@@ -4,8 +4,6 @@ const LOCALE = 'it-IT'
 
 const date = date => date.toLocaleDateString(LOCALE, DATE_OPTIONS)
 
-const isDateOnly = d => d.getHours() === 0 && d.getMinutes() === 0 && d.getSeconds() === 0
-
 const dateTime = d => {
   const s = date(d)
   const time = d.toLocaleTimeString(LOCALE, TIME_OPTIONS)
@@ -13,12 +11,7 @@ const dateTime = d => {
 }
 
 const dateWithOptionalTime = d => {
-  const dateOnly = isDateOnly(d)
-  if(dateOnly) {
-    return date(d)
-  } else {
-    return dateTime(d)
-  }
+  return dateTime(d).replace(', 00:00', '')
 }
 
 export {date, dateTime, dateWithOptionalTime}
