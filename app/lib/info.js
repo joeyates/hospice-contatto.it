@@ -20,15 +20,27 @@ const fetchInfo = async () => {
   return info
 }
 
+const buildTitle = ({info, props, title}) => {
+  switch (typeof title) {
+    case 'function':
+      return title({info, props})
+    case 'string':
+      return `${title} — ${info.siteTitle}`
+    default:
+      return info.siteTitle
+  }
+}
+
+/*
+Build an async function to return metadata build from
+the combination of DatoCMS defaults and the supplied overrides
+
+* title [optional]: a function or string
+*/
 const createMetadata = ({title: pageTitle, description: pageDescription} = {}) => {
-  return async (_props, _parent) => {
+  return async (props, _parent) => {
     const info = await fetchInfo()
-    let title
-    if(pageTitle) {
-      title = `${pageTitle} — ${info.siteTitle}`
-    } else {
-      title = info.siteTitle
-    }
+    const title = buildTitle({info, props, title: pageTitle})
     let description
     if (pageDescription) {
       description = pageDescription
