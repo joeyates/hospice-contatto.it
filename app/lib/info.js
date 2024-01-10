@@ -2,6 +2,8 @@ import {request as datoCMSRequest} from '@lib/datocms'
 
 const queryFragment = `
   info {
+    email
+    name
     siteTitle
     siteDescription
     taxCode
