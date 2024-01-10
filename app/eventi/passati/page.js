@@ -4,8 +4,8 @@ import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request as datoCMSRequest} from '@lib/datocms'
+import {createMetadata} from '@lib/info'
 import responsiveImage from '@lib/responsiveImage'
-import {build as buildMetadata} from '@lib/metadata'
 
 const QUERY = `
 query PastEvents($now: Date!) {
@@ -41,7 +41,7 @@ const Page = async () => {
   )
 }
 
-const metadata = buildMetadata({title: 'Eventi passati'})
+const generateMetadata = createMetadata({title: 'Eventi passati'})
 
-export {metadata}
+export {generateMetadata}
 export default Page

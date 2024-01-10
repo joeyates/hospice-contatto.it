@@ -20,10 +20,10 @@ const fetchInfo = async () => {
   return info
 }
 
-const buildTitle = ({info, props, title}) => {
+const buildTitle = async ({info, props, title}) => {
   switch (typeof title) {
     case 'function':
-      return title({info, props})
+      return await title({info, props})
     case 'string':
       return `${title} — ${info.siteTitle}`
     default:
@@ -35,12 +35,12 @@ const buildTitle = ({info, props, title}) => {
 Build an async function to return metadata build from
 the combination of DatoCMS defaults and the supplied overrides
 
-* title [optional]: a function or string
+* title [optional]: a (possible async) function or a string
 */
 const createMetadata = ({title: pageTitle, description: pageDescription} = {}) => {
   return async (props, _parent) => {
     const info = await fetchInfo()
-    const title = buildTitle({info, props, title: pageTitle})
+    const title = await buildTitle({info, props, title: pageTitle})
     let description
     if (pageDescription) {
       description = pageDescription
@@ -52,4 +52,4 @@ const createMetadata = ({title: pageTitle, description: pageDescription} = {}) =
   }
 }
 
-export {createMetadata, queryFragment}
+export {buildTitle, createMetadata, fetchInfo}

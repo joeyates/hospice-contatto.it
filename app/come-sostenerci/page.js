@@ -4,7 +4,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
-import {build as buildMetadata} from '@lib/metadata'
+import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 const QUERY = `
@@ -38,10 +38,12 @@ const Page = async () => {
   )
 }
 
-const generateMetadata = async ({params, searchParams}) => {
-  const page = await getData()
-  return buildMetadata({title: page.giveSupport.title})
-}
+const generateMetadata = createMetadata({
+  title: async ({info}) => {
+    const page = await getData()
+    return buildTitle({info, title: page.giveSupport.title})
+  }
+})
 
 export {generateMetadata}
 export default Page

@@ -3,7 +3,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request as datoCMSRequest} from '@lib/datocms'
-import {build as buildMetadata} from '@lib/metadata'
+import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 const DETAILS_QUERY = `
@@ -44,10 +44,12 @@ const Page = async ({params: {detail}}) => {
   )
 }
 
-const generateMetadata = async ({params, searchParams}) => {
-  const page = await getData(params.detail)
-  return buildMetadata({title: page.detail.title})
-}
+const generateMetadata = createMetadata({
+  title: async ({info, props}) => {
+    const page = await getData(props.params.detail)
+    return buildTitle({info, title: page.detail.title})
+  }
+})
 
 const generateStaticParams = async () => {
   const details = await request({
