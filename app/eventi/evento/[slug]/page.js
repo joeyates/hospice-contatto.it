@@ -5,7 +5,7 @@ import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {datedSlug, datedSlugToSlug} from '@lib/event'
 import {date as formatDate} from '@lib/format'
-import {build as buildMetadata} from '@lib/metadata'
+import {buildTitle, createMetadata} from '@lib/info'
 import responsiveImage from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
@@ -55,11 +55,13 @@ const Page = async ({params: {slug}}) => {
   )
 }
 
-const generateMetadata = async ({params, searchParams}) => {
-  const slug = datedSlugToSlug(params.slug)
-  const page = await getData(slug)
-  return buildMetadata({title: page.event.title})
-}
+const generateMetadata = createMetadata({
+  title: async ({info, props}) => {
+    const slug = datedSlugToSlug(props.params.slug)
+    const page = await getData(slug)
+    return buildTitle({info, title: page.event.title})
+  }
+})
 
 const generateStaticParams = async () => {
   const events = await datoCMSRequest({

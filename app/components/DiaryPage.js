@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {parseDate, request as datoCMSRequest} from '@lib/datocms'
+import {entryCountToPageCount} from '@lib/diary'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
-import {build as buildMetadata} from '@lib/metadata'
 import styles from './DiaryPage.module.sass'
 
 const QUERY = `
@@ -21,31 +21,12 @@ query DiaryEntries($skip: IntType!) {
 }
 `
 
-const PAGINATION_QUERY = `
-query DiaryMetadata {
-  _allDiaryEntriesMeta {
-    count
-  }
-}
-`
-
 const getData = async ({page}) => {
   const skip = (page - 1) * 5
   return await datoCMSRequest({
     query: QUERY,
     variables: {skip}
   })
-}
-
-const entryCountToPageCount = (entries) => Math.floor((entries - 1) / 5) + 1
-
-const pageCount = async () => {
-  const metadata = await datoCMSRequest({
-    query: PAGINATION_QUERY
-  })
-
-  const entries = metadata._allDiaryEntriesMeta.count
-  return entryCountToPageCount(entries)
 }
 
 const Pagination = ({page, count}) => {
@@ -117,7 +98,4 @@ const DiaryPage = async ({page}) => {
   )
 }
 
-const metadata = ({page}) => buildMetadata({title: `Diario - pagina ${page}`})
-
-export {metadata, pageCount}
 export default DiaryPage

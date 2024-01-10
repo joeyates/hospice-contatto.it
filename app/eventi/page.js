@@ -4,8 +4,8 @@ import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request as datoCMSRequest} from '@lib/datocms'
+import {createMetadata} from '@lib/info'
 import responsiveImage from '@lib/responsiveImage'
-import {build as buildMetadata} from '@lib/metadata'
 import styles from './page.module.sass'
 
 const QUERY = `
@@ -45,7 +45,7 @@ const Page = async () => {
   )
 }
 
-const metadata = buildMetadata({title: 'Eventi'})
+const generateMetadata = createMetadata({title: 'Approfondimenti'})
 
-export {metadata}
+export {generateMetadata}
 export default Page
