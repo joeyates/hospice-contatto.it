@@ -55,12 +55,10 @@ const Page = async ({params: {slug}}) => {
   )
 }
 
-const generateMetadata = createMetadata({
-  title: async ({info, props}) => {
-    const slug = datedSlugToSlug(props.params.slug)
-    const page = await getData(slug)
-    return buildTitle({info, title: page.event.title})
-  }
+const generateMetadata = createMetadata(async ({defaults, props}) => {
+  const slug = datedSlugToSlug(props.params.slug)
+  const page = await getData(slug)
+  return {title: buildTitle({defaults, title: page.event.title})}
 })
 
 const generateStaticParams = async () => {

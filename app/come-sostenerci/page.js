@@ -38,11 +38,9 @@ const Page = async () => {
   )
 }
 
-const generateMetadata = createMetadata({
-  title: async ({info}) => {
-    const page = await getData()
-    return buildTitle({info, title: page.giveSupport.title})
-  }
+const generateMetadata = createMetadata(async ({defaults}) => {
+  const page = await getData()
+  return {title: buildTitle({defaults, title: page.giveSupport.title})}
 })
 
 export {generateMetadata}

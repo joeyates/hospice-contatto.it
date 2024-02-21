@@ -6,7 +6,7 @@ const Page = async () => (
   <DiaryPage page="1"/>
 )
 
-const generateMetadata = createMetadata({title: generateTitle({props: {params: {page: 1}}})})
+const generateMetadata = createMetadata(() => ({title: generateTitle({props: {params: {page: 1}}})}))
 
 export {generateMetadata}
 export default Page

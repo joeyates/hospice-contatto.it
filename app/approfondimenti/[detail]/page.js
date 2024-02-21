@@ -44,11 +44,9 @@ const Page = async ({params: {detail}}) => {
   )
 }
 
-const generateMetadata = createMetadata({
-  title: async ({info, props}) => {
-    const page = await getData(props.params.detail)
-    return buildTitle({info, title: page.detail.title})
-  }
+const generateMetadata = createMetadata(async ({defaults, props}) => {
+  const page = await getData(props.params.detail)
+  return {title: buildTitle({defaults, title: page.detail.title})}
 })
 
 const generateStaticParams = async () => {
