@@ -35,7 +35,7 @@ const metadataDefaults = async () => {
   }
 }
 
-const buildTitle = async ({defaults, title}) => `${title} — ${defaults.title}`
+const buildTitle = ({defaults, title}) => `${title} — ${defaults.title}`
 
 const buildMetadata = ({title, description, images}) => {
   return {
