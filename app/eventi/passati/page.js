@@ -9,7 +9,7 @@ import responsiveImage from '@lib/responsiveImage'
 
 const QUERY = `
 query PastEvents($now: Date!) {
-  allEvents(filter: {date: {lt: $now}}, orderBy: date_ASC) {
+  allEvents(filter: {date: {lt: $now}}, orderBy: date_DESC) {
     id
     date
     slug

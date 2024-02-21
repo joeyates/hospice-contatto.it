@@ -9,8 +9,8 @@ import responsiveImage from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
 const QUERY = `
-query FutureEvents($now: Date!) {
-  allEvents(filter: {date: {gte: $now}}, orderBy: date_ASC) {
+query Events($now: Date!) {
+  futureEvents: allEvents(filter: {date: {gte: $now}}, orderBy: date_DESC) {
     id
     date
     slug
@@ -36,8 +36,8 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title="Eventi"/>
-      <EventList events={page.allEvents}/>
+      <Title title="Eventi" />
+      <EventList events={page.futureEvents} />
       <div className={styles['past-events']}>
         <Link href="/eventi/passati">Eventi passati -&gt;</Link>
       </div>

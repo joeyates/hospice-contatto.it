@@ -9,7 +9,7 @@ import styles from './DiaryPage.module.sass'
 
 const QUERY = `
 query DiaryEntries($skip: IntType!) {
-  allDiaryEntries(orderBy: date_ASC, skip: $skip, first: "5") {
+  allDiaryEntries(orderBy: date_DESC, skip: $skip, first: "5") {
     id
     date
     place
