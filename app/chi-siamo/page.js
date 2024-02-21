@@ -40,6 +40,7 @@ const Page = async () => {
 
 const generateMetadata = createMetadata(async ({defaults}) => {
   const page = await getData()
+
   return {title: buildTitle({defaults, title: page.about.title})}
 })
 

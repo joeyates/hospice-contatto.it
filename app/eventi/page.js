@@ -45,7 +45,15 @@ const Page = async () => {
   )
 }
 
-const generateMetadata = createMetadata(() => ({ title: 'Approfondimenti' }))
+const generateMetadata = createMetadata(async () => {
+  const page = await getData()
+  const images = page.futureEvents.map(e => e.image.responsiveImage)
+
+  return {
+    images,
+    title: 'Eventi'
+  }
+})
 
 export { generateMetadata }
 export default Page

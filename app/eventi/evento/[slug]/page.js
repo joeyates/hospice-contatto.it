@@ -58,7 +58,11 @@ const Page = async ({params: {slug}}) => {
 const generateMetadata = createMetadata(async ({defaults, props}) => {
   const slug = datedSlugToSlug(props.params.slug)
   const page = await getData(slug)
-  return {title: buildTitle({defaults, title: page.event.title})}
+
+  return {
+    images: [page.event.image.responsiveImage],
+    title: buildTitle({defaults, title: page.event.title})
+  }
 })
 
 const generateStaticParams = async () => {
