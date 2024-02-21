@@ -1,5 +1,5 @@
 import {request as datoCMSRequest} from '@lib/datocms'
-import responsiveImage from '@lib/responsiveImage'
+import {fragment} from '@lib/responsiveImage'
 
 const queryFragment = `
   info {
@@ -10,7 +10,7 @@ const queryFragment = `
     taxCode
     telephone
     defaultImage {
-      ${responsiveImage({width: 600})}
+      ${fragment({width: 600})}
     }
   }
 `

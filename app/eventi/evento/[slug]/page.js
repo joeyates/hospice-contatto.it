@@ -6,7 +6,7 @@ import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {datedSlug, datedSlugToSlug} from '@lib/event'
 import {date as formatDate} from '@lib/format'
 import {buildTitle, createMetadata} from '@lib/info'
-import responsiveImage from '@lib/responsiveImage'
+import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
 const EVENTS_QUERY = `
@@ -26,7 +26,7 @@ query Event($slug: String!) {
     date
     title
     image {
-      ${responsiveImage({width: 600})}
+      ${fragment({width: 600})}
     }
     ${bodyQueryFragment}
   }
@@ -58,9 +58,10 @@ const Page = async ({params: {slug}}) => {
 const generateMetadata = createMetadata(async ({defaults, props}) => {
   const slug = datedSlugToSlug(props.params.slug)
   const page = await getData(slug)
+  const image = toOpenGraphImage(page.event.image.responsiveImage)
 
   return {
-    images: [page.event.image.responsiveImage],
+    images: [image],
     title: buildTitle({defaults, title: page.event.title})
   }
 })
