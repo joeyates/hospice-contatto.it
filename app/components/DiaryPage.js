@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import Main from '@components/Main'
+import Pagination from '@components/Pagination'
 import Title from '@components/Title'
 import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {entryCountToPageCount} from '@lib/diary'
@@ -29,49 +28,7 @@ const getData = async ({page}) => {
   })
 }
 
-const Pagination = ({page, count}) => {
-  const current = parseInt(page)
-  let first
-  let previous
-  if (current > 1) {
-    first = <Link href="/diario">|&lt;</Link>
-    const href = (current === 2) ? '/diario' : `/diario/${current - 1}`
-    previous = <Link href={href}>&lt;</Link>
-  } else {
-    first = <div className={styles.disabled}>|&lt;</div>
-    previous = <div className={styles.disabled}>&lt;</div>
-  }
-  const max = parseInt(count)
-  let last
-  let next
-  if (current < max) {
-    last = <Link href={`/diario/${count}`}>&gt;|</Link>
-    const href = `/diario/${current + 1}`
-    next = <Link href={href}>&gt;</Link>
-  } else {
-    last = <div className={styles.disabled}>&gt;|</div>
-    next = <div className={styles.disabled}>&gt;</div>
-  }
-  return (
-    <div className={styles.pagination}>
-      <div>
-        {first}
-        &nbsp;
-        &nbsp;
-        {previous}
-        &nbsp;
-        &nbsp;
-        <p>{current}</p>
-        &nbsp;
-        &nbsp;
-        {next}
-        &nbsp;
-        &nbsp;
-        {last}
-      </div>
-    </div>
-  )
-}
+const pageToPath = page => page === 1 ? '/diario' : `/diario/${page}`
 
 const DiaryPage = async ({page}) => {
   const pages = await getData({page})
@@ -93,7 +50,7 @@ const DiaryPage = async ({page}) => {
           )
         })}
       </ul>
-      <Pagination page={page} count={count}/>
+      <Pagination current={page} count={count} linkBuilder={pageToPath}/>
     </Main>
   )
 }
