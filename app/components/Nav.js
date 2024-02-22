@@ -42,6 +42,17 @@ const Nav = () => {
         <span className={styles.glyph2}></span>
         <span className={styles.glyph3}></span>
 
+        <a href="/" alt="Pagina home">
+          <div className={styles.logo}>
+            <div className={styles.logoPrefix}>Con</div>
+            <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" />
+              <text x="22" y="80" width="100" height="100">≈</text>
+            </svg>
+            <div className={styles.logoSuffix}>tatto</div>
+          </div>
+        </a>
+
         <ul className={styles.menu}>
           <li className={linkClass('/', pathname)}>
             <Link href="/" alt="Pagina home">Home</Link>
