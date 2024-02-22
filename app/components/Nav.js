@@ -18,6 +18,7 @@ const Nav = () => {
   const pathname = usePathname()
   const [checked, setChecked] = useState(false)
 
+  /* close the hamburger menu when the user navigates */
   useEffect(() => {
     setChecked(false)
   }, [pathname])
