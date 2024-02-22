@@ -50,7 +50,7 @@ const DiaryPage = async ({page}) => {
           )
         })}
       </ul>
-      <Pagination page={page} count={count} path={pageToPath}/>
+      <Pagination current={page} count={count} linkBuilder={pageToPath}/>
     </Main>
   )
 }
