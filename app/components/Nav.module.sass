@@ -20,6 +20,7 @@ $glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
 $glyph-inclined-width: $widget-height
 $glyph-width-difference: calc($widget-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
+$top-bar-height: calc($glyph-top + $widget-height + 1rem)
 
 // Menu
 $menu-font-size: 2rem
@@ -43,6 +44,9 @@ $menu-color: white
   margin: 0
   z-index: $z-index
   width: 100%
+  height: $top-bar-height
+  background: var(--strong-color)
+  filter: brightness(90%)
 
   @media (min-width: 700px)
     overflow: visible
@@ -74,7 +78,7 @@ $menu-color: white
       margin: 0
       padding: 0
       border: 0
-      background-color: inherit
+      background: transparent
 
     .item
       padding: 0.4rem 0
@@ -92,14 +96,14 @@ $menu-color: white
         font-size: $menu-font-size
 
         @media (min-width: 700px)
-          color: var(--link-color, blue)
+          color: var(--background-color)
           font-size: 1.2rem
 
     .current-item
       @extend .item
 
       a
-        font-weight: bold
+        font-weight: bolder
 
   .trigger
     opacity: 0
@@ -123,7 +127,7 @@ $menu-color: white
     height: $glyph-height
     border-radius: $glyph-border-radius
     transition: transform 0.5s, opacity 0.4s ease
-    background: var(--text-color)
+    background: var(--background-color)
     z-index: 2
 
     @media (min-width: 700px)
@@ -136,6 +140,7 @@ $menu-color: white
 
   .trigger:checked ~ .glyph1
     transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    background: var(--text-color)
 
   .glyph2
     @extend .glyph
@@ -152,6 +157,7 @@ $menu-color: white
 
   .trigger:checked ~ .glyph3
     transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    background: var(--text-color)
 
   .trigger:checked ~ .menu
     transform: translate(0, $showing-menu-translation-y)
