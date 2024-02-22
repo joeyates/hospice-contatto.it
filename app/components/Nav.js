@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import {usePathname} from 'next/navigation'
-import {useEffect, useState} from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import styles from './Nav.module.sass'
 
@@ -18,6 +18,7 @@ const Nav = () => {
   const pathname = usePathname()
   const [checked, setChecked] = useState(false)
 
+  /* close the hamburger menu when the user navigates */
   useEffect(() => {
     setChecked(false)
   }, [pathname])
@@ -32,13 +33,26 @@ const Nav = () => {
 
   return (
     <>
-      <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange}/>
-
-      <span className={styles.glyph1}></span>
-      <span className={styles.glyph2}></span>
-      <span className={styles.glyph3}></span>
-
       <nav className={styles.container}>
+        {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
+        <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange} />
+
+        {/* hamburger */}
+        <span className={styles.glyph1}></span>
+        <span className={styles.glyph2}></span>
+        <span className={styles.glyph3}></span>
+
+        <a href="/" alt="Pagina home">
+          <div className={styles.logo}>
+            <div className={styles.logoPrefix}>Con</div>
+            <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" />
+              <text x="22" y="80" width="100" height="100">≈</text>
+            </svg>
+            <div className={styles.logoSuffix}>tatto</div>
+          </div>
+        </a>
+
         <ul className={styles.menu}>
           <li className={linkClass('/', pathname)}>
             <Link href="/" alt="Pagina home">Home</Link>

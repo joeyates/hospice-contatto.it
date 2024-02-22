@@ -13,13 +13,13 @@ $glyph-border-radius: calc($glyph-height / 2)
 $glyph1-top: $glyph-top
 $glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
 $glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
-$glyph-left: $glyph-left
-$glyph-right: 0.2rem
 $glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
 $glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
 $glyph-inclined-width: $widget-height
 $glyph-width-difference: calc($widget-width - $glyph-inclined-width)
 $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
+$top-bar-height: calc($glyph-top + $widget-height + 1rem)
+$widget-right: calc($glyph-left + $widget-height)
 
 // Menu
 $menu-font-size: 2rem
@@ -28,48 +28,46 @@ $menu-padding-left: 1rem
 $menu-padding-top: 3rem
 $menu-padding-right: 0
 $menu-border: 0.1rem
-$hidden-menu-translation-y: -100%
-$showing-menu-translation-y: 0
+$menu-top-offset: -3rem
+$hidden-menu-translation-y: calc(-100% + $menu-top-offset)
+$showing-menu-translation-y: $menu-top-offset
 
 // Menu Colours
 $link-color: #555
 $link-hover-color: black
-$menu-color: white
 
 .container
-  position: absolute
+  position: relative
   top: 0
   left: 0
   margin: 0
   z-index: $z-index
-  height: 100%
   width: 100%
-  overflow: hidden
-  transform: translate(0, $hidden-menu-translation-y)
-  transition: transform 0.5s ease
+  height: $top-bar-height
+  background: var(--strong-color)
+  filter: brightness(90%)
 
   @media (min-width: 700px)
-    height: auto
     overflow: visible
+    display: flex
 
   .menu
-    position: absolute
+    position: relative
     top: 0
     left: 0
     width: 100%
-    height: 100%
     padding: $menu-padding-top $menu-padding-right 0.5rem $menu-padding-left
     font-size: 8rem
     list-style-type: none
-    background-color: $menu-color
+    background-color: var(--background-color)
     z-index: 1
+    overflow: hidden
+    transform: translate(0, $hidden-menu-translation-y)
+    transition: transform 0.5s ease
 
     @media (min-width: 700px)
-      top: 5px
-      left: 5px
       width: max-content
       height: 100%
-      display: flex
       font-size: inherit
       list-style: none
       transform: none
@@ -77,7 +75,10 @@ $menu-color: white
       margin: 0
       padding: 0
       border: 0
-      background-color: inherit
+      background: transparent
+      display: flex
+      justify-content: center
+      align-items: center
 
     .item
       padding: 0.4rem 0
@@ -95,66 +96,106 @@ $menu-color: white
         font-size: $menu-font-size
 
         @media (min-width: 700px)
-          color: var(--link-color, blue)
+          color: var(--background-color)
           font-size: 1.2rem
 
     .current-item
       @extend .item
 
       a
-        font-weight: bold
+        font-weight: bolder
 
-.trigger
-  opacity: 0
-  position: absolute
-  top: $glyph1-top
-  left: $glyph-left
-  width: $widget-width
-  height: $widget-height
-  margin: 0
-  border: 0
-  cursor: pointer
-  z-index: 3
+  .trigger
+    opacity: 0
+    position: absolute
+    top: $glyph1-top
+    left: $glyph-left
+    width: $widget-width
+    height: $widget-height
+    margin: 0
+    border: 0
+    cursor: pointer
+    z-index: 3
 
-  @media (min-width: 700px)
-    display: none
+    @media (min-width: 700px)
+      display: none
 
-.glyph
-  position: absolute
-  left: $glyph-left
-  width: $widget-width
-  height: $glyph-height
-  border-radius: $glyph-border-radius
-  transition: transform 0.5s, opacity 0.4s ease
-  background: #333
-  z-index: 2
+  .glyph
+    position: absolute
+    left: $glyph-left
+    width: $widget-width
+    height: $glyph-height
+    border-radius: $glyph-border-radius
+    transition: transform 0.5s, opacity 0.4s ease
+    background: var(--background-color)
+    z-index: 2
 
-  @media (min-width: 700px)
-    display: none
+    @media (min-width: 700px)
+      display: none
 
-.glyph1
-  @extend .glyph
-  top: $glyph1-top
-  transform-origin: 0 0
+  .glyph1
+    @extend .glyph
+    top: $glyph1-top
+    transform-origin: 0 0
 
-.trigger:checked ~ .glyph1
-  transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+  .trigger:checked ~ .glyph1
+    transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    background: var(--text-color)
 
-.glyph2
-  @extend .glyph
-  opacity: 1
-  top: $glyph2-top
+  .glyph2
+    @extend .glyph
+    opacity: 1
+    top: $glyph2-top
 
-.trigger:checked ~ .glyph2
-  opacity: 0
+  .trigger:checked ~ .glyph2
+    opacity: 0
 
-.glyph3
-  @extend .glyph
-  top: $glyph3-top
-  transform-origin: 0 $glyph-height
+  .glyph3
+    @extend .glyph
+    top: $glyph3-top
+    transform-origin: 0 $glyph-height
 
-.trigger:checked ~ .glyph3
-  transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+  .trigger:checked ~ .glyph3
+    transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    background: var(--text-color)
 
-.trigger:checked ~ .container
-  transform: translate(0, $showing-menu-translation-y)
+  .trigger:checked ~ .menu
+    transform: translate(0, $showing-menu-translation-y)
+
+  .logo
+    position: relative
+    left: calc($widget-right + 1rem)
+    top: 1.0rem
+    padding: 0 0 0 0.5rem
+    width: 10rem
+    height: 1.5rem
+    display: flex
+    justify-content: center
+    align-items: center
+
+    @media (min-width: 700px)
+      left: auto
+      top: auto
+      width: 4rem
+      padding-left: 0.25rem
+
+    .logoPrefix, .logoSuffix
+      font-size: 2rem
+      color: var(--background-color)
+
+      @media (min-width: 700px)
+        display: none
+
+    .icon
+      position: relative
+      top: 0.2rem
+
+      @media (min-width: 700px)
+        top: 0.9rem
+
+    text
+      font-size: 96px
+      fill: var(--strong-color)
+
+    circle
+      fill: var(--background-color)
