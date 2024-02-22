@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import {usePathname} from 'next/navigation'
-import {useEffect, useState} from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import styles from './Nav.module.sass'
 
@@ -35,7 +35,7 @@ const Nav = () => {
     <>
       <nav className={styles.container}>
         {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
-        <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange}/>
+        <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange} />
 
         {/* hamburger */}
         <span className={styles.glyph1}></span>
