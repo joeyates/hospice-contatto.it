@@ -32,13 +32,15 @@ const Nav = () => {
 
   return (
     <>
-      <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange}/>
-
-      <span className={styles.glyph1}></span>
-      <span className={styles.glyph2}></span>
-      <span className={styles.glyph3}></span>
-
       <nav className={styles.container}>
+        {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
+        <input className={styles.trigger} type="checkbox" checked={checked} onChange={handleChange}/>
+
+        {/* hamburger */}
+        <span className={styles.glyph1}></span>
+        <span className={styles.glyph2}></span>
+        <span className={styles.glyph3}></span>
+
         <ul className={styles.menu}>
           <li className={linkClass('/', pathname)}>
             <Link href="/" alt="Pagina home">Home</Link>
