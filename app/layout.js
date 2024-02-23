@@ -1,4 +1,4 @@
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 import './globals.sass'
 import Footer from '@components/Footer'

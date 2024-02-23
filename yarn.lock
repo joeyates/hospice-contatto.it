@@ -80,11 +80,6 @@
   dependencies:
     glob "7.1.7"
 
-"@next/font@13.1.2":
-  version "13.1.2"
-  resolved "https://registry.npmjs.org/@next/font/-/font-13.1.2.tgz"
-  integrity sha512-NXGXGFGiOKEnvBIHq9cdFTKbHO2/4B3Zd9K27M7j1DioIQVar7oVRqZMYs0h3XMVEZLwjjkdAtqRPCzzd3RtXg==
-
 "@next/swc-darwin-arm64@14.1.1-canary.70":
   version "14.1.1-canary.70"
   resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.1.1-canary.70.tgz#8f6be2a5943f8937235ba4d21149d9e4d8b76e3c"
