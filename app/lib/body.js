@@ -8,6 +8,8 @@ const queryFragment = `
           alt
           src: url
           title
+          width
+          height
         }
       }
       ... on LargeImageRecord {
@@ -16,6 +18,8 @@ const queryFragment = `
           alt
           src: url
           title
+          width
+          height
         }
       }
     }
