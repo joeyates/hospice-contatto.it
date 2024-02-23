@@ -7,6 +7,7 @@ export interface EventUrlData {
 }
 
 export interface Event extends EventUrlData {
+  id?: string
   body: Body
   date: string
   description: string

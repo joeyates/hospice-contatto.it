@@ -3,10 +3,11 @@ import Link from 'next/link'
 
 import {parseDate} from '@lib/datocms'
 import {path as eventPath} from '@lib/event'
+import {type Event} from '@lib/event.d'
 import {date as formatDate} from '@lib/format'
 import styles from './EventList.module.sass'
 
-const EventList = ({events}) => (
+const EventList = ({events}: {events: Event[]}): JSX.Element => (
   <ul className={styles.events}>
     {events.map(e => (
       <li className={styles.event} key={`event-${e.id}`}>
