@@ -1,18 +1,8 @@
 import {request} from '@lib/datocms'
-import {fragment, type ResponsiveImage} from '@lib/responsiveImage'
-import { type Metadata as NextMetadata } from 'next'
-
-type Metadata = {
-  title: string,
-  description: string,
-  images: ResponsiveImage[]
-}
-
-type MetadataOverrides = {
-  title?: string,
-  description?: string,
-  images?: ResponsiveImage[]
-}
+import {type Props, type Metadata, type MetadataFetcher} from '@lib/info.d'
+import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {type ResponsiveImage} from './responsiveImage.d'
+import {type Metadata as NextMetadata} from 'next'
 
 interface InfoQuery {
   info: {
@@ -75,8 +65,6 @@ const buildMetadata = ({title, description, images}): NextMetadata => {
     }
   }
 }
-
-type MetadataFetcher = ({defaults, props}: {defaults: Metadata, props: object}) => MetadataOverrides
 
 /*
 Build an async function to return metadata build from
