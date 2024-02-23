@@ -1,6 +1,8 @@
-import {GraphQLClient} from 'graphql-request'
+import {request as graphqlRequest} from 'graphql-request'
 
 import type {isoDate, parseDate, request} from './datocms.d'
+
+const ENDPOINT = 'https://graphql.datocms.com/'
 
 const isoDate: isoDate = date => date.toISOString()
 const parseDate: parseDate = date => new Date(date)
@@ -15,8 +17,7 @@ const request: request = ({query, variables, includeDrafts, excludeInvalid}) => 
   if (excludeInvalid) {
     headers['X-Exclude-Invalid'] = 'true'
   }
-  const client = new GraphQLClient('https://graphql.datocms.com', {headers})
-  return client.request(query, variables)
+  return graphqlRequest({url: ENDPOINT, document: query, variables, requestHeaders: headers})
 }
 
 export {isoDate, parseDate, request}
