@@ -1,10 +1,4 @@
-type ResponsiveImage = {
-  alt: string,
-  height: number,
-  src: string,
-  title: string,
-  width: number
-}
+import {OpenGraphImage} from './responsiveImage.d'
 
 const EXTENSION_TO_MIME_TYPE = {
   gif: 'image/gif',
@@ -24,7 +18,7 @@ const mimeType = url => {
 }
 
 // https://ogp.me/#structured
-const toOpenGraphImage = ({alt, height, src, title, width}) => {
+const toOpenGraphImage = ({alt, height, src, title, width}): OpenGraphImage => {
   return {
     alt,
     height,
@@ -50,4 +44,4 @@ const fragment = ({width}) => (
   `
 )
 
-export {fragment, type ResponsiveImage, toOpenGraphImage}
+export {fragment, toOpenGraphImage}
