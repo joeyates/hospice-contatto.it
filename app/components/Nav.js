@@ -43,6 +43,25 @@ const Item = ({path, current, alt, label}) => (
   </li>
 )
 
+const Hamburger = ({checked, handleChange, children}) => (
+  <nav className={styles.container}>
+    {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
+    <input
+      className={styles.trigger}
+      type='checkbox'
+      checked={checked}
+      onChange={handleChange}
+    />
+
+    {/* hamburger */}
+    <span className={styles.glyph1}></span>
+    <span className={styles.glyph2}></span>
+    <span className={styles.glyph3}></span>
+
+    {children}
+  </nav>
+)
+
 const Nav = () => {
   const current = usePathname()
   const [checked, setChecked] = useState(false)
@@ -61,66 +80,51 @@ const Nav = () => {
   }
 
   return (
-    <>
-      <nav className={styles.container}>
-        {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
-        <input
-          className={styles.trigger}
-          type='checkbox'
-          checked={checked}
-          onChange={handleChange}
+    <Hamburger checked={checked} handleChange={handleChange}>
+      <a href='/' alt='Pagina home'>
+        <Logo />
+      </a>
+
+      <ul className={styles.menu}>
+        <Item path='/' current={current} alt='Pagina home' label='Home' />
+        <Item
+          path='/chi-siamo'
+          current={current}
+          alt="Come nasce e cosa vuol fare l'associazione ConTatto"
+          label='Chi siamo'
         />
-
-        {/* hamburger */}
-        <span className={styles.glyph1}></span>
-        <span className={styles.glyph2}></span>
-        <span className={styles.glyph3}></span>
-
-        <a href='/' alt='Pagina home'>
-          <Logo />
-        </a>
-
-        <ul className={styles.menu}>
-          <Item path='/' current={current} alt='Pagina home' label='Home' />
-          <Item
-            path='/chi-siamo'
-            current={current}
-            alt="Come nasce e cosa vuol fare l'associazione ConTatto"
-            label='Chi siamo'
-          />
-          <Item
-            path='/eventi'
-            current={current}
-            alt='Eventi e incontri organizzati da ConTatto'
-            label='Eventi'
-          />
-          <Item
-            path='/diario'
-            current={current}
-            alt="La storia dell'associazione, giorno per giorno"
-            label='Diario'
-          />
-          <Item
-            path='/approfondimenti'
-            current={current}
-            alt='Approfondimenti su alcuni termini inerenti agli hospice'
-            label='Approfondimenti'
-          />
-          <Item
-            path='/come-sostenerci'
-            current={current}
-            alt='Come puoi aiutarci?'
-            label='Come sostenerci'
-          />
-          <Item
-            path='/contatti'
-            current={current}
-            alt='Come contattarci'
-            label='Contatti'
-          />
-        </ul>
-      </nav>
-    </>
+        <Item
+          path='/eventi'
+          current={current}
+          alt='Eventi e incontri organizzati da ConTatto'
+          label='Eventi'
+        />
+        <Item
+          path='/diario'
+          current={current}
+          alt="La storia dell'associazione, giorno per giorno"
+          label='Diario'
+        />
+        <Item
+          path='/approfondimenti'
+          current={current}
+          alt='Approfondimenti su alcuni termini inerenti agli hospice'
+          label='Approfondimenti'
+        />
+        <Item
+          path='/come-sostenerci'
+          current={current}
+          alt='Come puoi aiutarci?'
+          label='Come sostenerci'
+        />
+        <Item
+          path='/contatti'
+          current={current}
+          alt='Come contattarci'
+          label='Contatti'
+        />
+      </ul>
+    </Hamburger>
   )
 }
 
