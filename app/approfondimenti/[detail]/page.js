@@ -51,12 +51,12 @@ const generateMetadata = createMetadata(async ({defaults, props}) => {
 })
 
 const generateStaticParams = async () => {
-  const details = await request({
+  const details = await datoCMSRequest({
     query: DETAILS_QUERY
   })
 
   return details.allDetails.map(e => ({detail: e.slug}))
 }
 
-export {generateMetadata}
+export {generateMetadata, generateStaticParams}
 export default Page
