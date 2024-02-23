@@ -1,3 +1,11 @@
+type ResponsiveImage = {
+  alt: string,
+  height: number,
+  src: string,
+  title: string,
+  width: number
+}
+
 const EXTENSION_TO_MIME_TYPE = {
   gif: 'image/gif',
   jpg: 'image/jpeg',
@@ -42,4 +50,4 @@ const fragment = ({width}) => (
   `
 )
 
-export {fragment, toOpenGraphImage}
+export {fragment, type ResponsiveImage, toOpenGraphImage}
