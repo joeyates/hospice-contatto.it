@@ -45,10 +45,11 @@ const fetchInfo = async () => {
 
 const metadataDefaults = async (): Promise<Metadata> => {
   const info = await fetchInfo()
+  const image = toOpenGraphImage(info.defaultImage.responsiveImage)
   return {
     title: info.siteTitle,
     description: info.siteDescription,
-    images: [info.defaultImage.responsiveImage]
+    images: [image]
   }
 }
 

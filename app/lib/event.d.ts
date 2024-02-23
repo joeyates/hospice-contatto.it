@@ -1,9 +1,17 @@
+import {type Body} from './body.d'
 import {type ResponsiveImage} from './responsiveImage'
 
-export type Event = {
-  date: string,
-  slug: string,
-  title: string,
-  description: string,
-  image: ResponsiveImage
+export interface EventUrlData {
+  date: string
+  slug: string
+}
+
+export interface Event extends EventUrlData {
+  body: Body
+  date: string
+  description: string
+  image: {
+    responsiveImage: ResponsiveImage
+  }
+  title: string
 }

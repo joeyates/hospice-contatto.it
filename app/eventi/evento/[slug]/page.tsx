@@ -4,12 +4,18 @@ import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {parseDate, request as datoCMSRequest} from '@lib/datocms'
+import {parseDate, request} from '@lib/datocms'
 import {datedSlug, datedSlugToSlug} from '@lib/event'
+import {type Event, type EventUrlData} from '@lib/event.d'
 import {date as formatDate} from '@lib/format'
 import {buildTitle, createMetadata} from '@lib/info'
+import {type MetadataFetcher, type Props} from '@lib/info.d'
 import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
+
+type EventsQuery = {
+  allEvents: Array<EventUrlData>
+}
 
 const EVENTS_QUERY = `
 query {
@@ -20,6 +26,10 @@ query {
   }
 }
 `
+
+type EventQuery = {
+  event: Event
+}
 
 const QUERY = `
 query Event($slug: String!) {
@@ -35,14 +45,18 @@ query Event($slug: String!) {
 }
 `
 
-const getData = async slug => {
-  return await datoCMSRequest({
+const getData = async (slug: string): Promise<EventQuery> => {
+  return await request<EventQuery>({
     query: QUERY,
     variables: {slug}
   })
 }
 
-const Page = async ({params: {slug}}) => {
+type Params = {
+  slug: string
+}
+
+const Page = async ({params: {slug}}: Props) => {
   const eventSlug = datedSlugToSlug(slug)
   const page = await getData(eventSlug)
   const date = parseDate(page.event.date)
@@ -62,7 +76,7 @@ const Page = async ({params: {slug}}) => {
   )
 }
 
-const generateMetadata = createMetadata(async ({defaults, props}) => {
+const overrides: MetadataFetcher = async ({defaults, props}) => {
   const slug = datedSlugToSlug(props.params.slug)
   const page = await getData(slug)
   const image = toOpenGraphImage(page.event.image.responsiveImage)
@@ -71,10 +85,12 @@ const generateMetadata = createMetadata(async ({defaults, props}) => {
     images: [image],
     title: buildTitle({defaults, title: page.event.title})
   }
-})
+}
 
-const generateStaticParams = async () => {
-  const events = await datoCMSRequest({
+const generateMetadata = createMetadata(overrides)
+
+const generateStaticParams = async (): Promise<Params[]> => {
+  const events = await request<EventsQuery>({
     query: EVENTS_QUERY
   })
 
