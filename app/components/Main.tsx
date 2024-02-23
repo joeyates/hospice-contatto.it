@@ -1,6 +1,6 @@
 import styles from './Main.module.sass'
 
-const Main = ({children}) => (
+const Main = ({children}): JSX.Element => (
   <div className={styles.wrap}>
     <main className={styles.main}>{children}</main>
   </div>
