@@ -1,8 +1,7 @@
 import Link from 'next/link'
 
 import styles from './Pagination.module.sass'
-
-type LinkBuilder = (page: number) => string
+import type {LinkBuilder, PaginationElement} from './Pagination.d'
 
 const pageRange = (current: number, pageCount: number, pageLinkCount: number): number[] => {
   if (pageCount <= pageLinkCount) {
@@ -57,7 +56,7 @@ const LastPage = ({current, count, linkBuilder}: {current: number, count: number
   return <div className={klass}>{last}</div>
 }
 
-const Pagination = ({currentPage, pageCount, linkBuilder}: {currentPage: any, pageCount: any, linkBuilder: LinkBuilder}) => {
+const Pagination: PaginationElement = ({currentPage, pageCount, linkBuilder}) => {
   const current: number = parseInt(currentPage)
   const count: number = parseInt(pageCount)
   const pages = pageRange(current, count, 5)
