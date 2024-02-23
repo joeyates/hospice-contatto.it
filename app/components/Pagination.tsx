@@ -57,21 +57,19 @@ const LastPage = ({current, count, linkBuilder}: {current: number, count: number
 }
 
 const Pagination: PaginationElement = ({currentPage, pageCount, linkBuilder}) => {
-  const current: number = parseInt(currentPage)
-  const count: number = parseInt(pageCount)
-  const pages = pageRange(current, count, 5)
+  const pages = pageRange(currentPage, pageCount, 5)
   return (
     <div className={styles.pagination}>
-      <FirstPage current={current} linkBuilder={linkBuilder} />
+      <FirstPage current={currentPage} linkBuilder={linkBuilder} />
       {pages.map((page, i) => (
         <Page
           key={i}
           index={page}
-          current={current}
+          current={currentPage}
           linkBuilder={linkBuilder}
         />
       ))}
-      <LastPage linkBuilder={linkBuilder} current={current} count={count} />
+      <LastPage linkBuilder={linkBuilder} current={currentPage} count={pageCount} />
     </div>
   )
 }

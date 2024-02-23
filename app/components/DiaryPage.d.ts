@@ -1,1 +1,1 @@
-export type DiaryPage = ({page}: {page: number}) => Promise<JSX.Element>
+export type DiaryPage = ({page}: {page: string}) => Promise<JSX.Element>

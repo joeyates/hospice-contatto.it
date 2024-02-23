@@ -34,7 +34,8 @@ const getData = async ({page}) => {
 const pageToPath: LinkBuilder = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
 const DiaryPage: DiaryPage = async ({page}) => {
-  const pages = await getData({page})
+  const currentPage: number = parseInt(page)
+  const pages = await getData({page: currentPage})
   const entries = pages._allDiaryEntriesMeta.count
   const count = entryCountToPageCount(entries)
   return (
@@ -53,7 +54,7 @@ const DiaryPage: DiaryPage = async ({page}) => {
           )
         })}
       </ul>
-      <Pagination currentPage={page} pageCount={count} linkBuilder={pageToPath} />
+      <Pagination currentPage={currentPage} pageCount={count} linkBuilder={pageToPath} />
     </Main>
   )
 }
