@@ -6,8 +6,8 @@ import {useEffect, useState} from 'react'
 
 import styles from './Nav.module.sass'
 
-const linkClass = (name, current) => {
-  if (name == current) {
+const linkClass = (path: string, current: string) => {
+  if (path == current) {
     return styles['current-item']
   } else {
     return styles.item
@@ -35,9 +35,9 @@ const Logo = () => (
   </div>
 )
 
-const Item = ({path, current, alt, label}) => (
+const Item = ({path, current, label}) => (
   <li className={linkClass(path, current)}>
-    <Link href={path} alt={alt}>
+    <Link href={path}>
       {label}
     </Link>
   </li>
@@ -45,7 +45,7 @@ const Item = ({path, current, alt, label}) => (
 
 const Hamburger = ({checked, handleChange, children}) => (
   <nav className={styles.container}>
-    {/* invisible checkbox, present only on mobile that triggers opening the hamburger */}
+    {/* hidden checkbox triggers opening the hamburger on mobile */}
     <input
       className={styles.trigger}
       type='checkbox'
@@ -62,7 +62,7 @@ const Hamburger = ({checked, handleChange, children}) => (
   </nav>
 )
 
-const Nav = () => {
+const Nav = (): JSX.Element => {
   const current = usePathname()
   const [checked, setChecked] = useState(false)
 
@@ -71,7 +71,7 @@ const Nav = () => {
     setChecked(false)
   }, [current])
 
-  const handleChange = e => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setChecked(true)
     } else {
@@ -81,46 +81,40 @@ const Nav = () => {
 
   return (
     <Hamburger checked={checked} handleChange={handleChange}>
-      <a href='/' alt='Pagina home'>
+      <Link href='/'>
         <Logo />
-      </a>
+      </Link>
 
       <ul className={styles.menu}>
-        <Item path='/' current={current} alt='Pagina home' label='Home' />
+        <Item path='/' current={current} label='Home' />
         <Item
           path='/chi-siamo'
           current={current}
-          alt="Come nasce e cosa vuol fare l'associazione ConTatto"
           label='Chi siamo'
         />
         <Item
           path='/eventi'
           current={current}
-          alt='Eventi e incontri organizzati da ConTatto'
           label='Eventi'
         />
         <Item
           path='/diario'
           current={current}
-          alt="La storia dell'associazione, giorno per giorno"
           label='Diario'
         />
         <Item
           path='/approfondimenti'
           current={current}
-          alt='Approfondimenti su alcuni termini inerenti agli hospice'
           label='Approfondimenti'
         />
         <Item
           path='/come-sostenerci'
           current={current}
-          alt='Come puoi aiutarci?'
           label='Come sostenerci'
         />
         <Item
           path='/contatti'
           current={current}
-          alt='Come contattarci'
           label='Contatti'
         />
       </ul>
