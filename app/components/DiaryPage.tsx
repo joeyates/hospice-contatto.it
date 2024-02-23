@@ -5,6 +5,8 @@ import Title from '@components/Title'
 import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {entryCountToPageCount} from '@lib/diary'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
+
+import type {DiaryPage} from './DiaryPage.d'
 import styles from './DiaryPage.module.sass'
 
 const QUERY = `
@@ -31,7 +33,7 @@ const getData = async ({page}) => {
 
 const pageToPath: LinkBuilder = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
-const DiaryPage = async ({page}) => {
+const DiaryPage: DiaryPage = async ({page}) => {
   const pages = await getData({page})
   const entries = pages._allDiaryEntriesMeta.count
   const count = entryCountToPageCount(entries)
