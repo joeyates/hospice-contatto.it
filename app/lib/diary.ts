@@ -9,7 +9,7 @@ query DiaryMetadata {
 }
 `
 
-const entryCountToPageCount = (entries) => Math.floor((entries - 1) / 5) + 1
+const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / 5) + 1
 
 const pageCount = async () => {
   const metadata = await datoCMSRequest({
@@ -24,7 +24,7 @@ const generateTitle = ({props}) => {
   return `Diario - pagina ${props.params.page}`
 }
 
-const createMetadata = ({params} = {}) => {
+const createMetadata = () => {
   return globalCreateMetadata({title: generateTitle})
 }
 

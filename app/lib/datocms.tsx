@@ -1,9 +1,11 @@
 import {GraphQLClient} from 'graphql-request'
 
-const isoDate = date => date.toISOString()
-const parseDate = date => new Date(date)
+import type {isoDate, parseDate, request} from './datocms.d'
 
-const request = ({query, variables, includeDrafts, excludeInvalid}) => {
+const isoDate: isoDate = date => date.toISOString()
+const parseDate: parseDate = date => new Date(date)
+
+const request: request = ({query, variables, includeDrafts, excludeInvalid}) => {
   const headers = {
     authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`
   }
