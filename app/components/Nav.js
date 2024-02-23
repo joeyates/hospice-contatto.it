@@ -14,14 +14,43 @@ const linkClass = (name, current) => {
   }
 }
 
+const Icon = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 100 100'
+    className={styles.icon}
+  >
+    <circle cx='50' cy='50' r='40' />
+    <text x='22' y='80' width='100' height='100'>
+      ≈
+    </text>
+  </svg>
+)
+
+const Logo = () => (
+  <div className={styles.logo}>
+    <div className={styles.logoPrefix}>Con</div>
+    <Icon />
+    <div className={styles.logoSuffix}>tatto</div>
+  </div>
+)
+
+const Item = ({path, current, alt, label}) => (
+  <li className={linkClass(path, current)}>
+    <Link href={path} alt={alt}>
+      {label}
+    </Link>
+  </li>
+)
+
 const Nav = () => {
-  const pathname = usePathname()
+  const current = usePathname()
   const [checked, setChecked] = useState(false)
 
   /* close the hamburger menu when the user navigates */
   useEffect(() => {
     setChecked(false)
-  }, [pathname])
+  }, [current])
 
   const handleChange = e => {
     if (e.target.checked) {
@@ -48,70 +77,47 @@ const Nav = () => {
         <span className={styles.glyph3}></span>
 
         <a href='/' alt='Pagina home'>
-          <div className={styles.logo}>
-            <div className={styles.logoPrefix}>Con</div>
-            <svg
-              className={styles.icon}
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 100 100'
-            >
-              <circle cx='50' cy='50' r='40' />
-              <text x='22' y='80' width='100' height='100'>
-                ≈
-              </text>
-            </svg>
-            <div className={styles.logoSuffix}>tatto</div>
-          </div>
+          <Logo />
         </a>
 
         <ul className={styles.menu}>
-          <li className={linkClass('/', pathname)}>
-            <Link href='/' alt='Pagina home'>
-              Home
-            </Link>
-          </li>
-          <li className={linkClass('/chi-siamo', pathname)}>
-            <Link
-              href='/chi-siamo'
-              alt="Come nasce e cosa vuol fare l'associazione ConTatto"
-            >
-              Chi siamo
-            </Link>
-          </li>
-          <li className={linkClass('/eventi', pathname)}>
-            <Link
-              href='/eventi'
-              alt='Eventi e incontri organizzati da ConTatto'
-            >
-              Eventi
-            </Link>
-          </li>
-          <li className={linkClass('/diario', pathname)}>
-            <Link
-              href='/diario'
-              alt="La storia dell'associazione, giorno per giorno"
-            >
-              Diario
-            </Link>
-          </li>
-          <li className={linkClass('/approfondimenti', pathname)}>
-            <Link
-              href='/approfondimenti'
-              alt='Aprrofondimenti su alcumi termini inerenti agli hospice'
-            >
-              Approfondimenti
-            </Link>
-          </li>
-          <li className={linkClass('/come-sostenerci', pathname)}>
-            <Link href='/come-sostenerci' alt='Come puoi aiutarci?'>
-              Come sostenerci
-            </Link>
-          </li>
-          <li className={linkClass('/contatti', pathname)}>
-            <Link href='/contatti' alt='Come contattarci'>
-              Contatti
-            </Link>
-          </li>
+          <Item path='/' current={current} alt='Pagina home' label='Home' />
+          <Item
+            path='/chi-siamo'
+            current={current}
+            alt="Come nasce e cosa vuol fare l'associazione ConTatto"
+            label='Chi siamo'
+          />
+          <Item
+            path='/eventi'
+            current={current}
+            alt='Eventi e incontri organizzati da ConTatto'
+            label='Eventi'
+          />
+          <Item
+            path='/diario'
+            current={current}
+            alt="La storia dell'associazione, giorno per giorno"
+            label='Diario'
+          />
+          <Item
+            path='/approfondimenti'
+            current={current}
+            alt='Approfondimenti su alcuni termini inerenti agli hospice'
+            label='Approfondimenti'
+          />
+          <Item
+            path='/come-sostenerci'
+            current={current}
+            alt='Come puoi aiutarci?'
+            label='Come sostenerci'
+          />
+          <Item
+            path='/contatti'
+            current={current}
+            alt='Come contattarci'
+            label='Contatti'
+          />
         </ul>
       </nav>
     </>
