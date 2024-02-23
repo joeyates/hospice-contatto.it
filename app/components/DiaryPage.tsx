@@ -33,6 +33,18 @@ const getData = async ({page}) => {
 
 const pageToPath: LinkBuilder = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
+const Entry = ({date, place, text}) => {
+  const formattedDate = formatDateWithOptionalTime(parseDate(date))
+  return (
+    <li className={styles.entry}>
+      <div className={styles.title}>
+        {`${formattedDate}${(place !== '' && ` — ${place}`) || ''}`}
+      </div>
+      <div>{text}</div>
+    </li>
+  )
+}
+
 const DiaryPage: DiaryPage = async ({page}) => {
   const currentPage: number = parseInt(page)
   const pages = await getData({page: currentPage})
@@ -42,17 +54,7 @@ const DiaryPage: DiaryPage = async ({page}) => {
     <Main>
       <Title title={`Diario - pagina ${page}`} />
       <ul className={styles.entries}>
-        {pages.allDiaryEntries.map(e => {
-          const date = formatDateWithOptionalTime(parseDate(e.date))
-          return (
-            <li key={`entry-${e.id}`} className={styles.entry}>
-              <div className={styles.title}>
-                {`${date}${(e.place !== '' && ` — ${e.place}`) || ''}`}
-              </div>
-              <div>{e.text}</div>
-            </li>
-          )
-        })}
+        {pages.allDiaryEntries.map(e => <Entry key={`entry-${e.id}`} {...e} />)}
       </ul>
       <Pagination currentPage={currentPage} pageCount={count} linkBuilder={pageToPath} />
     </Main>
