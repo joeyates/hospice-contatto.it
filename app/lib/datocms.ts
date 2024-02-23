@@ -7,7 +7,7 @@ const ENDPOINT = 'https://graphql.datocms.com/'
 const isoDate: isoDate = date => date.toISOString()
 const parseDate: parseDate = date => new Date(date)
 
-const request: request = ({query, variables, includeDrafts, excludeInvalid}) => {
+const requestHeaders = ({includeDrafts, excludeInvalid}) => {
   const headers = {
     authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`
   }
@@ -17,6 +17,11 @@ const request: request = ({query, variables, includeDrafts, excludeInvalid}) => 
   if (excludeInvalid) {
     headers['X-Exclude-Invalid'] = 'true'
   }
+  return headers
+}
+
+const request: request = ({query, variables, includeDrafts, excludeInvalid}) => {
+  const headers = requestHeaders({includeDrafts, excludeInvalid})
   return graphqlRequest({url: ENDPOINT, document: query, variables, requestHeaders: headers})
 }
 
