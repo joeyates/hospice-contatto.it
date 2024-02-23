@@ -1,5 +1,6 @@
 import Main from '@components/Main'
 import Pagination from '@components/Pagination'
+import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
 import {parseDate, request as datoCMSRequest} from '@lib/datocms'
 import {entryCountToPageCount} from '@lib/diary'
@@ -28,7 +29,7 @@ const getData = async ({page}) => {
   })
 }
 
-const pageToPath = page => (page === 1 ? '/diario' : `/diario/${page}`)
+const pageToPath: LinkBuilder = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
 const DiaryPage = async ({page}) => {
   const pages = await getData({page})
@@ -50,7 +51,7 @@ const DiaryPage = async ({page}) => {
           )
         })}
       </ul>
-      <Pagination current={page} count={count} linkBuilder={pageToPath} />
+      <Pagination currentPage={page} pageCount={count} linkBuilder={pageToPath} />
     </Main>
   )
 }
