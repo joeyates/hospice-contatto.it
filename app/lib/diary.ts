@@ -33,7 +33,9 @@ const generateTitle = ({props}) => {
 }
 
 const createMetadata = () => {
-  return globalCreateMetadata({title: generateTitle})
+  return globalCreateMetadata(({props}) => {
+    return {title: generateTitle({props})}
+  })
 }
 
 export {createMetadata, entryCountToPageCount, generateTitle, pageCount, PAGE_SIZE}
