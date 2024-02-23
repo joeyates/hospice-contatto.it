@@ -18,7 +18,8 @@ interface InfoQuery {
   }
 }
 
-const queryFragment = `
+const QUERY = `
+query {
   info {
     email
     name
@@ -30,11 +31,6 @@ const queryFragment = `
       ${fragment({width: 600})}
     }
   }
-`
-
-const QUERY = `
-query {
-  ${queryFragment}
 }
 `
 
