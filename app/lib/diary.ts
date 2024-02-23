@@ -33,7 +33,7 @@ const generateTitle = ({props}) => {
 }
 
 const createMetadata = () => {
-  return globalCreateMetadata(({props}) => {
+  return globalCreateMetadata(async ({props}) => {
     return {title: generateTitle({props})}
   })
 }

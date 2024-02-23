@@ -4,7 +4,7 @@ import {createMetadata} from '@lib/info'
 
 const Page = async () => <DiaryPage page='1' />
 
-const generateMetadata = createMetadata(() => ({
+const generateMetadata = createMetadata(async () => ({
   title: generateTitle({props: {params: {page: 1}}})
 }))
 

@@ -46,7 +46,7 @@ const Page = async () => {
   )
 }
 
-const generateMetadata = createMetadata(() => ({title: 'Approfondimenti'}))
+const generateMetadata = createMetadata(async () => ({title: 'Approfondimenti'}))
 
 export {generateMetadata}
 export default Page
