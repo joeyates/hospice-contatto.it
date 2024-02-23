@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
@@ -51,7 +53,7 @@ const Page = async ({params: {slug}}) => {
       <p className={styles.date}>{formatDate(date)}</p>
       <Body data={page.event.body} />
       <div className={styles['image-wrap']}>
-        <img
+        <Image
           alt={page.event.image.responsiveImage.alt}
           {...page.event.image.responsiveImage}
         />

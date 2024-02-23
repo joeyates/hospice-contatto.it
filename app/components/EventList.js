@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import {parseDate} from '@lib/datocms'
@@ -14,7 +15,7 @@ const EventList = ({events}) => (
             <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
             <div className={styles.title}>{e.title}</div>
           </div>
-          <img alt={e.image.responsiveImage.alt} {...e.image.responsiveImage} />
+          <Image alt={e.image.responsiveImage.alt} {...e.image.responsiveImage} />
         </Link>
       </li>
     ))}
