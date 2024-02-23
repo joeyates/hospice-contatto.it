@@ -7,6 +7,8 @@ interface PaginationQuery {
   }
 }
 
+const PAGE_SIZE = 5
+
 const PAGINATION_QUERY = `
 query DiaryMetadata {
   _allDiaryEntriesMeta {
@@ -15,7 +17,7 @@ query DiaryMetadata {
 }
 `
 
-const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / 5) + 1
+const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / PAGE_SIZE) + 1
 
 const pageCount = async () => {
   const metadata = await request<PaginationQuery>({
@@ -34,4 +36,4 @@ const createMetadata = () => {
   return globalCreateMetadata({title: generateTitle})
 }
 
-export {createMetadata, entryCountToPageCount, generateTitle, pageCount}
+export {createMetadata, entryCountToPageCount, generateTitle, pageCount, PAGE_SIZE}
