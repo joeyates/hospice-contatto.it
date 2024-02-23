@@ -1,6 +1,7 @@
+import {type Attachment} from '@/lib/attachment.d'
 import styles from './Attachments.module.sass'
 
-const Attachments = ({attachments}) => (
+const Attachments = ({attachments}: {attachments: Attachment[]}) => (
   <ul className={styles.attachments}>
     {attachments.map(a => (
       <li key={a.id}>
