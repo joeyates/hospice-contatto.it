@@ -1,5 +1,11 @@
-import {request as datoCMSRequest} from '@lib/datocms'
+import {request} from '@lib/datocms'
 import {createMetadata as globalCreateMetadata} from '@lib/info'
+
+interface PaginationQuery {
+  _allDiaryEntriesMeta: {
+    count: number
+  }
+}
 
 const PAGINATION_QUERY = `
 query DiaryMetadata {
@@ -12,7 +18,7 @@ query DiaryMetadata {
 const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / 5) + 1
 
 const pageCount = async () => {
-  const metadata = await datoCMSRequest({
+  const metadata = await request<PaginationQuery>({
     query: PAGINATION_QUERY
   })
 

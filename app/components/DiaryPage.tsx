@@ -2,15 +2,27 @@ import Main from '@components/Main'
 import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
-import {parseDate, request as datoCMSRequest} from '@lib/datocms'
+import {parseDate, request} from '@lib/datocms'
 import {entryCountToPageCount} from '@lib/diary'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
 
 import type {DiaryPage} from './DiaryPage.d'
 import styles from './DiaryPage.module.sass'
 
+interface DiaryEntriesPageQuery {
+  allDiaryEntries: {
+    id: string
+    date: string
+    place: string
+    text: string
+  }[],
+  _allDiaryEntriesMeta: {
+    count: number
+  }
+}
+
 const QUERY = `
-query DiaryEntries($skip: IntType!) {
+query DiaryEntriesPage($skip: IntType!) {
   allDiaryEntries(orderBy: date_DESC, skip: $skip, first: "5") {
     id
     date
@@ -25,7 +37,7 @@ query DiaryEntries($skip: IntType!) {
 
 const getData = async ({page}) => {
   const skip = (page - 1) * 5
-  return await datoCMSRequest({
+  return await request<DiaryEntriesPageQuery>({
     query: QUERY,
     variables: {skip}
   })
