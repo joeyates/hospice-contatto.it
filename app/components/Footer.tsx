@@ -3,7 +3,7 @@ import Link from 'next/link'
 import {fetchInfo} from '@lib/info'
 import styles from './Footer.module.sass'
 
-const Footer = async () => {
+const Footer = async (): Promise<JSX.Element> => {
   const info = await fetchInfo()
   return (
     <div className={styles.footer}>
