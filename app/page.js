@@ -26,13 +26,13 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title={page.home.title}/>
+      <Title title={page.home.title} />
       <h2 className={styles.subtitle}>{page.home.subtitle}</h2>
-      <Link href="/come-sostenerci">
+      <Link href='/come-sostenerci'>
         <div className={styles.cta}>Sostienici</div>
       </Link>
       <div className={styles['body-wrap']}>
-        <Body data={page.home.body}/>
+        <Body data={page.home.body} />
       </div>
     </Main>
   )

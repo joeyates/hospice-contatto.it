@@ -28,7 +28,7 @@ const getData = async ({page}) => {
   })
 }
 
-const pageToPath = page => page === 1 ? '/diario' : `/diario/${page}`
+const pageToPath = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
 const DiaryPage = async ({page}) => {
   const pages = await getData({page})
@@ -36,21 +36,21 @@ const DiaryPage = async ({page}) => {
   const count = entryCountToPageCount(entries)
   return (
     <Main>
-      <Title title={`Diario - pagina ${page}`}/>
+      <Title title={`Diario - pagina ${page}`} />
       <ul className={styles.entries}>
         {pages.allDiaryEntries.map(e => {
           const date = formatDateWithOptionalTime(parseDate(e.date))
           return (
             <li key={`entry-${e.id}`} className={styles.entry}>
               <div className={styles.title}>
-                {`${date}${e.place !== "" && ` — ${e.place}` || ''}`}
+                {`${date}${(e.place !== '' && ` — ${e.place}`) || ''}`}
               </div>
               <div>{e.text}</div>
             </li>
           )
         })}
       </ul>
-      <Pagination current={page} count={count} linkBuilder={pageToPath}/>
+      <Pagination current={page} count={count} linkBuilder={pageToPath} />
     </Main>
   )
 }

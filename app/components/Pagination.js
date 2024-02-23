@@ -14,12 +14,12 @@ const pageRange = (current, pageCount, pageLinkCount) => {
 }
 
 const PageLink = ({page, linkBuilder}) => (
-  <Link className={styles.page} href={linkBuilder(page)}>{page}</Link>
+  <Link className={styles.page} href={linkBuilder(page)}>
+    {page}
+  </Link>
 )
 
-const CurrentPage = ({ page }) => (
-  <div className={styles.pageCurrent}>{page}</div>
-)
+const CurrentPage = ({page}) => <div className={styles.pageCurrent}>{page}</div>
 
 const Page = ({index, current, linkBuilder}) => {
   if (index === current) {
@@ -48,22 +48,28 @@ const LastPage = ({linkBuilder, current, count}) => {
   if (current < count) {
     last = <Link href={linkBuilder(count)}>{lastLabel}&gt;|</Link>
     klass = styles.buttonLast
-  }
-  else {
+  } else {
     last = <div>{lastLabel}&gt;|</div>
     klass = styles.buttonLastDisabled
   }
   return <div className={klass}>{last}</div>
 }
 
-const Pagination = ({ current, count, linkBuilder }) => {
+const Pagination = ({current, count, linkBuilder}) => {
   current = parseInt(current)
   count = parseInt(count)
   const pages = pageRange(current, count, 5)
   return (
     <div className={styles.pagination}>
       <FirstPage current={current} linkBuilder={linkBuilder} />
-      {pages.map((page, i) => <Page key={i} index={page} current={current} linkBuilder={linkBuilder} />)}
+      {pages.map((page, i) => (
+        <Page
+          key={i}
+          index={page}
+          current={current}
+          linkBuilder={linkBuilder}
+        />
+      ))}
       <LastPage linkBuilder={linkBuilder} current={current} count={count} />
     </div>
   )

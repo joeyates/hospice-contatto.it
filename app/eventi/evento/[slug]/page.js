@@ -33,7 +33,7 @@ query Event($slug: String!) {
 }
 `
 
-const getData = async (slug) => {
+const getData = async slug => {
   return await datoCMSRequest({
     query: QUERY,
     variables: {slug}
@@ -47,11 +47,14 @@ const Page = async ({params: {slug}}) => {
 
   return (
     <Main>
-      <Title title={page.event.title}/>
+      <Title title={page.event.title} />
       <p className={styles.date}>{formatDate(date)}</p>
-      <Body data={page.event.body}/>
+      <Body data={page.event.body} />
       <div className={styles['image-wrap']}>
-        <img alt={page.event.image.responsiveImage.alt} {...page.event.image.responsiveImage}/>
+        <img
+          alt={page.event.image.responsiveImage.alt}
+          {...page.event.image.responsiveImage}
+        />
       </div>
     </Main>
   )

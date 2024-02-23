@@ -22,7 +22,7 @@ query PastEvents($now: Date!) {
 `
 
 const getData = async () => {
-  const date = new Date
+  const date = new Date()
   const now = isoDate(date)
   return await datoCMSRequest({
     query: QUERY,
@@ -35,15 +35,17 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title="Eventi passati"/>
-      <EventList events={page.allEvents}/>
+      <Title title='Eventi passati' />
+      <EventList events={page.allEvents} />
     </Main>
   )
 }
 
 const generateMetadata = createMetadata(async () => {
   const page = await getData()
-  const images = page.allEvents.map(e => toOpenGraphImage(e.image.responsiveImage))
+  const images = page.allEvents.map(e =>
+    toOpenGraphImage(e.image.responsiveImage)
+  )
 
   return {
     images,

@@ -3,8 +3,8 @@ import Link from 'next/link'
 import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import { isoDate, request as datoCMSRequest } from '@lib/datocms'
-import { createMetadata } from '@lib/info'
+import {isoDate, request as datoCMSRequest} from '@lib/datocms'
+import {createMetadata} from '@lib/info'
 import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
@@ -16,18 +16,18 @@ query Events($now: Date!) {
     slug
     title
     image {
-      ${fragment({ width: 200 })}
+      ${fragment({width: 200})}
     }
   }
 }
 `
 
 const getData = async () => {
-  const date = new Date
+  const date = new Date()
   const now = isoDate(date)
   return await datoCMSRequest({
     query: QUERY,
-    variables: { now }
+    variables: {now}
   })
 }
 
@@ -36,10 +36,10 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title="Eventi" />
+      <Title title='Eventi' />
       <EventList events={page.futureEvents} />
       <div className={styles['past-events']}>
-        <Link href="/eventi/passati">Eventi passati -&gt;</Link>
+        <Link href='/eventi/passati'>Eventi passati -&gt;</Link>
       </div>
     </Main>
   )
@@ -47,7 +47,9 @@ const Page = async () => {
 
 const generateMetadata = createMetadata(async () => {
   const page = await getData()
-  const images = page.futureEvents.map(e => toOpenGraphImage(e.image.responsiveImage))
+  const images = page.futureEvents.map(e =>
+    toOpenGraphImage(e.image.responsiveImage)
+  )
 
   return {
     images,
@@ -55,5 +57,5 @@ const generateMetadata = createMetadata(async () => {
   }
 })
 
-export { generateMetadata }
+export {generateMetadata}
 export default Page

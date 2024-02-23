@@ -14,7 +14,7 @@ const EventList = ({events}) => (
             <div className={styles.date}>{formatDate(parseDate(e.date))}</div>
             <div className={styles.title}>{e.title}</div>
           </div>
-          <img alt={e.image.responsiveImage.alt} {...e.image.responsiveImage}/>
+          <img alt={e.image.responsiveImage.alt} {...e.image.responsiveImage} />
         </Link>
       </li>
     ))}

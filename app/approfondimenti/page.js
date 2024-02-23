@@ -27,11 +27,14 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title="Approfondimenti"/>
+      <Title title='Approfondimenti' />
       <ul className={styles.details}>
         {pages.allDetails.map(d => (
           <li className={styles.detail} key={`detail-${d.id}`}>
-            <Link className={styles['detail-inner']} href={`/approfondimenti/${d.slug}`}>
+            <Link
+              className={styles['detail-inner']}
+              href={`/approfondimenti/${d.slug}`}
+            >
               <div className={styles.text}>
                 <div className={styles.title}>{d.title}</div>
               </div>

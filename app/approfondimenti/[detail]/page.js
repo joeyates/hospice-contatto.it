@@ -26,7 +26,7 @@ query Detail($slug: String!) {
 }
 `
 
-const getData = async (slug) => {
+const getData = async slug => {
   return await datoCMSRequest({
     query: QUERY,
     variables: {slug}
@@ -38,8 +38,8 @@ const Page = async ({params: {detail}}) => {
 
   return (
     <Main>
-      <Title title={page.detail.title}/>
-      <Body data={page.detail.body}/>
+      <Title title={page.detail.title} />
+      <Body data={page.detail.body} />
     </Main>
   )
 }
@@ -55,9 +55,7 @@ const generateStaticParams = async () => {
     query: DETAILS_QUERY
   })
 
-  return details.allDetails.map(e => (
-    {detail: e.slug}
-  ))
+  return details.allDetails.map(e => ({detail: e.slug}))
 }
 
 export {generateMetadata}

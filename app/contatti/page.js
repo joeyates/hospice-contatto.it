@@ -31,9 +31,9 @@ const Page = async () => {
 
   return (
     <Main>
-      <Title title={page.contact.title}/>
-      <Body data={page.contact.body}/>
-      <Attachments attachments={page.contact.attachments}/>
+      <Title title={page.contact.title} />
+      <Body data={page.contact.body} />
+      <Attachments attachments={page.contact.attachments} />
     </Main>
   )
 }

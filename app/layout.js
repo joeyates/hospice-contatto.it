@@ -9,11 +9,11 @@ import styles from './layout.module.sass'
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
 const RootLayout = ({children}) => (
-  <html lang="it" className={`${ubuntuFont.className} ${styles.html}`}>
+  <html lang='it' className={`${ubuntuFont.className} ${styles.html}`}>
     <body className={styles.body}>
-      <Nav/>
+      <Nav />
       {children}
-      <Footer/>
+      <Footer />
     </body>
   </html>
 )
