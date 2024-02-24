@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import {StructuredText, type RenderRecordLinkContext, RenderBlockContext} from 'react-datocms'
+import {StructuredText, type RenderRecordLinkContext, type RenderBlockContext} from 'react-datocms'
 
 import styles from './Body.module.sass'
 
