@@ -1,11 +1,14 @@
-import Link from 'next/link'
-
 import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {isoDate, request as datoCMSRequest} from '@lib/datocms'
+import {isoDate, request} from '@lib/datocms'
+import {type EventListItem} from '@lib/event.d'
 import {createMetadata} from '@lib/info'
 import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+
+type PastEventsQuery = {
+  allEvents: EventListItem[]
+}
 
 const QUERY = `
 query PastEvents($now: Date!) {
@@ -24,7 +27,7 @@ query PastEvents($now: Date!) {
 const getData = async () => {
   const date = new Date()
   const now = isoDate(date)
-  return await datoCMSRequest({
+  return await request<PastEventsQuery>({
     query: QUERY,
     variables: {now}
   })

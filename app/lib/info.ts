@@ -51,7 +51,7 @@ const metadataDefaults = async (): Promise<Metadata> => {
 
 const buildTitle = ({defaults, title}) => `${title} — ${defaults.title}`
 
-const buildMetadata = ({title, description, images}): NextMetadata => {
+const buildMetadata = ({title, description, images}: Metadata): NextMetadata => {
   return {
     title: title,
     description: description,

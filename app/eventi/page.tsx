@@ -3,10 +3,15 @@ import Link from 'next/link'
 import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {isoDate, request as datoCMSRequest} from '@lib/datocms'
+import {isoDate, request} from '@lib/datocms'
 import {createMetadata} from '@lib/info'
 import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {type EventListItem} from '@lib/event.d'
 import styles from './page.module.sass'
+
+type FutureEventsQuery = {
+  futureEvents: EventListItem[]
+}
 
 const QUERY = `
 query Events($now: Date!) {
@@ -25,7 +30,7 @@ query Events($now: Date!) {
 const getData = async () => {
   const date = new Date()
   const now = isoDate(date)
-  return await datoCMSRequest({
+  return await request<FutureEventsQuery>({
     query: QUERY,
     variables: {now}
   })
@@ -53,7 +58,8 @@ const generateMetadata = createMetadata(async () => {
 
   return {
     images,
-    title: 'Eventi'
+    title: 'Eventi',
+    foo: 'bar'
   }
 })
 

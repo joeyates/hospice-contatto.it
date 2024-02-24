@@ -1,4 +1,4 @@
-import {OpenGraphImage} from './responsiveImage.d'
+import {OpenGraphImage} from '@lib/responsiveImage.d'
 
 const EXTENSION_TO_MIME_TYPE = {
   gif: 'image/gif',
