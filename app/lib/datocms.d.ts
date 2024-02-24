@@ -12,3 +12,7 @@ export type request = <T>({
   includeDrafts?: boolean
   excludeInvalid?: boolean
 }) => Promise<T>
+
+export type RecordsMeta = {
+  count: number
+}
