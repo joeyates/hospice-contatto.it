@@ -2,10 +2,21 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
+import {type Attachment} from '@lib/attachment'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request as datoCMSRequest} from '@lib/datocms'
+import {type Body as BodyType} from '@lib/body.d'
+import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
+
+type ContactQuery = {
+  contact: {
+    id: string
+    title: string
+    body: BodyType
+    attachments: Attachment[]
+  }
+}
 
 const QUERY = `
 query {
@@ -23,7 +34,7 @@ query {
 `
 
 const getData = async () => {
-  return await datoCMSRequest({query: QUERY})
+  return await request<ContactQuery>({query: QUERY})
 }
 
 const Page = async () => {
