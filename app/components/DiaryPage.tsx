@@ -10,7 +10,7 @@ import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
 import type {DiaryPage} from './DiaryPage.d'
 import styles from './DiaryPage.module.sass'
 
-interface DiaryEntriesPageQuery {
+type DiaryEntriesPageQuery = {
   allDiaryEntries: DiaryEntry[]
   _allDiaryEntriesMeta: {
     count: number

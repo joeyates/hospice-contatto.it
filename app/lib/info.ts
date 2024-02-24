@@ -4,7 +4,7 @@ import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
 import {type ResponsiveImage} from './responsiveImage.d'
 import {type Metadata as NextMetadata} from 'next'
 
-interface InfoQuery {
+type InfoQuery = {
   info: {
     email: string
     name: string
