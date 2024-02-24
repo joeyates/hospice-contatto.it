@@ -4,8 +4,17 @@ import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request as datoCMSRequest} from '@lib/datocms'
+import {type Body as BodyType} from '@lib/body.d'
+import {request} from '@lib/datocms'
 import styles from './page.module.sass'
+
+type HomeQuery = {
+  home: {
+    body: BodyType
+    title: string
+    subtitle: string
+  }
+}
 
 const QUERY = `
 query {
@@ -18,7 +27,7 @@ query {
 `
 
 const getData = async () => {
-  return await datoCMSRequest({query: QUERY})
+  return await request<HomeQuery>({query: QUERY})
 }
 
 const Page = async () => {
