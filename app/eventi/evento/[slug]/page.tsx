@@ -14,7 +14,7 @@ import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
 type EventsQuery = {
-  allEvents: Array<EventUrlData>
+  allEvents: EventUrlData[]
 }
 
 const EVENTS_QUERY = `
