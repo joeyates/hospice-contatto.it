@@ -2,10 +2,20 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
+import { type Attachment} from '@lib/attachment'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request as datoCMSRequest} from '@lib/datocms'
+import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
+
+type GiveSupportQuery = {
+  giveSupport: {
+    id: string
+    title: string
+    body: any
+    attachments: Attachment[]
+  }
+}
 
 const QUERY = `
 query {
@@ -23,7 +33,7 @@ query {
 `
 
 const getData = async () => {
-  return await datoCMSRequest({query: QUERY})
+  return await request<GiveSupportQuery>({query: QUERY})
 }
 
 const Page = async () => {
