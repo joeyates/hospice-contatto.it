@@ -6,8 +6,12 @@ import {useEffect, useState} from 'react'
 
 import styles from './Nav.module.sass'
 
+const isCurrent = (path: string, current: string) => {
+  return path == current
+}
+
 const linkClass = (path: string, current: string) => {
-  if (path == current) {
+  if (isCurrent(path, current)) {
     return styles['current-item']
   } else {
     return styles.item
@@ -35,9 +39,11 @@ const Logo = () => (
   </div>
 )
 
-const Item = ({path, current, label}) => (
+type MenuCloser = () => void
+
+const Item = ({path, current, label, closeMenu}: {path: string, current: string, label: string, closeMenu: MenuCloser}) => (
   <li className={linkClass(path, current)}>
-    <Link href={path}>{label}</Link>
+    <Link href={path} onClick={isCurrent(path, current) ? closeMenu : null}>{label}</Link>
   </li>
 )
 
@@ -77,6 +83,10 @@ const Nav = (): JSX.Element => {
     }
   }
 
+  const closeMenu = () => {
+    setChecked(false)
+  }
+
   return (
     <Hamburger checked={checked} handleChange={handleChange}>
       <Link href='/'>
@@ -84,13 +94,13 @@ const Nav = (): JSX.Element => {
       </Link>
 
       <ul className={styles.menu}>
-        <Item path='/' current={current} label='Home' />
-        <Item path='/chi-siamo' current={current} label='Chi siamo' />
-        <Item path='/eventi' current={current} label='Eventi' />
-        <Item path='/diario' current={current} label='Diario' />
-        <Item path='/approfondimenti' current={current} label='Approfondimenti' />
-        <Item path='/come-sostenerci' current={current} label='Come sostenerci' />
-        <Item path='/contatti' current={current} label='Contatti' />
+        <Item path='/' current={current} label='Home' closeMenu={closeMenu} />
+        <Item path='/chi-siamo' current={current} label='Chi siamo' closeMenu={closeMenu} />
+        <Item path='/eventi' current={current} label='Eventi' closeMenu={closeMenu} />
+        <Item path='/diario' current={current} label='Diario' closeMenu={closeMenu} />
+        <Item path='/approfondimenti' current={current} label='Approfondimenti' closeMenu={closeMenu} />
+        <Item path='/come-sostenerci' current={current} label='Come sostenerci' closeMenu={closeMenu} />
+        <Item path='/contatti' current={current} label='Contatti' closeMenu={closeMenu} />
       </ul>
     </Hamburger>
   )
