@@ -3,6 +3,7 @@ import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
 import {parseDate, request} from '@lib/datocms'
+import {type RecordsMeta} from '@lib/datocms.d'
 import {entryCountToPageCount, PAGE_SIZE} from '@lib/diary'
 import {type DiaryEntry} from '@lib/diary.d'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
@@ -12,9 +13,7 @@ import styles from './DiaryPage.module.sass'
 
 type DiaryEntriesPageQuery = {
   allDiaryEntries: DiaryEntry[]
-  _allDiaryEntriesMeta: {
-    count: number
-  }
+  _allDiaryEntriesMeta: RecordsMeta
 }
 
 const QUERY = `
