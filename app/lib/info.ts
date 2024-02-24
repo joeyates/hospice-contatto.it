@@ -67,7 +67,7 @@ const buildMetadata = ({title, description, images}: Metadata): NextMetadata => 
 Build an async function to return metadata build from
 the combination of DatoCMS defaults and the supplied overrides
 */
-const createMetadata = (build: MetadataFetcher): ((props: Props, parent) => Promise<NextMetadata>) => {
+const createMetadata = (build?: MetadataFetcher): ((props: Props, parent) => Promise<NextMetadata>) => {
   return async (props, _parent) => {
     const defaults = await metadataDefaults()
     const overrides = build ? await build({defaults, props}) : {}
