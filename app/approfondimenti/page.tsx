@@ -3,9 +3,19 @@ import Link from 'next/link'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request as datoCMSRequest} from '@lib/datocms'
+import {type Body} from '@lib/body.d'
+import {request} from '@lib/datocms'
 import {createMetadata} from '@lib/info'
 import styles from './page.module.sass'
+
+type AllDetailsQuery = {
+  allDetails: {
+    id: string
+    body: Body
+    slug: string
+    title: string
+  }[]
+}
 
 const QUERY = `
 query {
@@ -19,7 +29,7 @@ query {
 `
 
 const getData = async () => {
-  return await datoCMSRequest({query: QUERY})
+  return await request<AllDetailsQuery>({query: QUERY})
 }
 
 const Page = async () => {
