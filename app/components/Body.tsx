@@ -3,31 +3,21 @@
 import Image from 'next/image'
 import {StructuredText, type RenderRecordLinkContext, type RenderBlockContext} from 'react-datocms'
 
+import {type Image as ImageType} from '@lib/datocms.d'
+import {type DetailRecord} from '@lib/detail.d'
 import styles from './Body.module.sass'
 
 type ImageRecord = {
   id: string
   __typename: 'ImageRecord'
-  image: {
-    alt: string
-    src: string
-    title: string
-    width: number
-    height: number
-  }
+  image: ImageType
   caption: string
 }
 
 type LargeImageRecord = {
   id: string
   __typename: 'LargeImageRecord'
-  image: {
-    alt: string
-    src: string
-    title: string
-    width: number
-    height: number
-  }
+  image: ImageType
   caption: string
 }
 
@@ -56,12 +46,6 @@ const renderBlock = ({record}: RenderBlockContext<AnyImageRecord>) => {
   }
 }
 
-type DetailRecord = {
-  id: string
-  __typename: 'DetailRecord'
-  slug: string
-}
-
 const renderLinkToRecord = ({record, children, transformedMeta}: RenderRecordLinkContext<DetailRecord>) => {
   switch (record.__typename) {
     case 'DetailRecord':
@@ -70,8 +54,6 @@ const renderLinkToRecord = ({record, children, transformedMeta}: RenderRecordLin
           {children}
         </a>
       )
-    default:
-      throw `Unrecognised block type ${record.__typename}`
   }
 }
 

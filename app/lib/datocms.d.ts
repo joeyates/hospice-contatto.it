@@ -13,6 +13,14 @@ export type request = <T>({
   excludeInvalid?: boolean
 }) => Promise<T>
 
+export type Image = {
+  alt: string
+  src: string
+  title: string
+  width: number
+  height: number
+}
+
 export type RecordsMeta = {
   count: number
 }
