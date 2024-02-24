@@ -6,13 +6,16 @@ export interface EventUrlData {
   slug: string
 }
 
-export interface Event extends EventUrlData {
+export interface EventListItem extends EventUrlData {
   id?: string
-  body: Body
   date: string
   description: string
   image: {
     responsiveImage: ResponsiveImage
   }
   title: string
+}
+
+export interface Event extends EventListItem {
+  body?: Body
 }
