@@ -63,7 +63,7 @@ const DiaryPage: DiaryPage = async ({page}) => {
       <ul className={styles.entries}>
         {pages.allDiaryEntries.map(e => <Entry key={`entry-${e.id}`} {...e} />)}
       </ul>
-      <Pagination currentPage={currentPage} pageCount={count} linkBuilder={pageToPath} />
+      <Pagination currentPage={currentPage} pageCount={count} linkBuilder={pageToPath} perPage={PAGE_SIZE} />
     </Main>
   )
 }

@@ -56,8 +56,8 @@ const LastPage = ({current, count, linkBuilder}: {current: number, count: number
   return <div className={klass}>{last}</div>
 }
 
-const Pagination: PaginationElement = ({currentPage, pageCount, linkBuilder}) => {
-  const pages = pageRange(currentPage, pageCount, 5)
+const Pagination: PaginationElement = ({currentPage, pageCount, linkBuilder, perPage = 5}) => {
+  const pages = pageRange(currentPage, pageCount, perPage)
   return (
     <div className={styles.pagination}>
       <FirstPage current={currentPage} linkBuilder={linkBuilder} />

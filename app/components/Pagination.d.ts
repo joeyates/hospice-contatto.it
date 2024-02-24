@@ -7,5 +7,6 @@ export type PaginationElement = ({
 }: {
   currentPage: number
   pageCount: number
-  linkBuilder: LinkBuilder
+  linkBuilder: LinkBuilder,
+  perPage?: number
 }) => JSX.Element
