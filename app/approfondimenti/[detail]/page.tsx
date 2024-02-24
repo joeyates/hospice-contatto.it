@@ -2,9 +2,17 @@ import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request as datoCMSRequest} from '@lib/datocms'
+import {type Body as BodyType} from '@lib/body.d'
+import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
+
+type AllDetailsQuery = {
+  allDetails: {
+    id: string
+    slug: string
+  }[]
+}
 
 const DETAILS_QUERY = `
 query {
@@ -14,6 +22,15 @@ query {
   }
 }
 `
+
+type DetailQuery = {
+  detail: {
+    id: string
+    body: BodyType
+    slug: string
+    title: string
+  }
+}
 
 const QUERY = `
 query Detail($slug: String!) {
@@ -27,7 +44,7 @@ query Detail($slug: String!) {
 `
 
 const getData = async slug => {
-  return await datoCMSRequest({
+  return await request<DetailQuery>({
     query: QUERY,
     variables: {slug}
   })
@@ -51,7 +68,7 @@ const generateMetadata = createMetadata(async ({defaults, props}) => {
 })
 
 const generateStaticParams = async () => {
-  const details = await datoCMSRequest({
+  const details = await request<AllDetailsQuery>({
     query: DETAILS_QUERY
   })
 
