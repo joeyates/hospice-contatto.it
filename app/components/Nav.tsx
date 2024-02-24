@@ -37,9 +37,7 @@ const Logo = () => (
 
 const Item = ({path, current, label}) => (
   <li className={linkClass(path, current)}>
-    <Link href={path}>
-      {label}
-    </Link>
+    <Link href={path}>{label}</Link>
   </li>
 )
 
@@ -87,36 +85,12 @@ const Nav = (): JSX.Element => {
 
       <ul className={styles.menu}>
         <Item path='/' current={current} label='Home' />
-        <Item
-          path='/chi-siamo'
-          current={current}
-          label='Chi siamo'
-        />
-        <Item
-          path='/eventi'
-          current={current}
-          label='Eventi'
-        />
-        <Item
-          path='/diario'
-          current={current}
-          label='Diario'
-        />
-        <Item
-          path='/approfondimenti'
-          current={current}
-          label='Approfondimenti'
-        />
-        <Item
-          path='/come-sostenerci'
-          current={current}
-          label='Come sostenerci'
-        />
-        <Item
-          path='/contatti'
-          current={current}
-          label='Contatti'
-        />
+        <Item path='/chi-siamo' current={current} label='Chi siamo' />
+        <Item path='/eventi' current={current} label='Eventi' />
+        <Item path='/diario' current={current} label='Diario' />
+        <Item path='/approfondimenti' current={current} label='Approfondimenti' />
+        <Item path='/come-sostenerci' current={current} label='Come sostenerci' />
+        <Item path='/contatti' current={current} label='Contatti' />
       </ul>
     </Hamburger>
   )
