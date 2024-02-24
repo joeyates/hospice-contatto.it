@@ -3,18 +3,13 @@ import Link from 'next/link'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {type Body} from '@lib/body.d'
 import {request} from '@lib/datocms'
+import {type Detail} from '@lib/detail.d'
 import {createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 type AllDetailsQuery = {
-  allDetails: {
-    id: string
-    body: Body
-    slug: string
-    title: string
-  }[]
+  allDetails: Detail[]
 }
 
 const QUERY = `

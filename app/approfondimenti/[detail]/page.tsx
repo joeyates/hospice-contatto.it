@@ -4,14 +4,12 @@ import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {type Body as BodyType} from '@lib/body.d'
 import {request} from '@lib/datocms'
+import {type DetailUrlData, type Detail} from '@lib/detail.d'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 type AllDetailsQuery = {
-  allDetails: {
-    id: string
-    slug: string
-  }[]
+  allDetails: DetailUrlData[]
 }
 
 const DETAILS_QUERY = `
@@ -24,12 +22,7 @@ query {
 `
 
 type DetailQuery = {
-  detail: {
-    id: string
-    body: BodyType
-    slug: string
-    title: string
-  }
+  detail: Detail
 }
 
 const QUERY = `
@@ -43,7 +36,7 @@ query Detail($slug: String!) {
 }
 `
 
-const getData = async slug => {
+const getData = async (slug: string) => {
   return await request<DetailQuery>({
     query: QUERY,
     variables: {slug}
