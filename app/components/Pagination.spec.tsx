@@ -85,4 +85,38 @@ describe('Pagination', async () => {
       expect(anchor).toBeDefined()
     })
   })
+
+  describe('when the current page is not the last', {}, () => {
+    it('links to the last page', () => {
+      render(
+        <Pagination
+          currentPage={2}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const last = screen.getByRole('last')
+
+      const anchor = last.querySelector('a')
+      expect(anchor).toBeDefined()
+    })
+  })
+
+  describe('when the current page is the last', {}, () => {
+    it('links to the last page', () => {
+      render(
+        <Pagination
+          currentPage={20}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const last = screen.getByRole('last')
+
+      const anchor = last.querySelector('a')
+      expect(anchor).toEqual(null)
+    })
+  })
 })
