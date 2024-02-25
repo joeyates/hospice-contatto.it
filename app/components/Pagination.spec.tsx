@@ -21,6 +21,40 @@ describe('Pagination', async () => {
     expect(pages.length).toEqual(5)
   })
 
+  describe('when the current page is in the middle', {}, () => {
+    it('shows the pages around the current page', () => {
+      render(
+        <Pagination
+          currentPage={12}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const pages = screen.getAllByText(/\d/)
+
+      const content = pages.map(p => p.textContent)
+      expect(content).toEqual(['10', '11', '12', '13', '14'])
+    })
+  })
+
+  describe('when the current page is at the end', {}, () => {
+    it('shows the last pages', () => {
+      render(
+        <Pagination
+          currentPage={20}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const pages = screen.getAllByText(/\d/)
+
+      const content = pages.map(p => p.textContent)
+      expect(content).toEqual(['16', '17', '18', '19', '20'])
+    })
+  })
+
   describe('when there are less pages than required per page', () => {
     it('shows that number of pages', () => {
       render(
@@ -52,6 +86,20 @@ describe('Pagination', async () => {
     expect(firstPage.href).toMatch('/pages')
     const secondPage = pages[1] as HTMLAnchorElement
     expect(secondPage.href).toMatch('/pages/2')
+  })
+
+  it("doesn't link to the current page", () => {
+    render(
+      <Pagination
+        currentPage={3}
+        pageCount={20}
+        perPage={5}
+        linkBuilder={link}
+      />
+    )
+
+    const pages = screen.getAllByText(/\d/)
+    expect(pages[2]).toBeInstanceOf(HTMLDivElement)
   })
 
   describe('when the current page is the first', () => {
