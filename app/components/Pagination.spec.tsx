@@ -21,18 +21,53 @@ describe('Pagination', async () => {
     expect(pages.length).toEqual(5)
   })
 
-  it('when the current page is not the first, Pagination links to the first page', () => {
-    render(
-      <Pagination
-        currentPage={2}
-        pageCount={20}
-        perPage={5}
-        linkBuilder={link}
-      />
-    )
-    const first = screen.getByRole('first')
+  describe('when there are less pages than required per page', () => {
+    it('shows that number of pages', () => {
+      render(
+        <Pagination
+          currentPage={1}
+          pageCount={4}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const pages = screen.getAllByRole('page')
 
-    const anchor = first.querySelector('a')
-    expect(anchor).toBeDefined()
+      expect(pages.length).toEqual(4)
+    })
+  })
+
+  describe('when the current page is not the first', () => {
+    it('links to the first page', () => {
+      render(
+        <Pagination
+          currentPage={2}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const first = screen.getByRole('first')
+
+      const anchor = first.querySelector('a')
+      expect(anchor).toBeDefined()
+    })
+  })
+
+  describe('when the current page is the first', () => {
+    it('links to the first page', () => {
+      render(
+        <Pagination
+          currentPage={1}
+          pageCount={20}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const first = screen.getByRole('first')
+
+      const anchor = first.querySelector('a')
+      expect(anchor).toEqual(null)
+    })
   })
 })
