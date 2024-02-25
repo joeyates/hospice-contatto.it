@@ -20,7 +20,9 @@ const PageLink = ({page, linkBuilder}: {page: number, linkBuilder: LinkBuilder})
   </Link>
 )
 
-const CurrentPage = ({page}: {page: number}) => <div className={styles.pageCurrent}>{page}</div>
+const CurrentPage = ({page}: {page: number}) => (
+  <div className={styles.pageCurrent}>{page}</div>
+)
 
 const Page = ({index, current, linkBuilder}: {index: number, current: number, linkBuilder: LinkBuilder}) => {
   if (index === current) {
@@ -40,7 +42,7 @@ const FirstPage = ({current, linkBuilder}: {current: number, linkBuilder: LinkBu
     first = <div>|&lt;{firstLabel}</div>
     klass = styles.buttonFirstDisabled
   }
-  return <div className={klass}>{first}</div>
+  return <div className={klass} role='first'>{first}</div>
 }
 
 const LastPage = ({current, count, linkBuilder}: {current: number, count: number, linkBuilder: LinkBuilder}) => {
@@ -53,7 +55,7 @@ const LastPage = ({current, count, linkBuilder}: {current: number, count: number
     last = <div>{lastLabel}&gt;|</div>
     klass = styles.buttonLastDisabled
   }
-  return <div className={klass}>{last}</div>
+  return <div className={klass} role='last'>{last}</div>
 }
 
 const Pagination: PaginationElement = ({currentPage, pageCount, linkBuilder, perPage = 5}) => {
