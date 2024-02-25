@@ -16,7 +16,7 @@ describe('Pagination', async () => {
         linkBuilder={link}
       />
     )
-    const pages = screen.getAllByRole('page')
+    const pages = screen.getAllByText(/\d/)
 
     expect(pages.length).toEqual(5)
   })
@@ -31,7 +31,7 @@ describe('Pagination', async () => {
           linkBuilder={link}
         />
       )
-      const pages = screen.getAllByRole('page')
+      const pages = screen.getAllByText(/\d/)
 
       expect(pages.length).toEqual(4)
     })
@@ -47,9 +47,11 @@ describe('Pagination', async () => {
       />
     )
 
-    const pages = screen.getAllByRole('page') as HTMLAnchorElement[]
-    expect(pages[0].href).toMatch('/pages')
-    expect(pages[1].href).toMatch('/pages/2')
+    const pages = screen.getAllByText(/\d/)
+    const firstPage = pages[0] as HTMLAnchorElement
+    expect(firstPage.href).toMatch('/pages')
+    const secondPage = pages[1] as HTMLAnchorElement
+    expect(secondPage.href).toMatch('/pages/2')
   })
 
   describe('when the current page is the first', () => {

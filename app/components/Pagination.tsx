@@ -15,12 +15,14 @@ const pageRange = (current: number, pageCount: number, pageLinkCount: number): n
 }
 
 const PageLink = ({page, linkBuilder}: {page: number, linkBuilder: LinkBuilder}) => (
-  <Link className={styles.page} href={linkBuilder(page)} role='page'>
+  <Link className={styles.page} href={linkBuilder(page)}>
     {page}
   </Link>
 )
 
-const CurrentPage = ({page}: {page: number}) => <div className={styles.pageCurrent} role='page'>{page}</div>
+const CurrentPage = ({page}: {page: number}) => (
+  <div className={styles.pageCurrent}>{page}</div>
+)
 
 const Page = ({index, current, linkBuilder}: {index: number, current: number, linkBuilder: LinkBuilder}) => {
   if (index === current) {
