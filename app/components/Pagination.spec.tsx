@@ -4,7 +4,7 @@ import {render, screen} from '@testing-library/react'
 import Pagination from './Pagination'
 import {LinkBuilder} from './Pagination.d'
 
-const link: LinkBuilder = page => `/pages/${1}`
+const link: LinkBuilder = page => page == 1 ? '/pages' : `/pages/${page}`
 
 describe('Pagination', async () => {
   it('shows pages', () => {
@@ -19,6 +19,21 @@ describe('Pagination', async () => {
     const pages = screen.getAllByRole('page')
 
     expect(pages.length).toEqual(5)
+  })
+
+  it('uses the link builder', () => {
+    render(
+      <Pagination
+        currentPage={3}
+        pageCount={20}
+        perPage={5}
+        linkBuilder={link}
+      />
+    )
+
+    const pages = screen.getAllByRole('page') as HTMLAnchorElement[]
+    expect(pages[0].href).toMatch('/pages')
+    expect(pages[1].href).toMatch('/pages/2')
   })
 
   describe('when there are less pages than required per page', () => {
