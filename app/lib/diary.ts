@@ -1,29 +1,32 @@
 import {request} from '@lib/datocms'
-import {type RecordsMeta} from '@lib/datocms.d'
+import {type DiaryMetadataQuery} from '@lib/diary.d'
 import {createMetadata as globalCreateMetadata} from '@lib/info'
-
-type DiaryPaginationQuery = {
-  _allDiaryEntriesMeta: RecordsMeta
-}
 
 const PAGE_SIZE = 5
 
-const PAGINATION_QUERY = `
-query DiaryMetadata {
+const metadataFragment = `
   _allDiaryEntriesMeta {
     count
   }
+`
+
+const METADATA_QUERY = `
+query DiaryMetadata {
+  ${metadataFragment}
 }
 `
 
 const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / PAGE_SIZE) + 1
 
 const pageCount = async () => {
-  const metadata = await request<DiaryPaginationQuery>({
-    query: PAGINATION_QUERY
+  const query = await request<DiaryMetadataQuery>({
+    query: METADATA_QUERY
   })
+  return extractPageCount(query)
+}
 
-  const entries = metadata._allDiaryEntriesMeta.count
+const extractPageCount = (query: DiaryMetadataQuery) => {
+  const entries = query._allDiaryEntriesMeta.count
   return entryCountToPageCount(entries)
 }
 
@@ -37,4 +40,4 @@ const createMetadata = () => {
   })
 }
 
-export {createMetadata, entryCountToPageCount, generateTitle, pageCount, PAGE_SIZE}
+export {createMetadata, extractPageCount, generateTitle, metadataFragment, pageCount, PAGE_SIZE}

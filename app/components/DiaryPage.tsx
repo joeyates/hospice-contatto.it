@@ -3,9 +3,8 @@ import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
 import {parseDate, request} from '@lib/datocms'
-import {type RecordsMeta} from '@lib/datocms.d'
-import {entryCountToPageCount, PAGE_SIZE} from '@lib/diary'
-import {type DiaryEntry} from '@lib/diary.d'
+import {extractPageCount, metadataFragment, PAGE_SIZE} from '@lib/diary'
+import {type DiaryEntry, type DiaryMetadataQuery} from '@lib/diary.d'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
 
 import type {DiaryPage} from './DiaryPage.d'
@@ -13,8 +12,9 @@ import styles from './DiaryPage.module.sass'
 
 type DiaryEntriesPageQuery = {
   allDiaryEntries: DiaryEntry[]
-  _allDiaryEntriesMeta: RecordsMeta
 }
+
+type DiaryEntriesAndPaginationQuery = DiaryEntriesPageQuery & DiaryMetadataQuery
 
 const QUERY = `
 query DiaryEntriesPage($skip: IntType!, $first: IntType!) {
@@ -24,15 +24,13 @@ query DiaryEntriesPage($skip: IntType!, $first: IntType!) {
     place
     text
   }
-  _allDiaryEntriesMeta {
-    count
-  }
+  ${metadataFragment}
 }
 `
 
 const getData = async ({page}) => {
   const skip = (page - 1) * PAGE_SIZE
-  return await request<DiaryEntriesPageQuery>({
+  return await request<DiaryEntriesAndPaginationQuery>({
     query: QUERY,
     variables: {skip, first: PAGE_SIZE}
   })
@@ -54,14 +52,13 @@ const Entry = ({date, place, text}) => {
 
 const DiaryPage: DiaryPage = async ({page}) => {
   const currentPage: number = parseInt(page)
-  const pages = await getData({page: currentPage})
-  const entries = pages._allDiaryEntriesMeta.count
-  const count = entryCountToPageCount(entries)
+  const query = await getData({page: currentPage})
+  const count = extractPageCount(query)
   return (
     <Main>
       <Title title={`Diario - pagina ${page}`} />
       <ul className={styles.entries}>
-        {pages.allDiaryEntries.map(e => <Entry key={`entry-${e.id}`} {...e} />)}
+        {query.allDiaryEntries.map(e => <Entry key={`entry-${e.id}`} {...e} />)}
       </ul>
       <Pagination currentPage={currentPage} pageCount={count} linkBuilder={pageToPath} perPage={PAGE_SIZE} />
     </Main>
