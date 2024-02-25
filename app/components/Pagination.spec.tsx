@@ -21,6 +21,22 @@ describe('Pagination', async () => {
     expect(pages.length).toEqual(5)
   })
 
+  describe('when there are less pages than required per page', () => {
+    it('shows that number of pages', () => {
+      render(
+        <Pagination
+          currentPage={1}
+          pageCount={4}
+          perPage={5}
+          linkBuilder={link}
+        />
+      )
+      const pages = screen.getAllByRole('page')
+
+      expect(pages.length).toEqual(4)
+    })
+  })
+
   it('uses the link builder', () => {
     render(
       <Pagination
@@ -36,19 +52,20 @@ describe('Pagination', async () => {
     expect(pages[1].href).toMatch('/pages/2')
   })
 
-  describe('when there are less pages than required per page', () => {
-    it('shows that number of pages', () => {
+  describe('when the current page is the first', () => {
+    it('links to the first page', () => {
       render(
         <Pagination
           currentPage={1}
-          pageCount={4}
+          pageCount={20}
           perPage={5}
           linkBuilder={link}
         />
       )
-      const pages = screen.getAllByRole('page')
+      const first = screen.getByRole('first')
 
-      expect(pages.length).toEqual(4)
+      const anchor = first.querySelector('a')
+      expect(anchor).toEqual(null)
     })
   })
 
@@ -66,23 +83,6 @@ describe('Pagination', async () => {
 
       const anchor = first.querySelector('a')
       expect(anchor).toBeDefined()
-    })
-  })
-
-  describe('when the current page is the first', () => {
-    it('links to the first page', () => {
-      render(
-        <Pagination
-          currentPage={1}
-          pageCount={20}
-          perPage={5}
-          linkBuilder={link}
-        />
-      )
-      const first = screen.getByRole('first')
-
-      const anchor = first.querySelector('a')
-      expect(anchor).toEqual(null)
     })
   })
 })
