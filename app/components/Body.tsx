@@ -8,7 +8,7 @@ import {
 } from 'react-datocms'
 
 import {type BodyBlock, type BodyStructuredText} from '@lib/body.d'
-import {type DetailRecord} from '@lib/detail.d'
+import {type RecordLink} from '@lib/datocms.d'
 import styles from './Body.module.sass'
 
 const renderBlock = ({record}: RenderBlockContext<BodyBlock>) => {
@@ -22,7 +22,7 @@ const renderBlock = ({record}: RenderBlockContext<BodyBlock>) => {
   )
 }
 
-const renderLinkToRecord = ({record, children, transformedMeta}: RenderRecordLinkContext<DetailRecord>) => {
+const renderLinkToRecord = ({record, children, transformedMeta}: RenderRecordLinkContext<RecordLink>) => {
   return (
     <a {...transformedMeta} href={`/approfondimenti/${record.slug}`}>
       {children}

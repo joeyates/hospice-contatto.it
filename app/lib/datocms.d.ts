@@ -25,6 +25,8 @@ export type Image = {
 
 /* This the minimal type for a link to a DatoCMS record */
 export type RecordLink = {
+  id: string
+  __typename: string
   slug: string
 }
 

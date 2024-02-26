@@ -1,11 +1,11 @@
 import {Document as StructuredTextDocument} from 'datocms-structured-text-utils'
 
-import {type Image as ImageType} from '@lib/datocms.d'
+import {type Image, type RecordLink} from '@lib/datocms.d'
 
 type ImageRecord = {
   id: string
   __typename: 'ImageRecord'
-  image: ImageType
+  image: Image
   priority: Boolean
   caption: string
 }
@@ -13,7 +13,7 @@ type ImageRecord = {
 type LargeImageRecord = {
   id: string
   __typename: 'LargeImageRecord'
-  image: ImageType
+  image: Image
   priority: Boolean
   caption: string
 }
