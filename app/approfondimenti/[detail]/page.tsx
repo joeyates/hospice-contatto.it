@@ -6,7 +6,6 @@ import {request} from '@lib/datocms'
 import {type RecordLink} from '@lib/datocms.d'
 import {type Detail} from '@lib/detail.d'
 import {buildTitle, createMetadata} from '@lib/info'
-import styles from './page.module.sass'
 
 type AllDetailsQuery = {
   allDetails: RecordLink[]

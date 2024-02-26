@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import styles from './Pagination.module.sass'
 import type {LinkBuilder, PaginationElement} from './Pagination.d'
+import styles from './Pagination.module.sass'
 
 const pageRange = (current: number, pageCount: number, pageLinkCount: number): number[] => {
   if (pageCount <= pageLinkCount) {

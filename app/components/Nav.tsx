@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useEffect, useState} from 'react'
-
 import styles from './Nav.module.sass'
 
 const isCurrent = (path: string, current: string) => {

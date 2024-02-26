@@ -7,7 +7,6 @@ import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {type BodyStructuredText} from '@lib/body.d'
 import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
-import styles from './page.module.sass'
 
 type GiveSupportQuery = {
   giveSupport: {
