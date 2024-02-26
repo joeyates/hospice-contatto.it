@@ -4,16 +4,12 @@ import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {type BodyStructuredText} from '@lib/body.d'
 import {request} from '@lib/datocms'
+import {type Home} from '@lib/home.d'
 import styles from './page.module.sass'
 
 type HomeQuery = {
-  home: {
-    body: BodyStructuredText
-    title: string
-    subtitle: string
-  }
+  home: Home
 }
 
 const QUERY = `

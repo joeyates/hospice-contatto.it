@@ -2,20 +2,15 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {type Attachment} from '@lib/attachment'
+import {type About} from '@lib/about.d'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {type BodyStructuredText} from '@/lib/body.d'
 import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 
 type AboutQuery = {
-  about: {
-    id: string
-    title: string
-    body: BodyStructuredText
-    attachments: Attachment[]
-  }
+  about: About
 }
+
 const QUERY = `
 query {
   about {
