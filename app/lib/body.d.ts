@@ -6,6 +6,7 @@ type ImageRecord = {
   id: string
   __typename: 'ImageRecord'
   image: ImageType
+  priority: Boolean
   caption: string
 }
 
@@ -13,6 +14,7 @@ type LargeImageRecord = {
   id: string
   __typename: 'LargeImageRecord'
   image: ImageType
+  priority: Boolean
   caption: string
 }
 

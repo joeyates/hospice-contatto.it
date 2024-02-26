@@ -14,6 +14,7 @@ const queryFragment = `
           width
           height
         }
+        priority
       }
       ... on LargeImageRecord {
         id
@@ -25,6 +26,7 @@ const queryFragment = `
           width
           height
         }
+        priority
       }
     }
     links {

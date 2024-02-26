@@ -12,7 +12,8 @@ import {type DetailRecord} from '@lib/detail.d'
 import styles from './Body.module.sass'
 
 const renderBlock = ({record}: RenderBlockContext<BodyBlock>) => {
-  const image = record.image.responsiveImage
+  const priority = !!record.priority
+  const image = {priority, ...record.image.responsiveImage}
   return (
     <div className={styles.image_with_caption}>
       <Image alt={image.alt} {...image} />
