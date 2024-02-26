@@ -42,7 +42,7 @@ const Logo = () => (
 type MenuCloser = () => void
 
 const Item = ({path, current, label, closeMenu}: {path: string, current: string, label: string, closeMenu: MenuCloser}) => (
-  <li className={linkClass(path, current)}>
+  <li className={linkClass(path, current)} role='menuitem'>
     <Link href={path} onClick={isCurrent(path, current) ? closeMenu : null}>{label}</Link>
   </li>
 )
