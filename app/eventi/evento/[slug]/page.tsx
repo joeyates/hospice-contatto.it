@@ -3,45 +3,24 @@ import Image from 'next/image'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {parseDate, request} from '@lib/datocms'
-import {datedSlug, datedSlugToSlug} from '@lib/event'
-import {type Event, type EventUrlData} from '@lib/event.d'
+import {datedSlug, datedSlugToSlug, eventRecordLinkFragment, eventFragment} from '@lib/event'
+import {type Event, type EventRecordLink} from '@lib/event.d'
 import {date as formatDate} from '@lib/format'
 import {buildTitle, createMetadata} from '@lib/info'
 import {type MetadataFetcher, type Props} from '@lib/info.d'
-import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
-type EventsQuery = {
-  allEvents: EventUrlData[]
-}
+type EventsQuery = {allEvents: EventRecordLink[]}
 
-const EVENTS_QUERY = `
-query {
-  allEvents {
-    id
-    date
-    slug
-  }
-}
-`
+const EVENTS_QUERY = `query { allEvents ${eventRecordLinkFragment} }`
 
-type EventQuery = {
-  event: Event
-}
+type EventQuery = {event: Event}
 
 const QUERY = `
 query Event($slug: String!) {
-  event(filter: {slug: {eq: $slug}}) {
-    id
-    date
-    title
-    image {
-      ${fragment({width: 600})}
-    }
-    ${bodyQueryFragment}
-  }
+  event(filter: {slug: {eq: $slug}}) ${eventFragment}
 }
 `
 

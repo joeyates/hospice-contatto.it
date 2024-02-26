@@ -1,36 +1,21 @@
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {request} from '@lib/datocms'
+import {request, recordLinkFragment} from '@lib/datocms'
 import {type RecordLink} from '@lib/datocms.d'
+import {detailFragment} from '@lib/detail'
 import {type Detail} from '@lib/detail.d'
 import {buildTitle, createMetadata} from '@lib/info'
 
-type AllDetailsQuery = {
-  allDetails: RecordLink[]
-}
+type AllDetailsQuery = {allDetails: RecordLink[]}
 
-const DETAILS_QUERY = `
-query {
-  allDetails {
-    slug
-  }
-}
-`
+const DETAILS_QUERY = `query { allDetails ${recordLinkFragment} }`
 
-type DetailQuery = {
-  detail: Detail
-}
+type DetailQuery = {detail: Detail}
 
 const QUERY = `
 query Detail($slug: String!) {
-  detail(filter: {slug: {eq: $slug}}) {
-    id
-    ${bodyQueryFragment}
-    slug
-    title
-  }
+  detail(filter: {slug: {eq: $slug}}) ${detailFragment}
 }
 `
 

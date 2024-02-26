@@ -29,7 +29,7 @@ const toOpenGraphImage = ({alt, height, src, title, width}): OpenGraphImage => {
   }
 }
 
-const fragment = ({width}) => (
+const responsiveImageFragment = ({width}) => (
   `
   responsiveImage(
     imgixParams: {fit: max, w: ${width}},
@@ -44,4 +44,4 @@ const fragment = ({width}) => (
   `
 )
 
-export {fragment, toOpenGraphImage}
+export {responsiveImageFragment, toOpenGraphImage}

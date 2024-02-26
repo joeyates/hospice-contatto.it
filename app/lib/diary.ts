@@ -1,22 +1,15 @@
-import {request} from '@lib/datocms'
-import {type DiaryMetadataQuery} from '@lib/diary.d'
+import {metadataFragment, request} from '@lib/datocms'
+import {type RecordsMeta} from '@lib/datocms.d'
 import {createMetadata as globalCreateMetadata} from '@lib/info'
 
 const PAGE_SIZE = 5
 
-const metadataFragment = `
-  _allDiaryEntriesMeta {
-    count
-  }
-`
+type DiaryMetadataQuery = {_allDiaryEntriesMeta: RecordsMeta}
 
-const METADATA_QUERY = `
-query DiaryMetadata {
-  ${metadataFragment}
-}
-`
+const METADATA_QUERY = `query DiaryMetadata { _allDiaryEntriesMeta ${metadataFragment} }`
 
-const entryCountToPageCount = (entries: number): number => Math.floor((entries - 1) / PAGE_SIZE) + 1
+const entryCountToPageCount = (entries: number): number =>
+  Math.floor((entries - 1) / PAGE_SIZE) + 1
 
 const pageCount = async () => {
   const query = await request<DiaryMetadataQuery>({
@@ -40,4 +33,21 @@ const createMetadata = () => {
   })
 }
 
-export {createMetadata, extractPageCount, generateTitle, metadataFragment, pageCount, PAGE_SIZE}
+const diaryEntryFragment = `
+{
+  id
+  date
+  place
+  text
+}
+`
+
+export {
+  createMetadata,
+  diaryEntryFragment,
+  extractPageCount,
+  generateTitle,
+  metadataFragment,
+  pageCount,
+  PAGE_SIZE
+}

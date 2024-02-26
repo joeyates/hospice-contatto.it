@@ -2,26 +2,15 @@ import Link from 'next/link'
 
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {queryFragment as bodyQueryFragment} from '@lib/body'
 import {request} from '@lib/datocms'
+import {detailFragment} from '@lib/detail'
 import {type Detail} from '@lib/detail.d'
 import {createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
-type AllDetailsQuery = {
-  allDetails: Detail[]
-}
+type AllDetailsQuery = {allDetails: Detail[]}
 
-const QUERY = `
-query {
-  allDetails {
-    id
-    slug
-    title
-    ${bodyQueryFragment}
-  }
-}
-`
+const QUERY = `query { allDetails ${detailFragment} }`
 
 const getData = async () => {
   return await request<AllDetailsQuery>({query: QUERY})

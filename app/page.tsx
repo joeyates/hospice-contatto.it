@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {queryFragment as bodyQueryFragment} from '@lib/body'
+import {bodyFragment} from '@lib/body'
 import {request} from '@lib/datocms'
 import {type Home} from '@lib/home.d'
 import styles from './page.module.sass'
@@ -17,7 +17,7 @@ query {
   home {
     title
     subtitle
-    ${bodyQueryFragment}
+    body ${bodyFragment}
   }
 }
 `

@@ -1,13 +1,13 @@
-import {fragment} from '@lib/responsiveImage'
+import {responsiveImageFragment} from '@lib/responsiveImage'
 
-const queryFragment = `
-  body {
+const bodyFragment = `
+  {
     blocks {
       __typename
       ... on ImageRecord {
         id
         image {
-          ${fragment({width: 200})}
+          ${responsiveImageFragment({width: 200})}
           alt
           src: url
           title
@@ -19,7 +19,7 @@ const queryFragment = `
       ... on LargeImageRecord {
         id
         image {
-          ${fragment({width: 700})}
+          ${responsiveImageFragment({width: 700})}
           alt
           src: url
           title
@@ -40,4 +40,4 @@ const queryFragment = `
   }
 `
 
-export {queryFragment}
+export {bodyFragment}

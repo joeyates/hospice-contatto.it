@@ -3,24 +3,15 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request} from '@lib/datocms'
 import {type EventListItem} from '@lib/event.d'
+import {eventListFragment} from '@lib/event'
 import {createMetadata} from '@lib/info'
-import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {toOpenGraphImage} from '@lib/responsiveImage'
 
-type PastEventsQuery = {
-  allEvents: EventListItem[]
-}
+type PastEventsQuery = {allEvents: EventListItem[]}
 
 const QUERY = `
 query PastEvents($now: Date!) {
-  allEvents(filter: {date: {lt: $now}}, orderBy: date_DESC) {
-    id
-    date
-    slug
-    title
-    image {
-      ${fragment({width: 200})}
-    }
-  }
+  allEvents(filter: {date: {lt: $now}}, orderBy: date_DESC) ${eventListFragment}
 }
 `
 

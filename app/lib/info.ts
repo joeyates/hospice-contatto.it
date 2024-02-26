@@ -1,6 +1,6 @@
 import {request} from '@lib/datocms'
 import {type Props, type Metadata, type MetadataFetcher} from '@lib/info.d'
-import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {responsiveImageFragment, toOpenGraphImage} from '@lib/responsiveImage'
 import {type ResponsiveImage} from './responsiveImage.d'
 import {type Metadata as NextMetadata} from 'next'
 
@@ -28,7 +28,7 @@ query {
     taxCode
     telephone
     defaultImage {
-      ${fragment({width: 600})}
+      ${responsiveImageFragment({width: 600})}
     }
   }
 }

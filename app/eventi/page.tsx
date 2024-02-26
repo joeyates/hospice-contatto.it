@@ -4,26 +4,17 @@ import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request} from '@lib/datocms'
+import {eventListFragment} from '@lib/event'
 import {createMetadata} from '@lib/info'
-import {fragment, toOpenGraphImage} from '@lib/responsiveImage'
+import {toOpenGraphImage} from '@lib/responsiveImage'
 import {type EventListItem} from '@lib/event.d'
 import styles from './page.module.sass'
 
-type FutureEventsQuery = {
-  futureEvents: EventListItem[]
-}
+type FutureEventsQuery = {futureEvents: EventListItem[]}
 
 const QUERY = `
 query Events($now: Date!) {
-  futureEvents: allEvents(filter: {date: {gte: $now}}, orderBy: date_DESC) {
-    id
-    date
-    slug
-    title
-    image {
-      ${fragment({width: 200})}
-    }
-  }
+  futureEvents: allEvents(filter: {date: {gte: $now}}, orderBy: date_DESC) ${eventListFragment}
 }
 `
 

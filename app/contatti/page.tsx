@@ -2,29 +2,14 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {queryFragment as bodyQueryFragment} from '@lib/body'
+import {contactFragment} from '@lib/contact'
 import {type Contact} from '@lib/contact.d'
 import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 
-type ContactQuery = {
-  contact: Contact
-}
+type ContactQuery = {contact: Contact}
 
-const QUERY = `
-query {
-  contact {
-    id
-    title
-    ${bodyQueryFragment}
-    attachments {
-      id
-      title
-      url
-    }
-  }
-}
-`
+const QUERY = `query { contact ${contactFragment} }`
 
 const getData = async () => {
   return await request<ContactQuery>({query: QUERY})

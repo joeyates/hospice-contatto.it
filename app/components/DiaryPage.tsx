@@ -2,29 +2,23 @@ import Main from '@components/Main'
 import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
-import {parseDate, request} from '@lib/datocms'
-import {extractPageCount, metadataFragment, PAGE_SIZE} from '@lib/diary'
-import {type DiaryEntry, type DiaryMetadataQuery} from '@lib/diary.d'
+import {metadataFragment, parseDate, request} from '@lib/datocms'
+import {type RecordsMeta} from '@lib/datocms.d'
+import {diaryEntryFragment, extractPageCount, PAGE_SIZE} from '@lib/diary'
+import {type DiaryEntry} from '@lib/diary.d'
 import {dateWithOptionalTime as formatDateWithOptionalTime} from '@lib/format'
-
 import type {DiaryPage} from './DiaryPage.d'
 import styles from './DiaryPage.module.sass'
 
-type DiaryEntriesPageQuery = {
+type DiaryEntriesAndPaginationQuery = {
   allDiaryEntries: DiaryEntry[]
+  _allDiaryEntriesMeta: RecordsMeta
 }
-
-type DiaryEntriesAndPaginationQuery = DiaryEntriesPageQuery & DiaryMetadataQuery
 
 const QUERY = `
 query DiaryEntriesPage($skip: IntType!, $first: IntType!) {
-  allDiaryEntries(orderBy: date_DESC, skip: $skip, first: $first) {
-    id
-    date
-    place
-    text
-  }
-  ${metadataFragment}
+  allDiaryEntries(orderBy: date_DESC, skip: $skip, first: $first) ${diaryEntryFragment}
+  _allDiaryEntriesMeta ${metadataFragment}
 }
 `
 

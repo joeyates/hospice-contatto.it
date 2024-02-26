@@ -25,4 +25,18 @@ const request: request = ({query, variables, includeDrafts, excludeInvalid}) => 
   return graphqlRequest({url: ENDPOINT, document: query, variables, requestHeaders: headers})
 }
 
-export {isoDate, parseDate, request}
+const metadataFragment = `
+{
+  count
+}
+`
+
+const recordLinkFragment = `
+{
+  id
+  __typename
+  slug
+}
+`
+
+export {isoDate, metadataFragment, parseDate, recordLinkFragment, request}
