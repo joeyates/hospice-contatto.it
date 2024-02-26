@@ -55,10 +55,11 @@ const Hamburger = ({checked, handleChange, children}) => (
       type='checkbox'
       checked={checked}
       onChange={handleChange}
+      data-testid='hamburger-trigger'
     />
 
     {/* hamburger */}
-    <span className={styles.glyph1}></span>
+    <span className={styles.glyph1} data-testid='hamburger-top'></span>
     <span className={styles.glyph2}></span>
     <span className={styles.glyph3}></span>
 
@@ -93,7 +94,7 @@ const Nav = (): JSX.Element => {
         <Logo />
       </Link>
 
-      <ul className={styles.menu}>
+      <ul className={styles.menu} role='menu'>
         <Item path='/' current={current} label='Home' closeMenu={closeMenu} />
         <Item path='/chi-siamo' current={current} label='Chi siamo' closeMenu={closeMenu} />
         <Item path='/eventi' current={current} label='Eventi' closeMenu={closeMenu} />

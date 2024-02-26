@@ -53,6 +53,11 @@ $link-hover-color: black
     overflow: visible
     display: flex
 
+  // Stop the transition from firing on page load
+  // Only fire on hover
+  &:hover > .menu
+    transition: transform 0.5s ease
+
   .menu
     position: relative
     top: 0
@@ -65,7 +70,6 @@ $link-hover-color: black
     z-index: 1
     overflow: hidden
     transform: translate(0, $hidden-menu-translation-y)
-    transition: transform 0.5s ease
 
     @media (min-width: 700px)
       width: max-content
