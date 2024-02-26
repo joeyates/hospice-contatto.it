@@ -1,3 +1,4 @@
+import {type ResponsiveImage} from '@lib/responsiveImage'
 export type isoDate = (date: Date) => string
 export type parseDate = (date: string) => Date
 
@@ -19,6 +20,12 @@ export type Image = {
   title: string
   width: number
   height: number
+  responsiveImage?: ResponsiveImage
+}
+
+/* This the minimal type for a link to a DatoCMS record */
+export type RecordLink = {
+  slug: string
 }
 
 export type RecordsMeta = {

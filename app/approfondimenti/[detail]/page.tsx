@@ -2,20 +2,19 @@ import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {type Body as BodyType} from '@lib/body.d'
 import {request} from '@lib/datocms'
-import {type DetailUrlData, type Detail} from '@lib/detail.d'
+import {type RecordLink} from '@lib/datocms.d'
+import {type Detail} from '@lib/detail.d'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 type AllDetailsQuery = {
-  allDetails: DetailUrlData[]
+  allDetails: RecordLink[]
 }
 
 const DETAILS_QUERY = `
 query {
   allDetails {
-    id
     slug
   }
 }
@@ -29,9 +28,9 @@ const QUERY = `
 query Detail($slug: String!) {
   detail(filter: {slug: {eq: $slug}}) {
     id
+    ${bodyQueryFragment}
     slug
     title
-    ${bodyQueryFragment}
   }
 }
 `

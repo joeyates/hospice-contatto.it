@@ -1,5 +1,5 @@
-import {type Body} from './body.d'
-import {type ResponsiveImage} from './responsiveImage'
+import {type BodyStructuredText} from '@/lib/body.d'
+import {type ResponsiveImage} from '@/lib/responsiveImage'
 
 export interface EventUrlData {
   date: string
@@ -17,5 +17,5 @@ export interface EventListItem extends EventUrlData {
 }
 
 export interface Event extends EventListItem {
-  body?: Body
+  body: BodyStructuredText
 }

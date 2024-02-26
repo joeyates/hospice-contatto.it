@@ -1,22 +1,25 @@
-export type Block = {
-  __typename: string
+import {Document as StructuredTextDocument} from 'datocms-structured-text-utils'
+
+import {type Image as ImageType} from '@lib/datocms.d'
+
+type ImageRecord = {
   id: string
-  image?: {
-    alt: string
-    src: string
-    title: string
-    width: number
-    height: number
-  }
-  caption?: string
+  __typename: 'ImageRecord'
+  image: ImageType
+  caption: string
 }
 
-export type Body = {
-  blocks: Array<Block>
-  links: Array<{
-    id: string
-    __typename: string
-    slug?: string
-  }>
-  value: string
+type LargeImageRecord = {
+  id: string
+  __typename: 'LargeImageRecord'
+  image: ImageType
+  caption: string
+}
+
+export type BodyBlock = ImageRecord | LargeImageRecord
+
+export type BodyStructuredText = {
+  value: StructuredTextDocument
+  blocks?: BodyBlock[]
+  links?: RecordLink[]
 }

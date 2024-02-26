@@ -1,17 +1,14 @@
-import {type Body} from '@lib/body.d'
+import {type BodyStructuredText} from '@lib/body.d'
+import {type RecordLink} from '@lib/datocms.d'
 
-export interface DetailUrlData {
-  slug: string
-}
-
-export interface DetailRecord extends DetailUrlData {
+export type DetailRecord = {
   id: string
   __typename: 'DetailRecord'
   [prop: string]: unknown
-}
+} & RecordLink
 
-export interface Detail extends DetailUrlData {
+export type Detail = {
   id: string
-  body: Body
+  body: BodyStructuredText
   title: string
-}
+} & RecordLink

@@ -4,7 +4,7 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {type Attachment} from '@lib/attachment'
 import {queryFragment as bodyQueryFragment} from '@lib/body'
-import {type Body as BodyType} from '@lib/body.d'
+import {type BodyStructuredText} from '@lib/body.d'
 import {request} from '@lib/datocms'
 import {buildTitle, createMetadata} from '@lib/info'
 import styles from './page.module.sass'
@@ -13,7 +13,7 @@ type ContactQuery = {
   contact: {
     id: string
     title: string
-    body: BodyType
+    body: BodyStructuredText
     attachments: Attachment[]
   }
 }
