@@ -1,33 +1,34 @@
 // Widget
 // As we rotate two of the hamburger "bars" by 45degrees,
 // we prepare all the calculation here
-$widget-width: 2rem
-$widget-height: 1.5rem
-$inclined-glyph-angle: 45deg
-$sin-45deg: 0.7071
-$glyph-top: 1rem
-$glyph-left: 1rem
-$glyph-height: 0.3rem
-$glyph-border-radius: calc($glyph-height / 2)
-$glyph1-top: $glyph-top
-$glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
-$glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
-$glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
-$glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
-$glyph-inclined-width: $widget-height
-$glyph-width-difference: calc($widget-width - $glyph-inclined-width)
-$glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
-$top-bar-height: calc($glyph-top + $widget-height + 1rem)
-$widget-right: calc($glyph-left + $widget-height)
 
 .container
+  --widget-width: 2rem
+  --widget-height: 1.5rem
+  --inclined-glyph-angle: 45deg
+  --sin-45deg: 0.7071
+  --glyph-top: 1rem
+  --glyph-left: 1rem
+  --glyph-height: 0.3rem
+  --glyph-border-radius: calc(var(--glyph-height) / 2)
+  --glyph1-top: var(--glyph-top)
+  --glyph2-top: calc(var(--glyph1-top) + (var(--widget-height) - var(--glyph-height)) / 2)
+  --glyph3-top: calc(var(--glyph1-top) + var(--widget-height) - var(--glyph-height))
+  --glyph-inclined-length: calc(var(--widget-height) / var(--sin-45deg) - var(--glyph-height))
+  --glyph-inclined-scaling: calc(var(--glyph-inclined-length) / var(--widget-width))
+  --glyph-inclined-width: var(--widget-height)
+  --glyph-width-difference: calc(var(--widget-width) - var(--glyph-inclined-width))
+  --glyph-inclined-offset: calc(var(--glyph-height) * var(--sin-45deg) + var(--glyph-width-difference) / 2)
+  --top-bar-height: calc(var(--glyph-top) + var(--widget-height) + 1rem)
+  --widget-right: calc(var(--glyph-left) + var(--widget-height))
+
   position: relative
   top: 0
   left: 0
   margin: 0
   z-index: 1
   width: 100%
-  height: $top-bar-height
+  height: var(--top-bar-height)
   background: var(--strong-color)
 
   @media (min-width: 700px)
@@ -102,10 +103,10 @@ $widget-right: calc($glyph-left + $widget-height)
   .trigger
     opacity: 0
     position: absolute
-    top: $glyph1-top
-    left: $glyph-left
-    width: $widget-width
-    height: $widget-height
+    top: var(--glyph1-top)
+    left: var(--glyph-left)
+    width: var(--widget-width)
+    height: var(--widget-height)
     margin: 0
     border: 0
     cursor: pointer
@@ -116,10 +117,10 @@ $widget-right: calc($glyph-left + $widget-height)
 
   .glyph
     position: absolute
-    left: $glyph-left
-    width: $widget-width
-    height: $glyph-height
-    border-radius: $glyph-border-radius
+    left: var(--glyph-left)
+    width: var(--widget-width)
+    height: var(--glyph-height)
+    border-radius: var(--glyph-border-radius)
     transition: transform 0.5s, opacity 0.4s ease
     background: var(--background-color)
     z-index: 2
@@ -129,28 +130,28 @@ $widget-right: calc($glyph-left + $widget-height)
 
   .glyph1
     @extend .glyph
-    top: $glyph1-top
+    top: var(--glyph1-top)
     transform-origin: 0 0
 
   .trigger:checked ~ .glyph1
-    transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    transform: translate(var(--glyph-inclined-offset), 0) rotate(var(--inclined-glyph-angle)) scaleX(var(--glyph-inclined-scaling))
     background: var(--text-color)
 
   .glyph2
     @extend .glyph
     opacity: 1
-    top: $glyph2-top
+    top: var(--glyph2-top)
 
   .trigger:checked ~ .glyph2
     opacity: 0
 
   .glyph3
     @extend .glyph
-    top: $glyph3-top
-    transform-origin: 0 $glyph-height
+    top: var(--glyph3-top)
+    transform-origin: 0 var(--glyph-height)
 
   .trigger:checked ~ .glyph3
-    transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    transform: translate(var(--glyph-inclined-offset), 0) rotate(-var(--inclined-glyph-angle)) scaleX(var(--glyph-inclined-scaling))
     background: var(--text-color)
 
   .trigger:checked ~ .menu
