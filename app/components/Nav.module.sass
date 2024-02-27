@@ -1,6 +1,3 @@
-// Container
-$z-index: 1
-
 // Widget
 // As we rotate two of the hamburger "bars" by 45degrees,
 // we prepare all the calculation here
@@ -23,23 +20,12 @@ $glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-differenc
 $top-bar-height: calc($glyph-top + $widget-height + 1rem)
 $widget-right: calc($glyph-left + $widget-height)
 
-// Menu
-$menu-font-size: 2rem
-$menu-width: 12rem
-$menu-border: 0.1rem
-$menu-top-offset: -3rem
-$showing-menu-translation-y: $menu-top-offset
-
-// Menu Colours
-$link-color: #555
-$link-hover-color: black
-
 .container
   position: relative
   top: 0
   left: 0
   margin: 0
-  z-index: $z-index
+  z-index: 1
   width: 100%
   height: $top-bar-height
   background: var(--strong-color)
@@ -95,10 +81,10 @@ $link-hover-color: black
 
       a
         text-decoration: none
-        color: $link-color
+        color: var(--mobile-menu-link-color)
         transition: color 0.3s ease
         line-height: 200%
-        font-size: $menu-font-size
+        font-size: 2rem
 
         @media (min-width: 700px)
           color: var(--background-color)
