@@ -151,7 +151,7 @@
     transform-origin: 0 var(--glyph-height)
 
   .trigger:checked ~ .glyph3
-    transform: translate(var(--glyph-inclined-offset), 0) rotate(-var(--inclined-glyph-angle)) scaleX(var(--glyph-inclined-scaling))
+    transform: translate(var(--glyph-inclined-offset), 0) rotate(calc(-1 * var(--inclined-glyph-angle))) scaleX(var(--glyph-inclined-scaling))
     background: var(--text-color)
 
   .trigger:checked ~ .menu
