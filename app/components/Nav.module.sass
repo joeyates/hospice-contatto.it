@@ -1,21 +1,31 @@
-// Widget
-// As we rotate two of the hamburger "bars" by 45degrees,
-// we prepare all the calculation here
-
 .container
-  --widget-width: 2rem
-  --widget-height: 1.5rem
+  // As we rotate two of the hamburger "bars" by 45degrees,
+  // we prepare all the calculation here
+
+  // --glyph-inclined-scaling required the division of a value by another value
+  // This cannot (currently?) be done with css `calc()`, so we do the calculations
+  // with unit-less values and then apply units to them.
+
+  // Unit-less calculation
   --inclined-glyph-angle: 45deg
-  --sin-45deg: 0.7071
+  --sin-45deg: 0.7171
+  --uwidget-width: 2.0
+  --uwidget-height: 1.5
+  --uglyph-height: 0.3
+  --glyph-inclined-scaling: calc((var(--uwidget-height) / var(--sin-45deg) - var(--uglyph-height)) / var(--uwidget-width))
+
+  // Transform to values with units
+  --widget-width: calc(var(--uwidget-width) * 1rem)
+  --widget-height: calc(var(--uwidget-height) * 1rem)
+  --glyph-height: calc(var(--uglyph-height) * 1rem)
+
+  // Calculate remaining values
   --glyph-top: 1rem
   --glyph-left: 1rem
-  --glyph-height: 0.3rem
   --glyph-border-radius: calc(var(--glyph-height) / 2)
   --glyph1-top: var(--glyph-top)
   --glyph2-top: calc(var(--glyph1-top) + (var(--widget-height) - var(--glyph-height)) / 2)
   --glyph3-top: calc(var(--glyph1-top) + var(--widget-height) - var(--glyph-height))
-  --glyph-inclined-length: calc(var(--widget-height) / var(--sin-45deg) - var(--glyph-height))
-  --glyph-inclined-scaling: calc(var(--glyph-inclined-length) / var(--widget-width))
   --glyph-inclined-width: var(--widget-height)
   --glyph-width-difference: calc(var(--widget-width) - var(--glyph-inclined-width))
   --glyph-inclined-offset: calc(var(--glyph-height) * var(--sin-45deg) + var(--glyph-width-difference) / 2)
