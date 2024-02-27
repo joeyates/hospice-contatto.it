@@ -26,12 +26,8 @@ $widget-right: calc($glyph-left + $widget-height)
 // Menu
 $menu-font-size: 2rem
 $menu-width: 12rem
-$menu-padding-left: 1rem
-$menu-padding-top: 3rem
-$menu-padding-right: 0
 $menu-border: 0.1rem
 $menu-top-offset: -3rem
-$hidden-menu-translation-y: calc(-100% + $menu-top-offset)
 $showing-menu-translation-y: $menu-top-offset
 
 // Menu Colours
@@ -61,17 +57,18 @@ $link-hover-color: black
     transition: transform 0.5s ease
 
   .menu
-    position: relative
+    position: absolute
     top: 0
     left: 0
     width: 100%
-    padding: $menu-padding-top $menu-padding-right 0.5rem $menu-padding-left
+    height: 100vh
+    padding: 2rem 0 0.5rem 1rem
     font-size: 8rem
     list-style-type: none
     background-color: white
     z-index: 1
     overflow: hidden
-    transform: translate(0, $hidden-menu-translation-y)
+    transform: translate(0, -100vh)
 
     @media (min-width: 700px)
       width: max-content
@@ -171,4 +168,4 @@ $link-hover-color: black
     background: var(--text-color)
 
   .trigger:checked ~ .menu
-    transform: translate(0, $showing-menu-translation-y)
+    transform: translate(0, 0)
