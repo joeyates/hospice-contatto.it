@@ -1,51 +1,44 @@
-// Container
-$z-index: 1
-
-// Widget
-// As we rotate two of the hamburger "bars" by 45degrees,
-// we prepare all the calculation here
-$widget-width: 2rem
-$widget-height: 1.5rem
-$inclined-glyph-angle: 45deg
-$sin-45deg: 0.7071
-$glyph-top: 1rem
-$glyph-left: 1rem
-$glyph-height: 0.3rem
-$glyph-border-radius: calc($glyph-height / 2)
-$glyph1-top: $glyph-top
-$glyph2-top: calc($glyph1-top + ($widget-height - $glyph-height) / 2)
-$glyph3-top: calc($glyph1-top + $widget-height - $glyph-height)
-$glyph-inclined-length: calc($widget-height / $sin-45deg - $glyph-height)
-$glyph-inclined-scaling: calc($glyph-inclined-length / $widget-width)
-$glyph-inclined-width: $widget-height
-$glyph-width-difference: calc($widget-width - $glyph-inclined-width)
-$glyph-inclined-offset: calc($glyph-height * $sin-45deg + $glyph-width-difference / 2)
-$top-bar-height: calc($glyph-top + $widget-height + 1rem)
-$widget-right: calc($glyph-left + $widget-height)
-
-// Menu
-$menu-font-size: 2rem
-$menu-width: 12rem
-$menu-padding-left: 1rem
-$menu-padding-top: 3rem
-$menu-padding-right: 0
-$menu-border: 0.1rem
-$menu-top-offset: -3rem
-$hidden-menu-translation-y: calc(-100% + $menu-top-offset)
-$showing-menu-translation-y: $menu-top-offset
-
-// Menu Colours
-$link-color: #555
-$link-hover-color: black
-
 .container
+  // As we rotate two of the hamburger "bars" by 45degrees,
+  // we prepare all the calculation here
+
+  // --glyph-inclined-scaling required the division of a value by another value
+  // This cannot (currently?) be done with css `calc()`, so we do the calculations
+  // with unit-less values and then apply units to them.
+
+  // Unit-less calculation
+  --inclined-glyph-angle: 45deg
+  --sin-45deg: 0.7171
+  --uwidget-width: 2.0
+  --uwidget-height: 1.5
+  --uglyph-height: 0.3
+  --glyph-inclined-scaling: calc((var(--uwidget-height) / var(--sin-45deg) - var(--uglyph-height)) / var(--uwidget-width))
+
+  // Transform to values with units
+  --widget-width: calc(var(--uwidget-width) * 1rem)
+  --widget-height: calc(var(--uwidget-height) * 1rem)
+  --glyph-height: calc(var(--uglyph-height) * 1rem)
+
+  // Calculate remaining values
+  --glyph-top: 1rem
+  --glyph-left: 1rem
+  --glyph-border-radius: calc(var(--glyph-height) / 2)
+  --glyph1-top: var(--glyph-top)
+  --glyph2-top: calc(var(--glyph1-top) + (var(--widget-height) - var(--glyph-height)) / 2)
+  --glyph3-top: calc(var(--glyph1-top) + var(--widget-height) - var(--glyph-height))
+  --glyph-inclined-width: var(--widget-height)
+  --glyph-width-difference: calc(var(--widget-width) - var(--glyph-inclined-width))
+  --glyph-inclined-offset: calc(var(--glyph-height) * var(--sin-45deg) + var(--glyph-width-difference) / 2)
+  --top-bar-height: calc(var(--glyph-top) + var(--widget-height) + 1rem)
+  --widget-right: calc(var(--glyph-left) + var(--widget-height))
+
   position: relative
   top: 0
   left: 0
   margin: 0
-  z-index: $z-index
+  z-index: 1
   width: 100%
-  height: $top-bar-height
+  height: var(--top-bar-height)
   background: var(--strong-color)
 
   @media (min-width: 700px)
@@ -61,17 +54,18 @@ $link-hover-color: black
     transition: transform 0.5s ease
 
   .menu
-    position: relative
+    position: absolute
     top: 0
     left: 0
     width: 100%
-    padding: $menu-padding-top $menu-padding-right 0.5rem $menu-padding-left
+    height: 100vh
+    padding: 2rem 0 0.5rem 1rem
     font-size: 8rem
     list-style-type: none
     background-color: white
     z-index: 1
     overflow: hidden
-    transform: translate(0, $hidden-menu-translation-y)
+    transform: translate(0, -100vh)
 
     @media (min-width: 700px)
       width: max-content
@@ -98,10 +92,10 @@ $link-hover-color: black
 
       a
         text-decoration: none
-        color: $link-color
+        color: var(--mobile-menu-link-color)
         transition: color 0.3s ease
         line-height: 200%
-        font-size: $menu-font-size
+        font-size: 2rem
 
         @media (min-width: 700px)
           color: var(--background-color)
@@ -119,10 +113,10 @@ $link-hover-color: black
   .trigger
     opacity: 0
     position: absolute
-    top: $glyph1-top
-    left: $glyph-left
-    width: $widget-width
-    height: $widget-height
+    top: var(--glyph1-top)
+    left: var(--glyph-left)
+    width: var(--widget-width)
+    height: var(--widget-height)
     margin: 0
     border: 0
     cursor: pointer
@@ -133,10 +127,10 @@ $link-hover-color: black
 
   .glyph
     position: absolute
-    left: $glyph-left
-    width: $widget-width
-    height: $glyph-height
-    border-radius: $glyph-border-radius
+    left: var(--glyph-left)
+    width: var(--widget-width)
+    height: var(--glyph-height)
+    border-radius: var(--glyph-border-radius)
     transition: transform 0.5s, opacity 0.4s ease
     background: var(--background-color)
     z-index: 2
@@ -146,67 +140,29 @@ $link-hover-color: black
 
   .glyph1
     @extend .glyph
-    top: $glyph1-top
+    top: var(--glyph1-top)
     transform-origin: 0 0
 
   .trigger:checked ~ .glyph1
-    transform: translate($glyph-inclined-offset, 0) rotate($inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    transform: translate(var(--glyph-inclined-offset), 0) rotate(var(--inclined-glyph-angle)) scaleX(var(--glyph-inclined-scaling))
     background: var(--text-color)
 
   .glyph2
     @extend .glyph
     opacity: 1
-    top: $glyph2-top
+    top: var(--glyph2-top)
 
   .trigger:checked ~ .glyph2
     opacity: 0
 
   .glyph3
     @extend .glyph
-    top: $glyph3-top
-    transform-origin: 0 $glyph-height
+    top: var(--glyph3-top)
+    transform-origin: 0 var(--glyph-height)
 
   .trigger:checked ~ .glyph3
-    transform: translate($glyph-inclined-offset, 0) rotate(-$inclined-glyph-angle) scaleX($glyph-inclined-scaling)
+    transform: translate(var(--glyph-inclined-offset), 0) rotate(calc(-1 * var(--inclined-glyph-angle))) scaleX(var(--glyph-inclined-scaling))
     background: var(--text-color)
 
   .trigger:checked ~ .menu
-    transform: translate(0, $showing-menu-translation-y)
-
-  .logo
-    position: relative
-    left: calc($widget-right + 1rem)
-    top: 1.0rem
-    padding: 0 0 0 0.5rem
-    width: 10rem
-    height: 1.5rem
-    display: flex
-    justify-content: center
-    align-items: center
-
-    @media (min-width: 700px)
-      left: auto
-      top: auto
-      width: 3rem
-      padding-left: 0.25rem
-
-    .logoPrefix, .logoSuffix
-      font-size: 2rem
-      color: var(--background-color)
-
-      @media (min-width: 700px)
-        display: none
-
-    .icon
-      position: relative
-      top: 0.2rem
-
-      @media (min-width: 700px)
-        top: 0.9rem
-
-    text
-      font-size: 96px
-      fill: var(--strong-color)
-
-    circle
-      fill: var(--background-color)
+    transform: translate(0, 0)
