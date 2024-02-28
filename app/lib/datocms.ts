@@ -1,28 +1,30 @@
-import {request as graphqlRequest} from 'graphql-request'
-
-import type {isoDate, parseDate, request} from './datocms.d'
+import {ApolloClient, InMemoryCache, gql} from '@apollo/client'
 
 const ENDPOINT = 'https://graphql.datocms.com/'
+const NEXT_DATOCMS_API_TOKEN = process.env.NEXT_DATOCMS_API_TOKEN
+const AUTHORIZATION = `Bearer ${NEXT_DATOCMS_API_TOKEN}`
+const HEADERS = {authorization: AUTHORIZATION}
+
+const client = new ApolloClient({
+  uri: ENDPOINT,
+  headers: HEADERS,
+  cache: new InMemoryCache()
+})
+
+import type {isoDate, parseDate, request} from './datocms.d'
 
 const isoDate: isoDate = date => date.toISOString()
 const parseDate: parseDate = date => new Date(date)
 
-const requestHeaders = ({includeDrafts, excludeInvalid}) => {
-  const headers = {
-    authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`
-  }
-  if (includeDrafts) {
-    headers['X-Include-Drafts'] = 'true'
-  }
-  if (excludeInvalid) {
-    headers['X-Exclude-Invalid'] = 'true'
-  }
-  return headers
-}
-
-const request: request = ({query, variables, includeDrafts, excludeInvalid}) => {
-  const headers = requestHeaders({includeDrafts, excludeInvalid})
-  return graphqlRequest({url: ENDPOINT, document: query, variables, requestHeaders: headers})
+const request: request = async ({query, variables}) => {
+  return await client
+    .query({
+      query: gql`
+        ${query}
+      `,
+      variables
+    })
+    .then(response => response.data)
 }
 
 const metadataFragment = `
@@ -39,4 +41,12 @@ const recordLinkFragment = `
 }
 `
 
-export {isoDate, metadataFragment, parseDate, recordLinkFragment, request}
+export {
+  AUTHORIZATION,
+  ENDPOINT,
+  isoDate,
+  metadataFragment,
+  parseDate,
+  recordLinkFragment,
+  request
+}

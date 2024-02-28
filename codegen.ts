@@ -1,11 +1,9 @@
 import {CodegenConfig} from '@graphql-codegen/cli'
+import {AUTHORIZATION, ENDPOINT} from './app/lib/datocms'
 
-const ENDPOINT = 'https://graphql.datocms.com/'
-const NEXT_DATOCMS_API_TOKEN = process.env.NEXT_DATOCMS_API_TOKEN
-const Authorization = `Bearer ${NEXT_DATOCMS_API_TOKEN}`
 
 const config: CodegenConfig = {
-  schema: {[ENDPOINT]: {headers: {Authorization}}},
+  schema: {[ENDPOINT]: {headers: {Authorization: AUTHORIZATION}}},
   documents: ['src/**/*.tsx'],
   generates: {
     './app/__generated__/': {

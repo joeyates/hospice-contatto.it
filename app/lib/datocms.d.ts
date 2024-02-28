@@ -4,15 +4,11 @@ export type parseDate = (date: string) => Date
 
 export type request = <T>({
   query,
-  variables,
-  includeDrafts,
-  excludeInvalid
+  variables
 }: {
   query: string
-  variables?: Variables
-  includeDrafts?: boolean
-  excludeInvalid?: boolean
-}) => Promise<T>
+  variables?: {[key: string]: any}
+}) => Promise<ApolloQueryResult<T>>
 
 export type Image = {
   alt: string

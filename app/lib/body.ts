@@ -7,6 +7,7 @@ const bodyFragment = `
       ... on ImageRecord {
         id
         image {
+          id
           ${responsiveImageFragment({width: 200})}
           alt
           src: url

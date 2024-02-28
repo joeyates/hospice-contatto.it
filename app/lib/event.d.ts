@@ -12,6 +12,7 @@ export type EventListItem = {
   date: string
   description: string
   image: {
+    id: string
     responsiveImage: ResponsiveImage
   }
   slug: string

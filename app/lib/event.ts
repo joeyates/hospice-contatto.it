@@ -33,6 +33,7 @@ const eventListFragment = `
   slug
   title
   image {
+    id
     ${responsiveImageFragment({width: 200})}
   }
 }
