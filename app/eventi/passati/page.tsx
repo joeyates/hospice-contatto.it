@@ -2,9 +2,9 @@ import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request} from '@lib/datocms'
-import {type EventListItem} from '@lib/event.d'
-import {eventListFragment} from '@lib/event'
-import {createMetadata} from '@lib/info'
+import {type EventListItem} from '@schema/event.d'
+import {eventListFragment} from '@schema/event'
+import {createMetadata} from '@schema/info'
 import {toOpenGraphImage} from '@lib/responsiveImage'
 
 type PastEventsQuery = {allEvents: EventListItem[]}

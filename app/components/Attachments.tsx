@@ -1,4 +1,4 @@
-import {type Attachment} from '@/lib/attachment.d'
+import {type Attachment} from '@schema/attachment.d'
 import styles from './Attachments.module.sass'
 
 const Attachments = ({attachments}: {attachments: Attachment[]}) => (

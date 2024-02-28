@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {request} from '@lib/datocms'
-import {detailFragment} from '@lib/detail'
-import {type Detail} from '@lib/detail.d'
-import {createMetadata} from '@lib/info'
+import {detailFragment} from '@schema/detail'
+import {type Detail} from '@schema/detail.d'
+import {createMetadata} from '@schema/info'
 import styles from './page.module.sass'
 
 type AllDetailsQuery = {allDetails: Detail[]}

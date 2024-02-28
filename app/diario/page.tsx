@@ -1,6 +1,6 @@
 import DiaryPage from '@components/DiaryPage'
-import {generateTitle} from '@lib/diary'
-import {createMetadata} from '@lib/info'
+import {generateTitle} from '@schema/diary'
+import {createMetadata} from '@schema/info'
 
 const Page = async () => <DiaryPage page='1' />
 

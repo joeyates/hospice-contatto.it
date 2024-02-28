@@ -1,7 +1,7 @@
 import {request} from '@lib/datocms'
-import {type Props, type Metadata, type MetadataFetcher} from '@lib/info.d'
+import {type Props, type Metadata, type MetadataFetcher} from '@schema/info.d'
 import {responsiveImageFragment, toOpenGraphImage} from '@lib/responsiveImage'
-import {type ResponsiveImage} from './responsiveImage.d'
+import {type ResponsiveImage} from '@lib/responsiveImage.d'
 import {type Metadata as NextMetadata} from 'next'
 
 type InfoQuery = {

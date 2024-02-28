@@ -3,9 +3,9 @@ import Main from '@components/Main'
 import Title from '@components/Title'
 import {request, recordLinkFragment} from '@lib/datocms'
 import {type RecordLink} from '@lib/datocms.d'
-import {detailFragment} from '@lib/detail'
-import {type Detail} from '@lib/detail.d'
-import {buildTitle, createMetadata} from '@lib/info'
+import {detailFragment} from '@schema/detail'
+import {type Detail} from '@schema/detail.d'
+import {buildTitle, createMetadata} from '@schema/info'
 
 type AllDetailsQuery = {allDetails: RecordLink[]}
 

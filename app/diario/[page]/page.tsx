@@ -1,5 +1,5 @@
 import DiaryPage from '@components/DiaryPage'
-import {pageCount, createMetadata} from '@lib/diary'
+import {pageCount, createMetadata} from '@schema/diary'
 
 const Page = async ({params: {page}}) => <DiaryPage page={page} />
 

@@ -4,10 +4,10 @@ import EventList from '@components/EventList'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import {isoDate, request} from '@lib/datocms'
-import {eventListFragment} from '@lib/event'
-import {createMetadata} from '@lib/info'
+import {eventListFragment} from '@schema/event'
+import {createMetadata} from '@schema/info'
 import {toOpenGraphImage} from '@lib/responsiveImage'
-import {type EventListItem} from '@lib/event.d'
+import {type EventListItem} from '@schema/event.d'
 import styles from './page.module.sass'
 
 type FutureEventsQuery = {futureEvents: EventListItem[]}

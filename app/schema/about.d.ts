@@ -1,4 +1,4 @@
-import {type Attachment} from '@lib/attachment'
+import {type Attachment} from '@schema/attachment'
 import {type BodyStructuredText} from '@lib/body.d'
 
 export type About = {

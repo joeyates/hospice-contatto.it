@@ -2,10 +2,10 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {giveSupportFragment} from '@lib/give-support'
-import {type GiveSupport} from '@lib/give-support.d'
+import {giveSupportFragment} from '@schema/give-support'
+import {type GiveSupport} from '@schema/give-support.d'
 import {request} from '@lib/datocms'
-import {buildTitle, createMetadata} from '@lib/info'
+import {buildTitle, createMetadata} from '@schema/info'
 
 type GiveSupportQuery = {giveSupport: GiveSupport}
 

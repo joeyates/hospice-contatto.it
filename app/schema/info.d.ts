@@ -1,4 +1,4 @@
-import {type OpenGraphImage} from './responsiveImage.d'
+import {type OpenGraphImage} from '@lib/responsiveImage'
 
 export type Props = {
   params: {

@@ -1,4 +1,4 @@
-import {attachmentFragment} from '@lib/attachment'
+import {attachmentFragment} from '@schema/attachment'
 import {bodyFragment} from '@lib/body'
 
 const aboutFragment = `

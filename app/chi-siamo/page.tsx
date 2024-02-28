@@ -2,10 +2,10 @@ import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {aboutFragment} from '@lib/about'
-import {type About} from '@lib/about.d'
+import {aboutFragment} from '@schema/about'
+import {type About} from '@schema/about.d'
 import {request} from '@lib/datocms'
-import {buildTitle, createMetadata} from '@lib/info'
+import {buildTitle, createMetadata} from '@schema/info'
 
 type AboutQuery = {about: About}
 

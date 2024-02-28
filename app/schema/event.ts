@@ -1,5 +1,5 @@
 import {bodyFragment} from '@lib/body'
-import {type EventRecordLink} from '@lib/event.d'
+import {type EventRecordLink} from '@schema/event.d'
 import {responsiveImageFragment} from '@lib/responsiveImage'
 
 const datedSlug = (event: EventRecordLink): string => `${event.date}-${event.slug}`

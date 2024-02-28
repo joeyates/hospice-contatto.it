@@ -1,6 +1,6 @@
 import {metadataFragment, request} from '@lib/datocms'
 import {type RecordsMeta} from '@lib/datocms.d'
-import {createMetadata as globalCreateMetadata} from '@lib/info'
+import {createMetadata as globalCreateMetadata} from '@schema/info'
 
 const PAGE_SIZE = 5
 

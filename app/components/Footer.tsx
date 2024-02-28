@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import {fetchInfo} from '@lib/info'
+import {fetchInfo} from '@schema/info'
 import styles from './Footer.module.sass'
 
 const Footer = async (): Promise<JSX.Element> => {
