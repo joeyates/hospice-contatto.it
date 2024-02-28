@@ -1,3 +1,5 @@
+import {DocumentNode} from 'graphql/language/ast'
+
 import {type ResponsiveImage} from '@lib/responsiveImage'
 export type isoDate = (date: Date) => string
 export type parseDate = (date: string) => Date
@@ -6,7 +8,7 @@ export type request = <T>({
   query,
   variables
 }: {
-  query: string
+  query: string | DocumentNode
   variables?: {[key: string]: any}
 }) => Promise<ApolloQueryResult<T>>
 
