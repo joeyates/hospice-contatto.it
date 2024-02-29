@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import './globals.sass'
 import Footer from '@components/Footer'
 import Nav from '@components/Nav'
-import {createMetadata} from '@schema/info'
+import {createMetadata} from '@lib/info'
 import styles from './layout.module.sass'
 
 const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})

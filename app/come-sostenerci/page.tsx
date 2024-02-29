@@ -5,7 +5,7 @@ import Title from '@components/Title'
 import {giveSupportFragment} from '@schema/give-support'
 import {type GiveSupport} from '@schema/give-support.d'
 import {request} from '@lib/datocms'
-import {buildTitle, createMetadata} from '@schema/info'
+import {buildTitle, createMetadata} from '@lib/info'
 
 type GiveSupportQuery = {giveSupport: GiveSupport}
 

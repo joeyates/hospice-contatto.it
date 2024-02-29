@@ -5,7 +5,7 @@ import {request, recordLinkFragment} from '@lib/datocms'
 import {type RecordLink} from '@lib/datocms.d'
 import {detailFragment} from '@schema/detail'
 import {type Detail} from '@schema/detail.d'
-import {buildTitle, createMetadata} from '@schema/info'
+import {buildTitle, createMetadata} from '@lib/info'
 
 type AllDetailsQuery = {allDetails: RecordLink[]}
 

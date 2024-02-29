@@ -5,7 +5,7 @@ import Title from '@components/Title'
 import {aboutFragment} from '@schema/about'
 import {type About} from '@schema/about.d'
 import {request} from '@lib/datocms'
-import {buildTitle, createMetadata} from '@schema/info'
+import {buildTitle, createMetadata} from '@lib/info'
 
 type AboutQuery = {about: About}
 

@@ -1,4 +1,18 @@
-import {type OpenGraphImage} from '@lib/responsiveImage'
+import {type OpenGraphImage, type ResponsiveImage} from '@lib/responsiveImage.d'
+
+type InfoQuery = {
+  info: {
+    email: string
+    name: string
+    siteTitle: string
+    siteDescription: string
+    taxCode: string
+    telephone: string
+    defaultImage: {
+      responsiveImage: ResponsiveImage
+    }
+  }
+}
 
 export type Props = {
   params: {

@@ -5,7 +5,7 @@ import Title from '@components/Title'
 import {contactFragment} from '@schema/contact'
 import {type Contact} from '@schema/contact.d'
 import {request} from '@lib/datocms'
-import {buildTitle, createMetadata} from '@schema/info'
+import {buildTitle, createMetadata} from '@lib/info'
 
 type ContactQuery = {contact: Contact}
 

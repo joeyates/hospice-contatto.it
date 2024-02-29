@@ -5,7 +5,7 @@ import Title from '@components/Title'
 import {request} from '@lib/datocms'
 import {detailFragment} from '@schema/detail'
 import {type Detail} from '@schema/detail.d'
-import {createMetadata} from '@schema/info'
+import {createMetadata} from '@lib/info'
 import styles from './page.module.sass'
 
 type AllDetailsQuery = {allDetails: Detail[]}

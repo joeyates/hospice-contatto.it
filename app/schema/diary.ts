@@ -1,10 +1,7 @@
 import {metadataFragment, request} from '@lib/datocms'
-import {type RecordsMeta} from '@lib/datocms.d'
-import {createMetadata as globalCreateMetadata} from '@schema/info'
+import {type DiaryMetadataQuery} from '@schema/diary.d'
 
 const PAGE_SIZE = 5
-
-type DiaryMetadataQuery = {_allDiaryEntriesMeta: RecordsMeta}
 
 const METADATA_QUERY = `query DiaryMetadata { _allDiaryEntriesMeta ${metadataFragment} }`
 
@@ -23,16 +20,6 @@ const extractPageCount = (query: DiaryMetadataQuery) => {
   return entryCountToPageCount(entries)
 }
 
-const generateTitle = ({props}) => {
-  return `Diario - pagina ${props.params.page}`
-}
-
-const createMetadata = () => {
-  return globalCreateMetadata(async ({props}) => {
-    return {title: generateTitle({props})}
-  })
-}
-
 const diaryEntryFragment = `
 {
   id
@@ -43,10 +30,8 @@ const diaryEntryFragment = `
 `
 
 export {
-  createMetadata,
   diaryEntryFragment,
   extractPageCount,
-  generateTitle,
   metadataFragment,
   pageCount,
   PAGE_SIZE
