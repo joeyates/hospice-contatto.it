@@ -1,53 +1,8 @@
-import {request} from '@lib/datocms'
-import {type Props, type Metadata, type MetadataFetcher} from '@lib/info.d'
-import {responsiveImageFragment, toOpenGraphImage} from '@lib/responsiveImage'
-import {type ResponsiveImage} from './responsiveImage.d'
 import {type Metadata as NextMetadata} from 'next'
 
-type InfoQuery = {
-  info: {
-    email: string
-    name: string
-    siteTitle: string
-    siteDescription: string
-    taxCode: string
-    telephone: string
-    defaultImage: {
-      responsiveImage: ResponsiveImage
-    }
-  }
-}
-
-const QUERY = `
-query {
-  info {
-    email
-    name
-    siteTitle
-    siteDescription
-    taxCode
-    telephone
-    defaultImage {
-      ${responsiveImageFragment({width: 600})}
-    }
-  }
-}
-`
-
-const fetchInfo = async () => {
-  const {info} = await request<InfoQuery>({query: QUERY})
-  return info
-}
-
-const metadataDefaults = async (): Promise<Metadata> => {
-  const info = await fetchInfo()
-  const image = toOpenGraphImage(info.defaultImage.responsiveImage)
-  return {
-    title: info.siteTitle,
-    description: info.siteDescription,
-    images: [image]
-  }
-}
+import {toOpenGraphImage} from '@lib/responsiveImage'
+import {fetchInfo} from '@schema/info'
+import {type Props, type Metadata, type MetadataFetcher} from '@schema/info.d'
 
 const buildTitle = ({defaults, title}) => `${title} — ${defaults.title}`
 
@@ -77,4 +32,14 @@ const createMetadata = (build?: MetadataFetcher): ((props: Props, parent) => Pro
   }
 }
 
-export {buildTitle, createMetadata, fetchInfo}
+const metadataDefaults = async (): Promise<Metadata> => {
+  const info = await fetchInfo()
+  const image = toOpenGraphImage(info.defaultImage.responsiveImage)
+  return {
+    title: info.siteTitle,
+    description: info.siteDescription,
+    images: [image]
+  }
+}
+
+export {createMetadata, buildTitle}

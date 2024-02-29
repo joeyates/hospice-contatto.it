@@ -3,24 +3,14 @@ import Link from 'next/link'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
-import {bodyFragment} from '@lib/body'
 import {request} from '@lib/datocms'
-import {type Home} from '@lib/home.d'
+import {homeFragment} from '@schema/home'
+import {type Home} from '@schema/home.d'
 import styles from './page.module.sass'
 
-type HomeQuery = {
-  home: Home
-}
+type HomeQuery = {home: Home}
 
-const QUERY = `
-query {
-  home {
-    title
-    subtitle
-    body ${bodyFragment}
-  }
-}
-`
+const QUERY = `query { home ${homeFragment} }`
 
 const getData = async () => {
   return await request<HomeQuery>({query: QUERY})

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import {parseDate} from '@lib/datocms'
 import {path as eventPath} from '@lib/event'
-import {type EventListItem} from '@lib/event.d'
+import {type EventListItem} from '@schema/event.d'
 import {date as formatDate} from '@lib/format'
 import styles from './EventList.module.sass'
 
