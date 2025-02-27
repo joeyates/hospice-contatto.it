@@ -77,6 +77,7 @@ const Nav = (): JSX.Element => {
       <ul className={styles.menu} role='menu'>
         <Item path='/' current={current} label='Home' closeMenu={closeMenu} />
         <Item path='/chi-siamo' current={current} label='Chi siamo' closeMenu={closeMenu} />
+        <Item path='/cosa-facciamo' current={current} label='.' closeMenu={closeMenu} />
         <Item path='/eventi' current={current} label='Eventi' closeMenu={closeMenu} />
         <Item path='/diario' current={current} label='Diario' closeMenu={closeMenu} />
         <Item path='/approfondimenti' current={current} label='Approfondimenti' closeMenu={closeMenu} />
