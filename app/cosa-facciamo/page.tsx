@@ -1,3 +1,4 @@
+import Attachments from '@components/Attachments'
 import Body from '@components/Body'
 import Main from '@components/Main'
 import Title from '@components/Title'
@@ -21,6 +22,7 @@ const Page = async () => {
     <Main>
       <Title title={page.whatWeDo.title} />
       <Body data={page.whatWeDo.body} />
+      <Attachments attachments={page.whatWeDo.attachments} />
     </Main>
   )
 }
