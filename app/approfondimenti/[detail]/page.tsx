@@ -26,7 +26,10 @@ const getData = async (slug: string) => {
   })
 }
 
-const Page = async ({params: {detail}}) => {
+type Params = Promise<{detail: string}>
+
+const Page = async ({params}: {params: Params}) => {
+  const {detail} = await params
   const page = await getData(detail)
 
   return (
@@ -38,7 +41,8 @@ const Page = async ({params: {detail}}) => {
 }
 
 const generateMetadata = createMetadata(async ({defaults, props}) => {
-  const page = await getData(props.params.detail)
+  const {detail} = await props.params
+  const page = await getData(detail)
 
   return {title: buildTitle({defaults, title: page.detail.title})}
 })

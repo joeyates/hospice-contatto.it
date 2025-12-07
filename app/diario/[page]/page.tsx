@@ -2,7 +2,12 @@ import DiaryPage from '@components/DiaryPage'
 import {createMetadata} from '@lib/diary'
 import {pageCount} from '@schema/diary'
 
-const Page = async ({params: {page}}) => <DiaryPage page={page} />
+type Params = Promise<{page: string}>
+
+const Page = async ({params}: {params: Params}) => {
+  const {page} = await params
+  return <DiaryPage page={page} />
+}
 
 const generateStaticParams = async () => {
   const pages = await pageCount()

@@ -9,7 +9,7 @@ import {eventRecordLinkFragment, eventFragment} from '@schema/event'
 import {type Event, type EventRecordLink} from '@schema/event.d'
 import {date as formatDate} from '@lib/format'
 import {buildTitle, createMetadata} from '@lib/info'
-import {type MetadataFetcher, type Props} from '@schema/info.d'
+import {type MetadataFetcher} from '@schema/info.d'
 import {toOpenGraphImage} from '@lib/responsiveImage'
 import styles from './page.module.sass'
 
@@ -32,11 +32,12 @@ const getData = async (slug: string): Promise<EventQuery> => {
   })
 }
 
-type Params = {
+type Params = Promise<{
   slug: string
-}
+}>
 
-const Page = async ({params: {slug}}: Props) => {
+const Page = async ({params}: {params: Params}) => {
+  const {slug} = await params
   const eventSlug = datedSlugToSlug(slug)
   const page = await getData(eventSlug)
   const date = parseDate(page.event.date)
@@ -57,8 +58,9 @@ const Page = async ({params: {slug}}: Props) => {
 }
 
 const overrides: MetadataFetcher = async ({defaults, props}) => {
-  const slug = datedSlugToSlug(props.params.slug)
-  const page = await getData(slug)
+  const {slug} = await props.params
+  const datedSlug = datedSlugToSlug(slug)
+  const page = await getData(datedSlug)
   const image = toOpenGraphImage(page.event.image.responsiveImage)
 
   return {
@@ -76,7 +78,9 @@ const generateStaticParams = async (): Promise<Params[]> => {
 
   return events.allEvents.map(e => {
     const path = datedSlug(e)
-    return {slug: path}
+    return new Promise<{slug: string}>(resolve => {
+      resolve({slug: path})
+    })
   })
 }
 

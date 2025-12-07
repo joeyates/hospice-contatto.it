@@ -6,10 +6,10 @@ import Nav from '@components/Nav'
 import {createMetadata} from '@lib/info'
 import styles from './layout.module.sass'
 
-const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
+//const ubuntuFont = localFont({src: './fonts/Ubuntu-Regular.ttf'})
 
 const RootLayout = ({children}) => (
-  <html lang='it' className={`${ubuntuFont.className} ${styles.html}`}>
+  <html lang='it' className={`${styles.html}`}>
     <body className={styles.body}>
       <Nav />
       {children}

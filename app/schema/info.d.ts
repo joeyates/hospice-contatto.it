@@ -15,9 +15,9 @@ type InfoQuery = {
 }
 
 export type Props = {
-  params: {
+  params: Promise<{
     [key: string]: string
-  }
+  }>
 }
 
 export type Metadata = {
