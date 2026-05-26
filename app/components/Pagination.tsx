@@ -36,10 +36,10 @@ const FirstPage = ({current, linkBuilder}: {current: number, linkBuilder: LinkBu
   const firstLabel = <span className={styles.label}>&nbsp;Prima</span>
   let first: JSX.Element, klass: string
   if (current > 1) {
-    first = <Link href={linkBuilder(1)}>|&lt;{firstLabel}</Link>
+    first = <Link href={linkBuilder(1)}>&#8676;{firstLabel}</Link>
     klass = styles.buttonFirst
   } else {
-    first = <div>|&lt;{firstLabel}</div>
+    first = <div>&#8676;{firstLabel}</div>
     klass = styles.buttonFirstDisabled
   }
   return <div className={klass} role='first'>{first}</div>
@@ -49,10 +49,10 @@ const LastPage = ({current, count, linkBuilder}: {current: number, count: number
   const lastLabel = <span className={styles.label}>Ultima&nbsp;</span>
   let last: JSX.Element, klass: string
   if (current < count) {
-    last = <Link href={linkBuilder(count)}>{lastLabel}&gt;|</Link>
+    last = <Link href={linkBuilder(count)}>{lastLabel}&#8677;</Link>
     klass = styles.buttonLast
   } else {
-    last = <div>{lastLabel}&gt;|</div>
+    last = <div>{lastLabel}&#8677;</div>
     klass = styles.buttonLastDisabled
   }
   return <div className={klass} role='last'>{last}</div>

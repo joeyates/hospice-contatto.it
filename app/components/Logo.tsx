@@ -6,8 +6,8 @@ const Icon = () => (
     viewBox='0 0 100 100'
     className={styles.icon}
   >
-    <circle cx='50' cy='50' r='40' />
-    <text x='22' y='80' width='100' height='100'>
+    <circle cx='60' cy='60' r='40' />
+    <text x='22' y='85' width='100' height='100'>
       ≈
     </text>
   </svg>
