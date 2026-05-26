@@ -1,5 +1,6 @@
 import {metadataFragment, request} from '@lib/datocms'
 import {type DiaryMetadataQuery} from '@schema/diary.d'
+import {attachmentFragment} from '@schema/attachment'
 
 const PAGE_SIZE = 5
 
@@ -26,6 +27,7 @@ const diaryEntryFragment = `
   date
   place
   text
+  attachments ${attachmentFragment}
 }
 `
 

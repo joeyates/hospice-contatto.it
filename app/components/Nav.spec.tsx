@@ -14,6 +14,7 @@ describe('Nav', {}, async () => {
       'Con≈tatto',
       'Home',
       'Chi siamo',
+      'Cosa facciamo',
       'Eventi',
       'Diario',
       'Approfondimenti',

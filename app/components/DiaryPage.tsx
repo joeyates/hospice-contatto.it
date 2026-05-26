@@ -1,3 +1,4 @@
+import Attachments from '@components/Attachments'
 import Main from '@components/Main'
 import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
@@ -32,7 +33,7 @@ const getData = async ({page}) => {
 
 const pageToPath: LinkBuilder = page => (page === 1 ? '/diario' : `/diario/${page}`)
 
-const Entry = ({date, place, text}) => {
+const Entry = ({date, place, text, attachments}) => {
   const formattedDate = formatDateWithOptionalTime(parseDate(date))
   return (
     <li className={styles.entry}>
@@ -40,6 +41,7 @@ const Entry = ({date, place, text}) => {
         {`${formattedDate}${(place !== '' && ` — ${place}`) || ''}`}
       </div>
       <div>{text}</div>
+      <Attachments attachments={attachments} />
     </li>
   )
 }
