@@ -1,14 +1,19 @@
 import EventList from '@components/EventList'
+import type {EventListItem} from '@schema/event.d'
 import Main from '@components/Main'
 import Pagination from '@components/Pagination'
 import type {LinkBuilder} from '@components/Pagination.d'
 import Title from '@components/Title'
 import {isoDate, metadataFragment, request} from '@lib/datocms'
+import {type RecordsMeta} from '@lib/datocms.d'
 import {toOpenGraphImage} from '@lib/responsiveImage'
 import {createMetadata} from '@lib/info'
 import {eventListFragment, extractPageCount, PAGE_SIZE} from '@schema/event'
 
-type PastEventsQuery = {allEvents: EventListItem[]}
+type PastEventsQuery = {
+  allEvents: EventListItem[],
+  _allEventsMeta: RecordsMeta
+}
 
 const QUERY = `
 query PastEvents($now: Date!, $skip: IntType!, $first: IntType!) {

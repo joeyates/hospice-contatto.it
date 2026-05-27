@@ -18,7 +18,7 @@ const path = (event: EventRecordLink): string =>
 
 const createMetadata = () => {
   return globalCreateMetadata(async ({props}) => {
-    return {title: generateTitle({props})}
+    return {title: await generateTitle({props})}
   })
 }
 
