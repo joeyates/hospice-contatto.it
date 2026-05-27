@@ -5,7 +5,7 @@ import styles from './Pagination.module.sass'
 
 const pageRange = (current: number, pageCount: number, pageLinkCount: number): number[] => {
   if (pageCount <= pageLinkCount) {
-    return [...Array(pageCount).keys()]
+    return [...Array(pageCount).keys()].map(n => n + 1)
   }
   const half = Math.floor(pageLinkCount / 2)
   const leftStart = current <= half ? 1 : current - half

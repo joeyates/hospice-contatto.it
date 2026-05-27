@@ -1,5 +1,5 @@
 import {type BodyStructuredText} from '@lib/body.d'
-import {type RecordLink} from '@lib/datocms.d'
+import {type RecordLink, RecordsMeta} from '@lib/datocms.d'
 import {type ResponsiveImage} from '@lib/responsiveImage'
 
 export type EventRecordLink = RecordLink & {
@@ -21,3 +21,5 @@ export type EventListItem = {
 export type Event = EventListItem & {
   body: BodyStructuredText
 }
+
+export type EventsMetadataQuery = {_allEventsMeta: RecordsMeta}

@@ -1,3 +1,4 @@
+import {createMetadata as globalCreateMetadata} from '@lib/info'
 import {type EventRecordLink} from '@schema/event.d'
 
 const datedSlug = (event: EventRecordLink): string =>
@@ -15,4 +16,15 @@ const datedSlugToSlug = (dated: string): string => {
 const path = (event: EventRecordLink): string =>
   `/eventi/evento/${datedSlug(event)}`
 
-export {datedSlug, datedSlugToSlug, path}
+const createMetadata = () => {
+  return globalCreateMetadata(async ({props}) => {
+    return {title: generateTitle({props})}
+  })
+}
+
+const generateTitle = async ({props}) => {
+  const params = await props.params
+  return `Eventi passati - pagina ${params.page}`
+}
+
+export {datedSlug, datedSlugToSlug, path, createMetadata, generateTitle}
